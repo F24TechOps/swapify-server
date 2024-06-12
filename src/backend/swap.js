@@ -1,4 +1,4 @@
-import { copyFolder, readAndRun, readFile } from "./runAll.js";
+import { readAndRun, readFile } from "./runAll.js";
 
 const type = process.argv[2];
 const company = process.argv[3] ?? 'force';

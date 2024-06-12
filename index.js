@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { generateMapping } from "./src/backend/createMap.js";
-import { exec } from "child_process";
+import { readAndRun, readFile } from "./src/backend/runAll.js";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { createZip } from "./src/backend/emailZip.js";
@@ -206,18 +206,37 @@ app.delete("/api/delete-company/:company", async (req, res) => {
 app.post("/api/swap", (req, res) => {
   const { type, company } = req.body;
 
-  const command = `node ./src/backend/swap.js ${type} ${company}`;
+  // const command = `node ./src/backend/swap.js ${type} ${company}`;
+  // const type = process.argv[2];
+  // const company = process.argv[3] ?? 'force';
 
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error executing swap script: ${error} ${stderr}`);
-      return res
-        .status(400)
-        .send(`Error executing swap script: ${error.message}`);
-    }
-    console.log(`Swap script output: ${stdout}`);
+  try {
+    if (!['email', 'microsite'].includes(type))
+      throw new Error("type must be either 'email' or 'microsite'");
+
+    const jsonData = readFile(`./.env/${company}/${type}/json/mapping.json`, 'utf8');
+    const update = JSON.parse(jsonData);
+
+    const selections = {replaceId: false, flatten: false, update};
+
+    readAndRun(`./src/html/${type}/base1/template.html`, `./.env/${company}/${type}/final/template.html`, selections, type);
     res.status(200).send("Swap script executed successfully");
-  });
+
+  } catch (error) {
+      console.error(`Error executing swap script: ${error}`);
+      return res.status(400).send(`Error executing swap script: ${error.message}`);
+  }
+
+  // exec(command, (error, stdout, stderr) => {
+  //   if (error) {
+  //     console.error(`Error executing swap script: ${error} ${stderr}`);
+  //     return res
+  //       .status(400)
+  //       .send(`Error executing swap script: ${error.message}`);
+  //   }
+  //   console.log(`Swap script output: ${stdout}`);
+  //   res.status(200).send("Swap script executed successfully");
+  // });
 });
 
 //tested
