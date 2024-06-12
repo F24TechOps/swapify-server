@@ -5,15 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm install",
     "test": "jest --watch --detectOpenHandles",
-    "map": "node ./src/backend/createMap.js",
-    "swap": "node ./src/backend/swap.js",
-    "star": "node ./src/imageformatter/star.js",
-    "circle": "node ./src/imageformatter/circle.js",
-    "zip": "node ./src/backend/createZip.js",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node ./index.js",
-    "client": "npm run dev --prefix ./src/frontend"
+    "start": "node ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,9 +32,9 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
     "@jest/core": "^29.7.0",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/react": "^16.0.0",
