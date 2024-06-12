@@ -13,8 +13,7 @@
     "zip": "node ./src/backend/createZip.js",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node ./index.js",
-    "client": "npm run dev --prefix ./src/frontend",
-    "build": "cd ./src/frontend && npm install && npm run build"
+    "client": "npm run dev --prefix ./src/frontend"
   },
   "author": "",
   "license": "ISC",
