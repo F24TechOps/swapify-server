@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // app.use(
 //   "/images",
@@ -189,9 +189,9 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
 
 app.delete("/api/delete-company/:company", async (req, res) => {
   const { company } = req.params;
-  const filePath = path.join(__dirname, `./.env/${company}`)
+  const filePath = path.join(__dirname, `./.env/${company}`);
 
-  fs.rmSync(filePath, {recursive: true, force: true})
+  fs.rmSync(filePath, { recursive: true, force: true });
 
   try {
     fs.rmSync(filePath, { recursive: true, force: true });
@@ -211,20 +211,29 @@ app.post("/api/swap", (req, res) => {
   // const company = process.argv[3] ?? 'force';
 
   try {
-    if (!['email', 'microsite'].includes(type))
+    if (!["email", "microsite"].includes(type))
       throw new Error("type must be either 'email' or 'microsite'");
 
-    const jsonData = readFile(`./.env/${company}/${type}/json/mapping.json`, 'utf8');
+    const jsonData = readFile(
+      `./.env/${company}/${type}/json/mapping.json`,
+      "utf8"
+    );
     const update = JSON.parse(jsonData);
 
-    const selections = {replaceId: false, flatten: false, update};
+    const selections = { replaceId: false, flatten: false, update };
 
-    readAndRun(`./src/html/${type}/base1/template.html`, `./.env/${company}/${type}/final/template.html`, selections, type);
+    readAndRun(
+      `./src/html/${type}/base1/template.html`,
+      `./.env/${company}/${type}/final/template.html`,
+      selections,
+      type
+    );
     res.status(200).send("Swap script executed successfully");
-
   } catch (error) {
-      console.error(`Error executing swap script: ${error}`);
-      return res.status(400).send(`Error executing swap script: ${error.message}`);
+    console.error(`Error executing swap script: ${error}`);
+    return res
+      .status(400)
+      .send(`Error executing swap script: ${error.message}`);
   }
 
   // exec(command, (error, stdout, stderr) => {
@@ -288,11 +297,10 @@ app.post("/api/process-circle", async (req, res) => {
       fs.mkdirSync(imagePath, { recursive: true });
     }
 
-    
     const filename = path.join(imagePath, `${imageKey}.png`);
     await downloadImage(imageUrl, filename);
     await cropCircle(filename, filename);
-    
+
     res.status(200).send("Circle image processed");
   } catch (err) {
     console.error("Error processing circle image:", err);
@@ -334,12 +342,7 @@ app.post("/api/process-star", async (req, res) => {
     console.error("Error processing star color:", err);
     res.status(500).send("Error processing star color");
   }
-
 });
-
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
-// });
 
 app.get("/*", (req, res) => {
   res.send("Hello World");
