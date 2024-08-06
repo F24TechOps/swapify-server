@@ -11,6 +11,8 @@ import http from "http";
 import https from "https";
 import * as cheerio from "cheerio";
 import cors from "cors";
+import dotenv from 'dotenv'
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -347,8 +349,10 @@ app.post("/api/process-star", async (req, res) => {
 app.get("/*", (req, res) => {
   res.send("Hello World");
 });
-
+const env = process.env.NODE_ENV 
 const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
+
+console.log(env)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
