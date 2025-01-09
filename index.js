@@ -11,7 +11,7 @@ import http from "http";
 import https from "https";
 import * as cheerio from "cheerio";
 import cors from "cors";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -65,6 +65,26 @@ app.get("/api/:type/template", (req, res) => {
       res.status(404).send(`${type} isn't an accepted template type`);
     }
   });
+});
+
+//TODO:
+app.post("/api/:type/template", (req, res) => {
+  const { type } = req.params;
+  const { htmlInput } = req.body;
+
+  const filePath = path.join(
+    __dirname,
+    `./src/html/${type}/base1/template.html`
+  );
+
+  try {
+    fs.writeFileSync(filePath, htmlInput, "utf-8");
+
+    res.status(201).send("template created");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error creating template");
+  }
 });
 
 //tested
@@ -349,10 +369,10 @@ app.post("/api/process-star", async (req, res) => {
 app.get("/*", (req, res) => {
   res.send("Hello World");
 });
-const env = process.env.NODE_ENV 
+const env = process.env.NODE_ENV;
 const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
 
-console.log(env)
+console.log(env);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
