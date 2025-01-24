@@ -9,7 +9,6 @@
     "test": "jest --watch --detectOpenHandles",
     "start": "node ./index.js"
   },
-  
   "author": "",
   "license": "ISC",
   "dependencies": {
