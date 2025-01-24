@@ -3,7 +3,7 @@ import { readFile } from "../src/backend/runAll";
 
 describe('create mapping', function() {
 
-    test('mapping',  async () => {
+    test('background',  async () => {
 
         const html = readFile(`./src/html/templates/event/template.html`);
 
@@ -29,7 +29,19 @@ describe('create mapping', function() {
         expect(links.length).toBe(1);
         expect(links[0]).toBe("https://www.force24.co.uk")
         
-    })
+    });
+
+    test('text', async () => {
+
+        const html = readFile(`./src/html/templates/event/template.html`);
+
+        const mapping = await createMapping(html, "email");
+        const text = Object.values(mapping.fontColor).map(text => text.oldFontColor)
+
+        expect(text.length).toBe(2);
+        expect(text).toContain("rgb(7, 190, 0)");
+        expect(text).toContain("rgb(34, 30, 30)");
+    });
       
 });
 
