@@ -37,7 +37,7 @@ export const extractLinks = (html, type) =>
   extractFeature(
     html,
     (element) => element.getAttribute('href'),
-    [""],
+    ["","[nonTrackingLink]", "#"],
     getLink,
     type
   );
