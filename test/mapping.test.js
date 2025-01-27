@@ -43,5 +43,17 @@ describe('create mapping', function() {
         expect(text).toContain("rgb(34, 30, 30)");
     });
       
+    test('images', async () => {
+
+        const html = readFile(`./src/html/templates/event/template.html`);
+
+        const mapping = await createMapping(html, "email");
+        const images = Object.values(mapping.images).map(image => image.oldImageLink)
+
+        expect(images.length).toBe(2);
+        expect(images).toContain("images/1712575426-3693fdeb.png")
+        expect(images).toContain("images/1712658397-bfa7ac89.png")
+        
+    });
 });
 
