@@ -55,5 +55,20 @@ describe('create mapping', function() {
         expect(images).toContain("images/1712658397-bfa7ac89.png")
         
     });
+
+    test('4 fields', async () => {
+
+        const html = readFile(`./src/html/templates/event/template.html`);
+
+        const mapping = await createMapping(html, "email");
+        const mappingKeys = Object.keys(mapping);
+
+        expect(mappingKeys.length).toBe(4);
+        expect(mappingKeys).toContain("links");
+        expect(mappingKeys).toContain("backgroundColors");
+        expect(mappingKeys).toContain("fontColor");
+        expect(mappingKeys).toContain("images");
+        
+    });
 });
 
