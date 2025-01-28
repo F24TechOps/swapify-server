@@ -6,7 +6,8 @@ export const generateMapping = async (type, company) => {
     throw new Error("type must be either 'email' or 'microsite'");
   }
 
-  const html = readFile(`./src/html/${type}/base1/template.html`);
+  const html = readFile((type === 'microsite') ? `./src/html/${type}/base1/template.html` : './src/html/templates/confirmation1/template.html');
+  
   if (html.length < 100) {
     throw new Error("HTML is too short")
   }
