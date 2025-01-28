@@ -55,16 +55,63 @@ const downloadImage = (url, filename) => {
 //tested
 app.get("/api/:type/template", (req, res) => {
   const { type } = req.params;
-  const filePath = path.join(
-    __dirname,
-    `./src/html/${type}/base1/template.html`
-  );
+  let templateName = req.query.name;
+  const templateFileNames = [
+    "abandoned",
+    "anniversary",
+    "blog",
+    "Confirmation Email 1",
+    "confirmation1",
+    "confirmation2",
+    "event",
+    "Meet The Team",
+    "nps1",
+    "nps2",
+    "nurture1",
+    "nurture2",
+    "prompt",
+    "testimonial",
+    "webinar1",
+    "webinar2",
+  ];
 
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      res.status(404).send(`${type} isn't an accepted template type`);
+  let filePath;
+
+  if (type === "templates") {
+    if (templateName && templateFileNames.includes(templateName)) {
+      filePath = path.join(
+        __dirname,
+        `./src/html/templates/${templateName}/template.html`
+      );
+    } else if (!templateFileNames.includes(templateName) && templateName !== undefined) {
+      res.status(400).send(`${templateName} isn't an accepted template type`)
+    } else {
+      filePath = path.join(
+        __dirname,
+        `./src/html/templates/abandoned/template.html`
+      );
     }
+
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err) {
+          res.status(404).send(`${type} isn't an accepted template type`);
+          return;
+      }
+
+      const updatedHtml = data.replace(/src=['"]images\//g, `src="/templates/${templateName}/images/`);
+      res.status(200).send(updatedHtml);
   });
+  } else {
+    filePath = path.join(__dirname, `./src/html/${type}/base1/template.html`);
+
+    res.sendFile(filePath, (err) => {
+      if (err) {
+        res.status(404).send(`${type} isn't an accepted template type`);
+      } else {
+        res.status(200);
+      }
+    });
+  }
 });
 
 //TODO:
@@ -369,13 +416,5 @@ app.post("/api/process-star", async (req, res) => {
 app.get("/*", (req, res) => {
   res.send("Hello World");
 });
-const env = process.env.NODE_ENV;
-const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
 
-console.log(env);
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-//export default app;
+export default app;
