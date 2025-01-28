@@ -64,7 +64,7 @@ export const extractFontColour = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.color,
-    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)'],
+    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)', 'rgb(68, 68, 68)'],
     getText,
     type
   );
