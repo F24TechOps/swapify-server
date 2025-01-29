@@ -8,26 +8,26 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 describe("Mapping API", () => {
-    const filePath = path.resolve(__dirname, '../../.env/force26');
+    const filePath = path.resolve(__dirname, '../../.env/force23');
     let response;
 
     beforeAll( async () => {
-        response = await request(app).post('/api/create-mapping/template/force26');
+        response = await request(app).post('/api/create-mapping/templates/force23');
     }, 10000)
 
-    /*afterAll(() => {
+    afterAll(() => {
         if (fs.existsSync(filePath)) {
           fs.rmSync(filePath, { recursive: true, force: true });
         }
-    });*/
+    });
 
     test("createMapping",  () => {
         expect(response.status).toBe(201);
-        expect(fs.existsSync(filePath + '/template/json/mapping.json')).toBe(true);
+        expect(fs.existsSync(filePath + '/templates/json/mapping.json')).toBe(true);
     });
 
     test("check output", () => {
-        const data = JSON.parse(fs.readFileSync(filePath + '/template/json/mapping.json', "utf8"));
+        const data = JSON.parse(fs.readFileSync(filePath + '/templates/json/mapping.json', "utf8"));
         const keys = Object.keys(data);
         expect(keys.length).toBe(3);
         const colors = Object.values(data.color).map(color => color.oldColor);

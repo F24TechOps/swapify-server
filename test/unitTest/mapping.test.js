@@ -12,7 +12,7 @@ describe('create mapping', function() {
             throw new Error("HTML is too short")
         }
         
-        mapping = await createMapping(html, "template");
+        mapping = await createMapping(html, "templates");
     });
 
     test('color', () => {

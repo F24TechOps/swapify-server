@@ -2,13 +2,13 @@ import { createMapping } from "./mapping.js";
 import { readFile, writeFile } from "./runAll.js";
 
 export const generateMapping = async (type, company) => {
-  if (!['email', 'microsite', 'template'].includes(type)) {
+  if (!['email', 'microsite', 'templates'].includes(type)) {
     throw new Error("type must be either 'email' or 'microsite'");
   }
 
   let html;
   
-  if (type === "template")
+  if (type === "templates")
     html = readFile('./src/html/templates/event/template.html');
   else
     html = readFile(`./src/html/${type}/base1/template.html`);
