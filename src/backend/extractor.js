@@ -28,7 +28,7 @@ export const extractBackgrounds = (html, type) =>
     html,
     (element, dom) =>
       dom.window.getComputedStyle(element, null).backgroundColor,
-    ["rgba(0, 0, 0, 0)", "inherit"],
+    ["rgba(0, 0, 0, 0)", "inherit", "rgb(255, 255, 255)"],
     getBackgrounds,
     type
   );
@@ -37,7 +37,7 @@ export const extractLinks = (html, type) =>
   extractFeature(
     html,
     (element) => element.getAttribute('href'),
-    [""],
+    ["","[nonTrackingLink]", "#"],
     getLink,
     type
   );
@@ -64,7 +64,7 @@ export const extractFontColour = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.color,
-    [""],
+    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)', 'rgb(68, 68, 68)'],
     getText,
     type
   );
@@ -76,6 +76,13 @@ export const extractFontColour = (html, type) =>
 
 export const extractImage = (html) =>
   extractFeature(html, (element) => element.src, [], getImage);
+
+export const extractColor = (html, type) => {
+  const backgrounds = extractBackgrounds(html, type);
+  const fontColor = extractFontColour(html, type);
+
+  return Array.from(new Set(...[backgrounds.concat(fontColor)]));
+}
 
 function extractFeature(html, getFeature, nonExistent, getElement, type) {
   const dom = new JSDOM(html);

@@ -6,7 +6,8 @@ import {
     extractFonts, 
     extractImage, 
     extractBackgroundImg, 
-    extractLinks 
+    extractLinks,
+    extractColor
 } from "./extractor.js";
 
 const buttonKeys = [
@@ -73,30 +74,41 @@ const mapButton = (buttonMapper, button, idx, type) => {
 }
 
 export async function createMapping(html, type) {
+
     const linkElements = extractLinks(html, type);
-    const backgrounds = extractBackgrounds(html, type);
-    const fonts = extractFonts(html, type);
-    const fontSizes = extractFontSize(html, type);
-    const fontColors = extractFontColour(html, type);
     const imageElements = extractImage(html);
-    const backgroundImgElement = extractBackgroundImg(html);
-    const buttonElements = extractButton(html, type);
 
     const links = linkElements.reduce((mapper, link, idx) => mapFeature(mapper, link, idx, 'Link'), {});
-    const backgroundColors = backgrounds.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Background'), {});
-    const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});
-    const fontSize = fontSizes.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontSize'), {});
-    const fontColor = fontColors.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontColor'), {});
     const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageLink'), {});
-    const backgroundImg = backgroundImgElement.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'BackgroundImage'), {});
-    const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
+    
+    if (type === "templates") {
+        const colorElements = extractColor(html);
+        const color = colorElements.reduce((mapper, colour, idx) => mapFeature(mapper, colour, idx, 'Color'), {});
 
-    const allButtons = type === 'microsite' ? emptyButton : 
-        {
-            innerButton: emptyButton,
-            outerButton: emptyOuterButton
-        }
-    ;
+        return {links, images, color}
+    }
+    else {
+        const buttonElements = extractButton(html, type);
+        const backgrounds = extractBackgrounds(html, type);
+        const fonts = extractFonts(html, type);
+        const fontSizes = extractFontSize(html, type);
+        const fontColors = extractFontColour(html, type);
+        const backgroundImgElement = extractBackgroundImg(html);
 
-    return {links, backgroundColors, fontFamily, fontColor, fontSize, images, buttons, allButtons, backgroundImg};
+        const fontColor = fontColors.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontColor'), {});
+        const backgroundImg = backgroundImgElement.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'BackgroundImage'), {});
+        const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
+        const backgroundColors = backgrounds.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Background'), {});
+        const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});
+        const fontSize = fontSizes.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontSize'), {});
+
+        const allButtons = type === 'microsite' ? emptyButton : 
+            {
+                innerButton: emptyButton,
+                outerButton: emptyOuterButton
+            }
+        ;
+
+        return {links, backgroundColors, fontColor, images, fontSize, fontFamily, buttons, allButtons, backgroundImg};
+    }
 }
