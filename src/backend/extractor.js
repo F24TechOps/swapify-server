@@ -28,7 +28,7 @@ export const extractBackgrounds = (html, type) =>
     html,
     (element, dom) =>
       dom.window.getComputedStyle(element, null).backgroundColor,
-    ["rgba(0, 0, 0, 0)", "inherit", "rgb(255, 255, 255)"],
+    ["rgba(0, 0, 0, 0)", "inherit", "rgb(255, 255, 255)", "rgba(0, 0, 0, 0.1)"],
     getBackgrounds,
     type
   );
@@ -64,7 +64,7 @@ export const extractFontColour = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.color,
-    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)', 'rgb(68, 68, 68)'],
+    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)', 'rgb(68, 68, 68)', 'rgb(255, 255, 255)'],
     getText,
     type
   );

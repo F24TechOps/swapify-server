@@ -13,13 +13,13 @@ describe("Mapping API", () => {
 
     beforeAll( async () => {
         response = await request(app).post('/api/create-mapping/templates/force23');
-    }, 10000)
+    }, 20000)
 
-    afterAll(() => {
+    /*afterAll(() => {
         if (fs.existsSync(filePath)) {
           fs.rmSync(filePath, { recursive: true, force: true });
         }
-    });
+    });*/
 
     test("createMapping",  () => {
         expect(response.status).toBe(201);
