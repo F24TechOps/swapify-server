@@ -37,9 +37,8 @@ describe('create mapping', function() {
     test('images',() => {
         const images = Object.values(mapping.images).map(image => image.oldImageLink)
 
-        expect(images.length).toBe(2);
+        expect(images.length).toBe(1);
         expect(images).toContain("https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/52c7ee81/images/1712575426-3693fdeb.png?v=133825509661590979")
-        expect(images).toContain("https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/52c7ee81/images/1712658397-bfa7ac89.png?v=133825509661590979")
         
     });
 

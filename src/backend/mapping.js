@@ -79,15 +79,20 @@ export async function createMapping(html, type) {
     const imageElements = extractImage(html);
 
     const links = linkElements.reduce((mapper, link, idx) => mapFeature(mapper, link, idx, 'Link'), {});
-    const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageLink'), {});
+    
     
     if (type === "templates") {
+        const firstImage = [imageElements[0]];
+        const images = firstImage.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageLink'), {});
+
         const colorElements = extractColor(html);
         const color = colorElements.reduce((mapper, colour, idx) => mapFeature(mapper, colour, idx, 'Color'), {});
 
         return {links, images, color}
     }
     else {
+        const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageLink'), {});
+
         const buttonElements = extractButton(html, type);
         const backgrounds = extractBackgrounds(html, type);
         const fonts = extractFonts(html, type);
