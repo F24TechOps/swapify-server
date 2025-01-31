@@ -9,8 +9,6 @@ const { createMapping } = await import('../../src/backend/mapping.js');
 
 describe("generate mapping", () => {
     test("should call createMapping and return mocked result", async () => {
-        
-
         const mapping = await generateMapping("templates", "force22");
 
         console.log(mapping);
