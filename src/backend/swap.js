@@ -3,8 +3,8 @@ import { readAndRun, readFile } from "./runAll.js";
 const type = process.argv[2];
 const company = process.argv[3] ?? 'force';
 
-if (!['email', 'microsite'].includes(type))
-    throw new Error("type must be either 'email' or 'microsite'");
+if (!['email', 'microsite', 'templates'].includes(type))
+    throw new Error("type must be either 'email', 'microsite', or 'templates'");
 
 const jsonData = readFile(`./.env/${company}/${type}/json/mapping.json`, 'utf8');
 const update = JSON.parse(jsonData);

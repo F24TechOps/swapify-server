@@ -275,10 +275,6 @@ app.delete("/api/delete-company/:company", async (req, res) => {
 app.post("/api/swap", (req, res) => {
   const { type, company } = req.body;
 
-  // const command = `node ./src/backend/swap.js ${type} ${company}`;
-  // const type = process.argv[2];
-  // const company = process.argv[3] ?? 'force';
-
   try {
     if (!["email", "microsite"].includes(type))
       throw new Error("type must be either 'email' or 'microsite'");
@@ -304,17 +300,6 @@ app.post("/api/swap", (req, res) => {
       .status(400)
       .send(`Error executing swap script: ${error.message}`);
   }
-
-  // exec(command, (error, stdout, stderr) => {
-  //   if (error) {
-  //     console.error(`Error executing swap script: ${error} ${stderr}`);
-  //     return res
-  //       .status(400)
-  //       .send(`Error executing swap script: ${error.message}`);
-  //   }
-  //   console.log(`Swap script output: ${stdout}`);
-  //   res.status(200).send("Swap script executed successfully");
-  // });
 });
 
 //tested

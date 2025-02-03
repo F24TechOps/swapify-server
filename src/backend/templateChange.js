@@ -207,14 +207,14 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   // Update Images
   function changeImgSrc(allUpdatesObj) {
     const allElements = getImage(document, type);
-
+    
     for (const imgType in allUpdatesObj.images) {
       for (let i = 0; i < allElements.length; i++) {
         const element = allElements[i];
-
+        
         const normalURL = normalizeUrl(element.src);
         const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageLink);
-
+        
         const { newImageLink } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
