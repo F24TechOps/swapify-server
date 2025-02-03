@@ -81,7 +81,19 @@ export const extractColor = (html, type) => {
   const backgrounds = extractBackgrounds(html, type);
   const fontColor = extractFontColour(html, type);
 
-  return Array.from(new Set(...[backgrounds.concat(fontColor)]));
+  const buttonString = extractButton(html, type);
+
+  const allColors = buttonString.reduce((modifier, buttonS) => {
+    const button = JSON.parse(buttonS);
+
+    modifier.push(button.innerButton.background?.replaceAll(",", ", "));
+    modifier.push(button.innerButton.color?.replaceAll(",", ", "));
+    modifier.push(button.outerButton["background-color"]?.replaceAll(",", ", "));
+
+    return modifier;
+  }, []);
+
+  return Array.from(new Set(...[backgrounds.concat(fontColor).concat(allColors)])).filter(color => !!color);
 }
 
 function extractFeature(html, getFeature, nonExistent, getElement, type) {
