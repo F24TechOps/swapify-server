@@ -115,7 +115,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   function changeBackgroundImg(allUpdatesObj) {
     const backgroundImgElement = getBackgroundImg(document);
-
+    
     for (const backgroundType in allUpdatesObj.backgroundImg) {
       for (let i = 0; i < backgroundImgElement.length; i++) {
         let element = backgroundImgElement[i];

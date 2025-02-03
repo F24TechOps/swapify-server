@@ -12,6 +12,7 @@ import https from "https";
 import * as cheerio from "cheerio";
 import cors from "cors";
 import dotenv from "dotenv";
+import { listFolders } from "./src/backend/readFolders.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -83,8 +84,11 @@ app.get("/api/:type/template", (req, res) => {
         __dirname,
         `./src/html/templates/${templateName}/template.html`
       );
-    } else if (!templateFileNames.includes(templateName) && templateName !== undefined) {
-      res.status(400).send(`${templateName} isn't an accepted template type`)
+    } else if (
+      !templateFileNames.includes(templateName) &&
+      templateName !== undefined
+    ) {
+      res.status(400).send(`${templateName} isn't an accepted template type`);
     } else {
       filePath = path.join(
         __dirname,
@@ -94,13 +98,16 @@ app.get("/api/:type/template", (req, res) => {
 
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
-          res.status(404).send(`${type} isn't an accepted template type`);
-          return;
+        res.status(404).send(`${type} isn't an accepted template type`);
+        return;
       }
 
-      const updatedHtml = data.replace(/src=['"]images\//g, `src="/templates/${templateName}/images/`);
+      const updatedHtml = data.replace(
+        /src=['"]images\//g,
+        `src="/templates/${templateName}/images/`
+      );
       res.status(200).send(updatedHtml);
-  });
+    });
   } else {
     filePath = path.join(__dirname, `./src/html/${type}/base1/template.html`);
 
@@ -272,12 +279,14 @@ app.delete("/api/delete-company/:company", async (req, res) => {
 });
 
 //tested
-app.post("/api/swap", (req, res) => {
+app.post("/api/swap", async (req, res) => {
   const { type, company } = req.body;
 
   try {
-    if (!["email", "microsite"].includes(type))
-      throw new Error("type must be either 'email' or 'microsite'");
+    if (!["email", "microsite", "templates"].includes(type))
+      throw new Error(
+        "type must be either 'email', 'microsite', or 'templates'"
+      );
 
     const jsonData = readFile(
       `./.env/${company}/${type}/json/mapping.json`,
@@ -287,12 +296,25 @@ app.post("/api/swap", (req, res) => {
 
     const selections = { replaceId: false, flatten: false, update };
 
-    readAndRun(
-      `./src/html/${type}/base1/template.html`,
-      `./.env/${company}/${type}/final/template.html`,
-      selections,
-      type
-    );
+    if (type === "templates") {
+      const folders = await listFolders(`./src/html/templates`);
+
+      folders.forEach((folder) => {
+        readAndRun(
+          `./src/html/templates/${folder}/template.html`,
+          `./.env/${company}/${type}/${folder}/final/template.html`,
+          selections,
+          type
+        );
+      });
+    } else {
+      readAndRun(
+        `./src/html/${type}/base1/template.html`,
+        `./.env/${company}/${type}/final/template.html`,
+        selections,
+        type
+      );
+    }
     res.status(200).send("Swap script executed successfully");
   } catch (error) {
     console.error(`Error executing swap script: ${error}`);
