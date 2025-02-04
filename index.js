@@ -116,12 +116,12 @@ app.get("/api/:type/template", (req, res) => {
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
-  const filePath = path.join(
+  let filePath = path.join(
     __dirname,
     `./.env/${company}/${type}/final/template.html`
   );
 
-  if (type === "template") {
+  if (type === "templates") {
     filePath = path.join(
       __dirname,
       `./.env/${company}/${type}/abandoned/final/template.html`
