@@ -2,14 +2,12 @@ import express from "express";
 import path from "path";
 import { generateMapping } from "./src/backend/createMap.js";
 import { readAndRun, readFile } from "./src/backend/runAll.js";
+import { downloadImage } from "./src/backend/downloadImage.js";
 import fs from "fs";
 import { fileURLToPath } from "url";
-import { createZip } from "./src/backend/emailZip.js";
+import { processTemplate } from "./src/backend/processTemplate.js";
 import { cropCircle } from "./src/imageformatter/createCircle.js";
 import { starColour } from "./src/imageformatter/editStarColour.js";
-import http from "http";
-import https from "https";
-import * as cheerio from "cheerio";
 import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
@@ -26,32 +24,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// app.use(
-//   "/images",
-//   express.static(path.join(__dirname, "./src/html/email/base1/images"))
-// );
-
-const downloadImage = (url, filename) => {
-  return new Promise((resolve, reject) => {
-    const protocol = url.startsWith("https") ? https : http;
-    protocol
-      .get(url, (response) => {
-        if (response.statusCode === 200) {
-          const file = fs.createWriteStream(filename);
-          response.pipe(file);
-          file.on("finish", () => {
-            file.close(resolve);
-          });
-        } else {
-          reject(`Failed to get '${url}' (${response.statusCode})`);
-        }
-      })
-      .on("error", (err) => {
-        reject(err.message);
-      });
-  });
-};
 
 //tested
 app.get("/api/:type/template", (req, res) => {
@@ -121,25 +93,25 @@ app.get("/api/:type/template", (req, res) => {
   }
 });
 
-//TODO:
-app.post("/api/:type/template", (req, res) => {
-  const { type } = req.params;
-  const { htmlInput } = req.body;
+//IDEA:
+// app.post("/api/:type/template", (req, res) => {
+//   const { type } = req.params;
+//   const { htmlInput } = req.body;
 
-  const filePath = path.join(
-    __dirname,
-    `./src/html/${type}/base1/template.html`
-  );
+//   const filePath = path.join(
+//     __dirname,
+//     `./src/html/${type}/base1/template.html`
+//   );
 
-  try {
-    fs.writeFileSync(filePath, htmlInput, "utf-8");
+//   try {
+//     fs.writeFileSync(filePath, htmlInput, "utf-8");
 
-    res.status(201).send("template created");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error creating template");
-  }
-});
+//     res.status(201).send("template created");
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Error creating template");
+//   }
+// });
 
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
@@ -148,6 +120,13 @@ app.get("/api/:type/:company/final-template", (req, res) => {
     __dirname,
     `./.env/${company}/${type}/final/template.html`
   );
+
+  if (type === "template") {
+    filePath = path.join(
+      __dirname,
+      `./.env/${company}/${type}/abandoned/final/template.html`
+    );
+  }
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -176,73 +155,35 @@ app.get("/api/mapping/:type/:company", (req, res) => {
   });
 });
 
-//tested
+//TODO:
 app.post("/api/create-download", async (req, res) => {
-  const { type, company, imageUrls, replaceColor } = req.body;
+  const { type, company, imageUrls } = req.body;
 
-  if (type === "email") {
-    const htmlPath = path.join(
-      __dirname,
-      `./.env/${company}/email/final/template.html`
-    );
-    const imagePath = path.join(
-      __dirname,
-      `./.env/${company}/email/final/images`
-    );
-    const zipDest = path.join(
-      __dirname,
-      `./.env/${company}/email/final/${company}.zip`
-    );
+  if (!["email", "templates", "microsite"].includes(type)) {
+    return res.status(404).send("Invalid type specified");
+  }
 
-    try {
-      const htmlContent = fs.readFileSync(htmlPath, "utf8");
-      const $ = cheerio.load(htmlContent);
-
-      const srcMapping = {};
-      for (const [key, url] of Object.entries(imageUrls)) {
-        const localPath = `images/${key}.png`;
-        srcMapping[url.split("?")[0]] = localPath;
-      }
-
-      $("img").each((index, element) => {
-        const originalSrc = $(element).attr("src").split("?")[0];
-        if (srcMapping[originalSrc]) {
-          $(element).attr("src", srcMapping[originalSrc]);
-        }
-      });
-
-      fs.writeFileSync(htmlPath, $.html(), "utf8");
-
-      createZip(htmlPath, imagePath, zipDest)
-        .then(() => {
-          res.download(zipDest, `${company}.zip`, (err) => {
-            if (err) {
-              console.error("error sending file", err);
-              res.status(400).send("Error sending zip file");
-            }
-          });
-        })
-        .catch((error) => {
-          console.error("Error creating zip file:", error);
-          res.status(400).send(`Error creating zip file :${error}`);
-        });
-    } catch (error) {
-      console.error("Error downloading images:", error);
-      res.status(400).send(`Error downloading images: ${error.message}`);
-    }
-  } else if (type === "microsite") {
-    const htmlPath = path.join(
-      __dirname,
-      `./.env/${company}/microsite/final/template.html`
-    );
-    try {
+  try {
+    if (type === "microsite") {
+      const htmlPath = path.join(__dirname, `./.env/${company}/microsite/final/template.html`);
       const copyText = fs.readFileSync(htmlPath, "utf8");
-      res.status(200).send(copyText);
-    } catch (error) {
-      res.status(400).send(`Error reading HTML file: ${error}`);
+      return res.status(200).send(copyText);
     }
-  } else {
-    res.status(404).send("Invalid type specified");
+
+    if (type === "email") {
+      return await processTemplate(res, company, "email", imageUrls);
+    }
+
+    if (type === "templates") {
+      const templateFolders = await listFolders(path.join(__dirname, `./.env/${company}/templates`));
+
+      await Promise.all(templateFolders.map(templateName => processTemplate(res, company, templateName, imageUrls, true)));
+
+      return res.status(200).send("All template zip files have been created successfully.");
+    }
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(400).send(`Error processing request: ${error.message}`);
   }
 });
 
@@ -263,6 +204,7 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
   res.status(201).send("Mapping created");
 });
 
+//tested
 app.delete("/api/delete-company/:company", async (req, res) => {
   const { company } = req.params;
   const filePath = path.join(__dirname, `./.env/${company}`);
