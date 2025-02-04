@@ -21,6 +21,8 @@ describe("Mapping API", () => {
         }
     });*/
 
+    // render preview test - can delete this if necessary
+
     test("createMapping",  () => {
         expect(response.status).toBe(201);
         expect(fs.existsSync(filePath + '/templates/json/mapping.json')).toBe(true);
