@@ -155,7 +155,7 @@ app.get("/api/mapping/:type/:company", (req, res) => {
   });
 });
 
-//TODO:
+//tested
 app.post("/api/create-download", async (req, res) => {
   const { type, company, imageUrls } = req.body;
 
