@@ -11,6 +11,7 @@ import { starColour } from "./src/imageformatter/editStarColour.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
+import JSZip from "jszip";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -165,25 +166,67 @@ app.post("/api/create-download", async (req, res) => {
 
   try {
     if (type === "microsite") {
-      const htmlPath = path.join(__dirname, `./.env/${company}/microsite/final/template.html`);
+      const htmlPath = path.join(
+        __dirname,
+        `./.env/${company}/microsite/final/template.html`
+      );
       const copyText = fs.readFileSync(htmlPath, "utf8");
       return res.status(200).send(copyText);
     }
 
     if (type === "email") {
-      return await processTemplate(res, company, "email", imageUrls);
+      const zipPath = await processTemplate(res, company, "email", imageUrls);
+      return res.download(zipPath, "email.zip");
     }
 
     if (type === "templates") {
-      const templateFolders = await listFolders(path.join(__dirname, `./.env/${company}/templates`));
+      const templateFolders = await listFolders(
+        path.join(__dirname, `./.env/${company}/templates`)
+      );
 
-      await Promise.all(templateFolders.map(templateName => processTemplate(res, company, templateName, imageUrls, true)));
+      const zipPaths = await Promise.all(
+        templateFolders.map((templateName) =>
+          processTemplate(res, company, templateName, imageUrls, true)
+        )
+      );
 
-      return res.status(200).send("All template zip files have been created successfully.");
+      const validZipPaths = zipPaths.filter((zip) => {
+        if (zip !== null && zip !== undefined) {
+          return zip;
+        }
+      });
+
+      if (validZipPaths.length === 0) {
+        return res
+          .status(500)
+          .send("Error: No templates were successfully zipped");
+      }
+
+      const masterZip = new JSZip();
+      const masterZipPath = path.join(
+        __dirname,
+        `./.env/${company}/${company}-templates.zip`
+      );
+
+      for (const zipPath of validZipPaths) {
+        const zipFilename = path.basename(zipPath);
+        const zipData = fs.readFileSync(zipPath);
+        masterZip.file(zipFilename, zipData);
+      }
+
+      const masterZipBuffer = await masterZip.generateAsync({
+        type: "nodebuffer",
+      });
+      fs.writeFileSync(masterZipPath, masterZipBuffer);
+      
+      return res.download(masterZipPath, `${company}-templates.zip`
+    );
     }
   } catch (error) {
     console.error("Error processing request:", error);
-    res.status(400).send(`Error processing request: ${error.message}`);
+    if (!res.headersSent) {
+      res.status(400).send(`Error processing request: ${error.message}`);
+    }
   }
 });
 
