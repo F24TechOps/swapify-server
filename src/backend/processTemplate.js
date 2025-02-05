@@ -50,16 +50,16 @@ export const processTemplate = async (
           return;
 
         if (!srcMapping[originalSrc]) {
-          const existingSrc = $(element).attr("src");
-          if (existingSrc && existingSrc.startsWith("images/")) return;
-          
-          const newKey = `ImageLink${index}`;
-          const localPath = `images/${newKey}.png`;
+          const fileExtension =
+            path.extname(originalSrc).split("?")[0] || ".png";
+
+          const newKey = `ImageLink${Object.keys(srcMapping).length + 1}${fileExtension}`;
+          const localPath = `images/${newKey}`;
           srcMapping[originalSrc] = localPath;
-          const fullImagePath = path.join(imagePath, `${newKey}.png`);
-          $(element).attr("src", localPath);
-          return downloadImage(originalSrc, fullImagePath);
+          const fullImagePath = path.join(imagePath, newKey);
+          await downloadImage(originalSrc, fullImagePath);
         }
+        $(element).attr("src", srcMapping[originalSrc]);
       })
       .get();
 
@@ -68,6 +68,8 @@ export const processTemplate = async (
     fs.writeFileSync(htmlPath, $.html(), "utf8");
 
     await createZip(htmlPath, imagePath, zipDest);
+
+    return zipDest;
   } catch (error) {
     console.error(`Error processing template '${templateName}':`, error);
   }
