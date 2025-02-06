@@ -27,19 +27,15 @@ export function readAndRun(inputPath, outputPath, selections, type) {
 }
 
 export function readFile (filePath) {
-    return fs.readFileSync(filePath, 'utf8');
+    return fs.createReadStream(filePath, { encoding: 'utf8' });
 };
   
 export function writeFile (filePath, data) {
     const directory = path.dirname(filePath);
-
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory, { recursive: true });
     }
 
-    fs.writeFileSync(filePath, data, 'utf8');
+    const writeStream = fs.createWriteStream(filePath, { encoding: 'utf8' });
+    writeStream.end(data);
 };
-
-export function copyFolder (src, dest) {
-    fs.cpSync(src, dest, {recursive: true});
-}
