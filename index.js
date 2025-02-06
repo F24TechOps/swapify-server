@@ -273,7 +273,7 @@ app.post("/api/swap", async (req, res) => {
         "type must be either 'email', 'microsite', or 'templates'"
       );
 
-    const jsonData = readFile(
+    const jsonData = await readFile(
       `./.env/${company}/${type}/json/mapping.json`,
       "utf8"
     );
@@ -284,8 +284,8 @@ app.post("/api/swap", async (req, res) => {
     if (type === "templates") {
       const folders = await listFolders(`./src/html/templates`);
 
-      folders.forEach((folder) => {
-        readAndRun(
+      folders.forEach(async (folder) => {
+        await readAndRun(
           `./src/html/templates/${folder}/template.html`,
           `./.env/${company}/${type}/${folder}/final/template.html`,
           selections,
@@ -293,7 +293,7 @@ app.post("/api/swap", async (req, res) => {
         );
       });
     } else {
-      readAndRun(
+      await readAndRun(
         `./src/html/${type}/base1/template.html`,
         `./.env/${company}/${type}/final/template.html`,
         selections,

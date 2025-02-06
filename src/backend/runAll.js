@@ -16,8 +16,8 @@ export function runAll(html, selections, type) {
   return html;
 }
 
-export function readAndRun(inputPath, outputPath, selections, type) {
-  const html = readFile(inputPath);
+export async function readAndRun(inputPath, outputPath, selections, type) {
+  const html = await readFile(inputPath);
 
   const newHtml = runAll(html, selections, type);
 

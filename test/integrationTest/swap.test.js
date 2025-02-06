@@ -64,8 +64,8 @@ describe("swap endpoint logic", () => {
         expect(folders.length).toBeGreaterThan(0);
     });
 
-    it("should read and parse the update mapping JSON file", () => {
-        const jsonData = readFromFile(`${envPath}/json/mapping.json`);
+    it("should read and parse the update mapping JSON file", async () => {
+        const jsonData = await readFromFile(`${envPath}/json/mapping.json`);
         const parsedData = JSON.parse(jsonData);
         expect(parsedData).toHaveProperty("color.Color0.oldColor", "rgb(201, 255, 247)");
     });
