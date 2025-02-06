@@ -4,6 +4,7 @@ import * as cheerio from "cheerio";
 import { createZip } from "./emailZip.js";
 import { downloadImage } from "./downloadImage.js";
 import { fileURLToPath } from "url";
+import { readFile, writeFile } from "./runAll.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,7 +36,8 @@ export const processTemplate = async (
   }
 
   try {
-    const htmlContent = fs.readFileSync(htmlPath, "utf8");
+    const htmlContent = await readFile(htmlPath)
+
     const $ = cheerio.load(htmlContent);
     const srcMapping = {};
 
@@ -64,8 +66,8 @@ export const processTemplate = async (
       .get();
 
     await Promise.all(imageDownloadPromises);
-
-    fs.writeFileSync(htmlPath, $.html(), "utf8");
+  
+      writeFile(htmlPath, $.html());
 
     await createZip(htmlPath, imagePath, zipDest);
 

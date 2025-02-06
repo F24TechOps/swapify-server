@@ -3,6 +3,15 @@ import { readFile, writeFile } from "./runAll.js";
 import { listFolders, readFromFile } from "./readFolders.js";
 import { JSDOM } from 'jsdom';
 
+const newHtml = async () => {
+  const allFolders = await listFolders('./src/html/templates');
+    return allFolders.reduce(async (modifier, folderName) => {
+      const newHtml = await readFromFile(`./src/html/templates/${folderName}/template.html`);
+      const dom = new JSDOM(newHtml);
+      return modifier + dom.window.document.body.innerHTML.trim();
+    }, "");
+}
+
 export const generateMapping = async (type, company) => {
   if (!['email', 'microsite', 'templates'].includes(type)) {
     throw new Error("type must be either 'email' or 'microsite'");
@@ -11,12 +20,7 @@ export const generateMapping = async (type, company) => {
   let html;
   
   if (type === "templates") {
-    const allFolders = await listFolders('./src/html/templates');
-    html = allFolders.reduce((modifier, folderName) => {
-      const newHtml = readFromFile(`./src/html/templates/${folderName}/template.html`);
-      const dom = new JSDOM(newHtml);
-      return modifier + dom.window.document.body.innerHTML.trim();
-    }, "");
+    html = await newHtml()
     html = html.trim();
   }
   else
