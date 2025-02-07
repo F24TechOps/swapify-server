@@ -8,8 +8,11 @@ export async function listFolders(directoryPath) {
   }
   return fs
     .readdirSync(directoryPath)
-    .filter((file) =>
-      fs.statSync(path.join(directoryPath, file)).isDirectory()
+    .filter((file) => {
+      if (file !== 'json') {
+      return fs.statSync(path.join(directoryPath, file)).isDirectory()
+      }
+    }
     );
 }
 

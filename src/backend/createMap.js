@@ -17,7 +17,7 @@ const newHtml = async () => {
   }, "");
 };
 
-export const generateNewMapping = async (type, company) => {
+export const generateNewMapping = async (type) => {
   if (!["email", "microsite", "templates"].includes(type)) {
     throw new Error("type must be either 'email' or 'microsite'");
   }
@@ -49,13 +49,15 @@ export const generateNewMapping = async (type, company) => {
 };
 
 export const generateMapping = async (type, company) => {
+  let file;
   if (type === "templates") {
-    let file = await readFile(`./src/html/templates/json/mapping.json`);
+    file = await readFile(`./src/html/templates/json/mapping.json`);
     writeFile(`./.env/${company}/templates/json/mapping.json`, file);
   } else {
-    let file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
-    writeFile(`./.env/${company}/${type}/base1/json/mapping.json`, file);
+    file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
+    writeFile(`./.env/${company}/${type}/json/mapping.json`, file);
   }
+  return file;
 };
 
-generateCompanyMapping("email", "esthertest");
+generateNewMapping('templates');
