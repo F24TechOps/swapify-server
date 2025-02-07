@@ -1,21 +1,23 @@
 import { createMapping } from "./mapping.js";
 import { readFile, writeFile } from "./runAll.js";
 import { listFolders, readFromFile } from "./readFolders.js";
-import { JSDOM } from "jsdom";
+import * as cheerio from "cheerio";
 
 const newHtml = async () => {
   const allFolders = await listFolders("./src/html/templates");
   return allFolders.reduce(async (modifier, folderName) => {
-    const newHtml = await readFromFile(
+    if (folderName === "json") {
+      return modifier;
+    }
+    const templateHtml = await readFromFile(
       `./src/html/templates/${folderName}/template.html`
     );
-    const dom = new JSDOM(newHtml);
-    return modifier + dom.window.document.body.innerHTML.trim();
+    const $ = cheerio.load(templateHtml);
+    return modifier + $("body").html().trim();
   }, "");
 };
 
-export const generateMapping = async (type, company) => {
-  
+export const generateNewMapping = async (type) => {
   if (!["email", "microsite", "templates"].includes(type)) {
     throw new Error("type must be either 'email' or 'microsite'");
   }
@@ -32,9 +34,30 @@ export const generateMapping = async (type, company) => {
   }
 
   const mapping = await createMapping(html, type);
-  writeFile(
-    `./.env/${company}/${type}/json/mapping.json`,
-    JSON.stringify(mapping, null, 2)
-  );
+  if (type === "templates") {
+    writeFile(
+      `./src/html/${type}/json/mapping.json`,
+      JSON.stringify(mapping, null, 2)
+    );
+  } else {
+    writeFile(
+      `./src/html/${type}/base1/json/mapping.json`,
+      JSON.stringify(mapping, null, 2)
+    );
+  }
   return mapping;
 };
+
+export const generateMapping = async (type, company) => {
+  let file;
+  if (type === "templates") {
+    file = await readFile(`./src/html/templates/json/mapping.json`);
+    writeFile(`./.env/${company}/templates/json/mapping.json`, file);
+  } else {
+    file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
+    writeFile(`./.env/${company}/${type}/json/mapping.json`, file);
+  }
+  return file;
+};
+
+generateNewMapping('templates');

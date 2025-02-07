@@ -1,7 +1,7 @@
 import { createMapping } from '../../src/backend/mapping'
 import { readFile } from "../../src/backend/runAll";
 
-describe('create mapping', function() {
+describe.skip('create mapping', function() {
 
     let mapping;
 

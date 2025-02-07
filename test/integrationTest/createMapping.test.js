@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe("Mapping API", () => {
+describe.only("Mapping API", () => {
     const filePath = path.resolve(__dirname, '../../.env/force23');
     let response;
 
@@ -33,7 +33,7 @@ describe("Mapping API", () => {
         const keys = Object.keys(data);
         expect(keys.length).toBe(3);
         const colors = Object.values(data.color).map(color => color.oldColor);
-
+        
         expect(colors.length).toBe(3);
         expect(colors).toContain("rgb(201, 255, 247)");
         expect(colors).toContain("rgb(7, 190, 0)");

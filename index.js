@@ -234,16 +234,11 @@ app.post("/api/create-download", async (req, res) => {
 app.post("/api/create-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
   const mapping = await generateMapping(type, company);
-  const filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/json/mapping.json`
-  );
 
   if (!mapping) {
     res.status(400).send("HTML content is required");
   }
 
-  fs.writeFileSync(filePath, JSON.stringify(mapping, null, 2), "utf8");
   res.status(201).send("Mapping created");
 });
 
@@ -283,7 +278,6 @@ app.post("/api/swap", async (req, res) => {
 
     if (type === "templates") {
       const folders = await listFolders(`./src/html/templates`);
-
       folders.forEach(async (folder) => {
         await readAndRun(
           `./src/html/templates/${folder}/template.html`,

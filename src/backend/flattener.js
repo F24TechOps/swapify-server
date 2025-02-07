@@ -1,10 +1,9 @@
-import { JSDOM } from 'jsdom';
+import * as cheerio from "cheerio";
 import { isFullHtml } from "./checkHtml.js";
 
 let full;
 
 export function flatten(html) {
-
     let loop = true;
     let bodyLen = null;
 
@@ -12,28 +11,27 @@ export function flatten(html) {
 
     do {
         html = flattenLayer(html);
-
         loop = html.length !== bodyLen;
-
         bodyLen = html.length;
-    }
-    while (loop)
+    } while (loop);
 
     return html;
 }
 
 function flattenLayer(html) {
-    const dom = new JSDOM(html);
-    const body = dom.window.document.body;
+    const $ = cheerio.load(html);
 
-    const divElements = body.querySelectorAll('div');
+    const divElements = $('div').toArray();
 
     divElements.forEach((div) => {
-        if (div.childElementCount === 1 && div.children[0].tagName === 'DIV' && div.attributes.length === 0) {
-            const child = div.children[0].cloneNode(true);
-            div.parentNode.replaceChild(child, div);
+        const $div = $(div);
+        const children = $div.children();
+
+        if (children.length === 1 && children[0].tagName === 'div' && !$div.attr()) {
+            const child = $(children[0]).clone();
+            $div.replaceWith(child);
         }
     });
 
-    return full ? dom.serialize() : body.innerHTML;
+    return full ? $.html() : $('body').html();
 }

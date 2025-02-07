@@ -1,0 +1,334 @@
+{
+  "links": {
+    "Link0": {
+      "oldLink": "https://www.force24.co.uk/",
+      "newLink": null
+    }
+  },
+  "backgroundColors": {
+    "Background0": {
+      "newBackground": null
+    },
+    "Background1": {
+      "oldBackground": "rgb(112, 199, 213)",
+      "newBackground": null
+    },
+    "Background2": {
+      "oldBackground": "rgb(81, 142, 206)",
+      "newBackground": null
+    },
+    "Background3": {
+      "oldBackground": "rgb(53, 71, 149)",
+      "newBackground": null
+    },
+    "Background4": {
+      "oldBackground": "rgb(237, 237, 237)",
+      "newBackground": null
+    }
+  },
+  "fontColor": {
+    "FontColor0": {
+      "oldFontColor": "rgb(237, 237, 237)",
+      "newFontColor": null
+    },
+    "FontColor1": {
+      "newFontColor": null
+    }
+  },
+  "images": {
+    "ImageLink0": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/logo-dark.png?v=133614506431274773",
+      "newImageLink": null
+    },
+    "ImageLink1": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/logo-light.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink2": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/landscape.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink3": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/portrait.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink4": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/circle.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink5": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/yellow-star.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink6": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/white-star.png?v=133614507049533722",
+      "newImageLink": null
+    },
+    "ImageLink7": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/facebook.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink8": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/x.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink9": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/instagram.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink10": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/linkedin.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink11": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/star-1.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink12": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/star-2.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink13": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/star-3.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink14": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/star-4.png?v=133614507049543771",
+      "newImageLink": null
+    },
+    "ImageLink15": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/181b7f87/images/star-5.png?v=133614507049543771",
+      "newImageLink": null
+    }
+  },
+  "fontSize": {
+    "FontSize0": {
+      "oldFontSize": "16px",
+      "newFontSize": null
+    },
+    "FontSize1": {
+      "newFontSize": null
+    },
+    "FontSize2": {
+      "oldFontSize": "30px",
+      "newFontSize": null
+    },
+    "FontSize3": {
+      "oldFontSize": "28px",
+      "newFontSize": null
+    }
+  },
+  "fontFamily": {
+    "FontFamily0": {
+      "newFontFamily": null
+    },
+    "FontFamily1": {
+      "oldFontFamily": "arial,\n                                                          helvetica, sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily2": {
+      "oldFontFamily": "\"times new roman\",\n                                                                  times",
+      "newFontFamily": null
+    },
+    "FontFamily3": {
+      "oldFontFamily": "arial,\n                                                                  helvetica,\n                                                                  sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily4": {
+      "oldFontFamily": "\"times new roman\",\n                                                                      times",
+      "newFontFamily": null
+    },
+    "FontFamily5": {
+      "oldFontFamily": "\"times new roman\",\n                                                                    times",
+      "newFontFamily": null
+    },
+    "FontFamily6": {
+      "oldFontFamily": "arial,\n                                                                helvetica,\n                                                                sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily7": {
+      "oldFontFamily": "arial,\n                                                            helvetica,\n                                                            sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily8": {
+      "oldFontFamily": "arial,\n                                                              helvetica,\n                                                              sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily9": {
+      "oldFontFamily": "\"times new roman\",\n                                                                        times",
+      "newFontFamily": null
+    },
+    "FontFamily10": {
+      "oldFontFamily": "\"times new roman\",\n                                                                times",
+      "newFontFamily": null
+    },
+    "FontFamily11": {
+      "oldFontFamily": "\"times new roman\",\n                                                              times",
+      "newFontFamily": null
+    },
+    "FontFamily12": {
+      "oldFontFamily": "arial,\n                                                      helvetica, sans-serif",
+      "newFontFamily": null
+    }
+  },
+  "buttons": {
+    "Button0": {
+      "innerButton": {
+        "background": "rgb(53, 71, 149)",
+        "border-radius": "0",
+        "color": "rgb(237, 237, 237)",
+        "display": "block",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "16px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none"
+      },
+      "outerButton": {
+        "background": "rgb(53, 71, 149)",
+        "border-radius": "0",
+        "border": "2pxsolid#354795",
+        "padding": "10px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "border-radius": null,
+        "border": null,
+        "padding": null,
+        "background-color": null
+      }
+    },
+    "Button1": {
+      "innerButton": {
+        "background": "rgb(237, 237, 237)",
+        "border-radius": "0",
+        "color": "rgb(53, 71, 149)",
+        "display": "block",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "16px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none"
+      },
+      "outerButton": {
+        "background": "rgb(237, 237, 237)",
+        "border-radius": "0",
+        "border": "2pxsolid#ededed",
+        "padding": "10px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "border-radius": null,
+        "border": null,
+        "padding": null,
+        "background-color": null
+      }
+    },
+    "Button2": {
+      "innerButton": {
+        "background": "rgb(81, 142, 206)",
+        "border-radius": "0",
+        "color": "rgb(237, 237, 237)",
+        "display": "block",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "16px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none"
+      },
+      "outerButton": {
+        "background-color": "rgb(81, 142, 206)",
+        "border-radius": "0",
+        "border": "2pxsolid#518ece",
+        "padding": "10px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "border-radius": null,
+        "border": null,
+        "padding": null,
+        "background-color": null
+      }
+    }
+  },
+  "allButtons": {
+    "innerButton": {
+      "background": null,
+      "background-color": null,
+      "border-radius": null,
+      "border-color": null,
+      "color": null,
+      "display": null,
+      "font-family": null,
+      "font-size": null,
+      "font-style": null,
+      "font-weight": null,
+      "line-height": null,
+      "text-align": null,
+      "text-decoration": null,
+      "text-transform": null
+    },
+    "outerButton": {
+      "background": null,
+      "border-radius": null,
+      "border": null,
+      "padding": null,
+      "background-color": null
+    }
+  },
+  "backgroundImg": {}
+}
