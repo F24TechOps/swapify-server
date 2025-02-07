@@ -1,33 +1,58 @@
-import { JSDOM } from "jsdom";
+import * as cheerio from "cheerio";
+const HEX_CHARS = [
+	'0', '1', '2', '3',
+	'4', '5', '6', '7',
+	'8', '9', 'A', 'B',
+	'C', 'D', 'E', 'F'
+];
 
 export function extractId(html) {
-  const dom = new JSDOM(html);
-  const document = dom.window.document;
+  const $ = cheerio.load(html);
 
-  const f24IdElements = document.querySelectorAll("[data-f24-id]");
+  const f24IdElements = $("[data-f24-id]");
 
-  return Array.from(f24IdElements).map((element) =>
-    element.getAttribute("data-f24-id")
-  );
+  return f24IdElements
+    .map((_, element) => $(element).attr("data-f24-id"))
+    .get();
 }
+const hexToRGB = (hexStr) => {
 
-export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
+	if (typeof(hexStr) !== 'string' || hexStr.length !== 7 || hexStr[0] !== '#') 
+		return hexStr;
 
-export const getText = (document) => document.querySelectorAll(
-  "div, span, strong, p, h1, h2, h3, h4, h5, h6, li"
-);
+	// 1, 3 and 5 are the indexes for the first characters in the hexStr representing a colour 
+	const rgbStr = [1,3,5].reduce((rgb, num) => {
+		const hex = hexStr.slice(num, num + 2).toUpperCase();
 
-export const getBackgroundImg = (document) => document.getElementsByClassName("bck-img");
+		if (!HEX_CHARS.includes(hex[0]) || !HEX_CHARS.includes(hex[1]))
+			throw new Error('hexStr must only contain hexadecimal characters');
 
-export const getImage = (document) => document.getElementsByTagName("img");
+		rgb += parseInt(hex, 16).toString();
 
-export const getLink = (document) => document.querySelectorAll('[href]');
+		if (num - 5) rgb += ', '
+
+		return rgb;
+	}, 'rgb(');
+
+	return rgbStr + ')';
+};
+
+export const getBackgrounds = ($, type) =>
+  type === "microsite" ? $("div") : $('[align="center"]:not(.mceNonEditable)');
+
+export const getText = ($) =>
+  $("div, span, strong, p, h1, h2, h3, h4, h5, h6, li");
+
+export const getBackgroundImg = ($) => $("bck-img");
+
+export const getImage = ($) => $("img");
+
+export const getLink = ($) => $("[href]");
 
 export const extractBackgrounds = (html, type) =>
   extractFeature(
     html,
-    (element, dom) =>
-      dom.window.getComputedStyle(element, null).backgroundColor,
+    ($element) => hexToRGB($element.css("background-color")),
     ["rgba(0, 0, 0, 0)", "inherit", "rgb(255, 255, 255)", "rgba(0, 0, 0, 0.1)"],
     getBackgrounds,
     type
@@ -36,8 +61,8 @@ export const extractBackgrounds = (html, type) =>
 export const extractLinks = (html, type) =>
   extractFeature(
     html,
-    (element) => element.getAttribute('href'),
-    ["","[nonTrackingLink]", "#"],
+    ($element) => $element.attr("href"),
+    ["", "[nonTrackingLink]", "#"],
     getLink,
     type
   );
@@ -45,7 +70,7 @@ export const extractLinks = (html, type) =>
 export const extractFonts = (html, type) =>
   extractFeature(
     html,
-    (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
+    ($element) => $element.css("font-family"),
     [""],
     getText,
     type
@@ -54,7 +79,7 @@ export const extractFonts = (html, type) =>
 export const extractFontSize = (html, type) =>
   extractFeature(
     html,
-    (element) => element.style.fontSize,
+    ($element) => $element.css("font-size"),
     [""],
     getText,
     type
@@ -63,95 +88,111 @@ export const extractFontSize = (html, type) =>
 export const extractFontColour = (html, type) =>
   extractFeature(
     html,
-    (element) => element.style.color,
-    ["",'rgb(232, 232, 232)','rgb(125, 125, 125)','rgb(57, 48, 48)','rgb(0, 0, 0)', 'rgb(68, 68, 68)', 'rgb(255, 255, 255)'],
+    ($element) => hexToRGB($element.css("color")),
+    [
+      "",
+      "rgb(232, 232, 232)",
+      "rgb(125, 125, 125)",
+      "rgb(57, 48, 48)",
+      "rgb(0, 0, 0)",
+      "rgb(68, 68, 68)",
+      "rgb(255, 255, 255)",
+    ],
     getText,
     type
   );
 
-  export const extractBackgroundImg = (html) =>
-  extractFeature(html, (element) => { const bgImage = element.style.backgroundImage; 
-    return bgImage.replace(/url\(["']?(.*?)["']?\)/i, "$1");
-  }, [], getBackgroundImg);
+export const extractBackgroundImg = (html) =>
+  extractFeature(
+    html,
+    ($element) => {
+      const bgImage = $element.css("background-image");
+      return bgImage.replace(/url\(["']?(.*?)["']?\)/i, "$1");
+    },
+    [],
+    getBackgroundImg
+  );
 
 export const extractImage = (html) =>
-  extractFeature(html, (element) => element.src, [], getImage);
+  extractFeature(html, ($element) => $element.attr("src"), [], getImage);
 
 export const extractColor = (html, type) => {
   const backgrounds = extractBackgrounds(html, type);
   const fontColor = extractFontColour(html, type);
-
   const buttonString = extractButton(html, type);
-
   const allColors = buttonString.reduce((modifier, buttonS) => {
     const button = JSON.parse(buttonS);
 
-    modifier.push(button.innerButton.background?.replaceAll(",", ", "));
-    modifier.push(button.innerButton.color?.replaceAll(",", ", "));
-    modifier.push(button.outerButton["background-color"]?.replaceAll(",", ", "));
+    modifier.push(button.innerButton.background?.replaceAll(",", ", ").replaceAll("  ", " "));
+    modifier.push(button.innerButton.color?.replaceAll(",", ", ").replaceAll("  ", " "));
+    modifier.push(
+      button.outerButton["background-color"]?.replaceAll(",", ", ").replaceAll("  ", " ")
+    );
 
     return modifier;
   }, []);
 
-  return Array.from(new Set(...[backgrounds.concat(fontColor).concat(allColors)])).filter(color => !!color);
-}
+  return Array.from(
+    new Set(...[backgrounds.concat(fontColor).concat(allColors)])
+  ).filter((color) => !!color);
+};
 
 function extractFeature(html, getFeature, nonExistent, getElement, type) {
-  const dom = new JSDOM(html);
-  const document = dom.window.document;
-
-  const allElements = Array.from(getElement(document, type));
-
-  const allBackgrounds = allElements.map((element) => getFeature(element, dom));
-
-  return Array.from(new Set(...[allBackgrounds])).filter(
+  const $ = cheerio.load(html);
+  const allElements = getElement($, type).toArray();
+  const allFeatures = allElements.map((element) => getFeature($(element)));
+  return Array.from(new Set(allFeatures)).filter(
     (a) => !nonExistent.includes(a)
   );
 }
 
-export const getButtonInfo = (element) => {
-  const styles = element
-    .getAttribute("style")
+export const getButtonInfo = ($, element) => {
+  const styles = $(element)
+    .attr("style")
     .split(";")
     .filter((str) => str.includes(":"))
     .sort();
   const styleObject = {};
 
   styles.forEach((style) => {
-    const [key, value] = style.split(":").map((prop) => prop.trim().replace("\n", ""));
-    styleObject[key] = value.replace(/\s+/g, '');
+    const [key, value] = style
+      .split(":")
+      .map((prop) => prop.trim().replace("\n", ""));
+    styleObject[key] = hexToRGB(value.replace(/\s+/g, ""));
   });
 
   return JSON.stringify(styleObject, null, 2);
 };
 
 export function extractButton(html, type) {
-  const dom = new JSDOM(html);
-  const document = dom.window.document;
+  const $ = cheerio.load(html);
 
   let allStyles;
 
-  if (type === 'microsite') {
-    const allElements = Array.from(document.getElementsByClassName("btn"));
+  if (type === "microsite") {
+    const allElements = $(".btn").toArray();
 
-    allStyles = allElements.map(getButtonInfo);
-  }
-  else {
-    const allButtonContainers = Array.from(document.querySelectorAll("td.mceNonEditable"));
+    allStyles = allElements.map((element) => getButtonInfo($, element));
+  } else {
+    const allButtonContainers = $("td.mceNonEditable").toArray();
 
     allStyles = allButtonContainers.map((container) => {
-      const innerButton = container.querySelector("a");
+      const innerButton = $(container).find("a").get(0);
       if (!innerButton) return;
 
-      const outerButtonInfo = getButtonInfo(container);
-      const innerButtonInfo = getButtonInfo(innerButton);
+      const outerButtonInfo = getButtonInfo($, container);
+      const innerButtonInfo = getButtonInfo($, innerButton);
 
       const inner = JSON.parse(innerButtonInfo);
       const outer = JSON.parse(outerButtonInfo);
 
-      return JSON.stringify({innerButton: inner, outerButton: outer}, null, 2)
+      return JSON.stringify(
+        { innerButton: inner, outerButton: outer },
+        null,
+        2
+      );
     });
   }
 
-  return Array.from(new Set(...[allStyles]));
+  return Array.from(new Set(allStyles));
 }

@@ -31,7 +31,8 @@ describe("Mapping API", () => {
         const keys = Object.keys(data);
         expect(keys.length).toBe(3);
         const colors = Object.values(data.color).map(color => color.oldColor);
-
+        
+        console.log(colors)
         expect(colors.length).toBe(3);
         expect(colors).toContain("rgb(201, 255, 247)");
         expect(colors).toContain("rgb(7, 190, 0)");

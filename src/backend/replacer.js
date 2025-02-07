@@ -1,5 +1,5 @@
 import { extractId } from "./extractor.js";
-import { JSDOM } from 'jsdom';
+import * as cheerio from "cheerio";
 import { v4 as uuidv4 } from 'uuid';
 import { isFullHtml } from "./checkHtml.js";
 
@@ -12,19 +12,19 @@ export function replaceId(html) {
 }
 
 function replaceIdsWithValues (html, id) {
-    const dom = new JSDOM(html);
-    const body = dom.window.document.body;
+    const $ = cheerio.load(html);
 
-    const f24IdElements = Array.from(body.querySelectorAll('[data-f24-id]'))
-        .filter((element) => element.getAttribute('data-f24-id') === id);
+    const f24IdElements = $('[data-f24-id]')
+        .filter((_, element) => $(element).attr('data-f24-id') === id)
+        .toArray();
 
     if (f24IdElements.length <= 1)
         return html;
 
     f24IdElements.forEach((element, idx) => {
         if (idx)
-            element.setAttribute('data-f24-id', uuidv4())
+            $(element).attr('data-f24-id', uuidv4());
     });
 
-    return full ? dom.serialize() : body.innerHTML;
+    return full ? $.html() : $('body').html();
 }

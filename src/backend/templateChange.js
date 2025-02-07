@@ -1,4 +1,4 @@
-import { JSDOM } from "jsdom";
+import * as cheerio from "cheerio";
 import { isFullHtml } from "./checkHtml.js";
 import { normalizeUrl } from "./normalizeURL.js";
 import {
@@ -12,24 +12,23 @@ import {
 
 export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   const full = isFullHtml(html);
-  const dom = new JSDOM(html);
-  const document = dom.window.document;
+  const $ = cheerio.load(html);
 
   // Update hyperlinks
   function changeLink(allUpdatesObj) {
-    const linkElements = getLink(document);
+    const linkElements = getLink($);
 
     for (const link in allUpdatesObj.links) {
-      for (let i = 0; i < linkElements.length; i++) {
-        let element = linkElements[i];
-
+      linkElements.each((i, element) => {
+        const $element = $(element);
         const { newLink } = allUpdatesObj.links[link];
 
-        if (newLink === null) continue;
+        if (newLink === null) return;
 
-        if (element.getAttribute("href") === allUpdatesObj.links[link].oldLink)
-          element.setAttribute("href", newLink);
-      }
+        if ($element.attr("href") === allUpdatesObj.links[link].oldLink) {
+          $element.attr("href", newLink);
+        }
+      });
     }
   }
 
@@ -37,17 +36,18 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   //   Update colors
   function changeBackgroundColour(allUpdatesObj) {
-    const allElements = getBackgrounds(document, type);
+    const allElements = getBackgrounds($, type).toArray();
 
     for (const colorType in allUpdatesObj.backgroundColors) {
       for (let i = 0; i < allElements.length; i++) {
         const element = allElements[i];
+        const $element = $(element);
 
-        if (element.getAttribute("data-background-updated") === "true") {
+        if ($element.attr("data-background-updated") === "true") {
           continue;
         }
 
-        if (element.hasAttribute("data-f24-editor-cta-button-td")) {
+        if ($element.attr("data-f24-editor-cta-button-td")) {
           continue;
         }
 
@@ -56,11 +56,11 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (newBackground === null || newBackground === "") continue;
 
         if (
-          dom.window.getComputedStyle(element, null).backgroundColor ===
+          $element.css("background-color") ===
           allUpdatesObj.backgroundColors[colorType].oldBackground
         ) {
-          element.style.backgroundColor = newBackground;
-          element.setAttribute("data-background-updated", "true");
+          $element.css("background-color", newBackground);
+          $element.attr("data-background-updated", "true");
         }
       }
     }
@@ -71,40 +71,39 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   function changeAllColors(allUpdatesObj) {
     if (type !== "templates") return;
 
-    const backgrounds = [...getBackgrounds(document, type)];
-    const text = [...getText(document, type)];
-    const allButtonContainers = document.querySelectorAll("td.mceNonEditable");
+    const backgrounds = [...getBackgrounds($, type)];
+    const text = [...getText($, type)];
+    const allButtonContainers = $("td.mceNonEditable").toArray();
 
     const allElements = backgrounds.concat(text);
 
     allButtonContainers.forEach((container) => {
-      const innerButton = container.querySelector("a");
+      const innerButton = $(container).find("a").get(0);
       if (!innerButton) return;
 
       allElements.push(container, innerButton);
     });
 
     allElements.forEach((element) => {
+      const $element = $(element);
       Object.values(allUpdatesObj.color || {}).forEach(
         ({ oldColor, newColor }) => {
           if (!newColor) return;
 
-          const computedStyle = dom.window.getComputedStyle(element, null);
-
-          if (computedStyle.backgroundColor === oldColor) {
-            element.style.backgroundColor = newColor;
-            element.setAttribute("data-background-updated", "true");
+          if ($element.css("background-color") === oldColor) {
+            $element.css("background-color", newColor);
+            $element.attr("data-background-updated", "true");
           }
 
-          if (computedStyle.color === oldColor) {
-            element.style.color = newColor;
+          if ($element.css("color") === oldColor) {
+            $element.css("color", newColor);
           }
 
           if (
             element.tagName.toLowerCase() === "td" &&
-            element.hasAttribute("bgcolor")
+            $element.attr("bgcolor")
           ) {
-            element.setAttribute("bgcolor", newColor);
+            $element.attr("bgcolor", newColor);
           }
         }
       );
@@ -114,11 +113,12 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   changeAllColors(allUpdatesObj);
 
   function changeBackgroundImg(allUpdatesObj) {
-    const backgroundImgElement = getBackgroundImg(document);
-    
+    const backgroundImgElements = getBackgroundImg($).toArray();
+
     for (const backgroundType in allUpdatesObj.backgroundImg) {
-      for (let i = 0; i < backgroundImgElement.length; i++) {
-        let element = backgroundImgElement[i];
+      for (let i = 0; i < backgroundImgElements.length; i++) {
+        let element = backgroundImgElements[i];
+        const $element = $(element);
 
         const { newBackgroundImage } =
           allUpdatesObj.backgroundImg[backgroundType];
@@ -131,11 +131,10 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         };
 
         if (
-          extractUrl(
-            dom.window.getComputedStyle(element, null).backgroundImage
-          ) === allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
+          extractUrl($element.css("background-image")) ===
+          allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
         ) {
-          element.style.backgroundImage = `url(${newBackgroundImage})`;
+          $element.css("background-image", `url(${newBackgroundImage})`);
         }
       }
     }
@@ -145,42 +144,44 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   // Update fonts
   function changeFont(allUpdatesObj) {
-    const allElements = getText(document, type);
+    const allElements = getText($, type).toArray();
 
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
         const element = allElements[i];
+        const $element = $(element);
         const { newFontFamily } = allUpdatesObj.fontFamily[fontType];
 
         if (newFontFamily === null || newFontFamily === "") continue;
 
         if (
-          dom.window
-            .getComputedStyle(element, null)
-            .fontFamily.toLowerCase()
+          $element
+            .css("font-family")
+            .toLowerCase()
             .includes(
               allUpdatesObj.fontFamily[fontType].oldFontFamily.toLowerCase()
             )
         ) {
-          element.style.fontFamily = newFontFamily;
+          $element.css("font-family", newFontFamily);
         }
       }
     }
 
-    const allText = getText(document);
+    const allText = getText($, type).toArray();
 
     for (const fontType in allUpdatesObj.fontSize) {
       for (let i = 0; i < allText.length; i++) {
         const element = allText[i];
+        const $element = $(element);
         const { newFontSize } = allUpdatesObj.fontSize[fontType];
 
         if (newFontSize === null || newFontSize === "") continue;
 
         if (
-          dom.window.getComputedStyle(element, null).fontSize ===
+          $element.css("font-size") ===
           allUpdatesObj.fontSize[fontType].oldFontSize
         ) {
-          element.style.fontSize = newFontSize;
+          $element.css("font-size", newFontSize);
         }
       }
     }
@@ -188,15 +189,16 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
     for (const fontType in allUpdatesObj.fontColor) {
       for (let i = 0; i < allText.length; i++) {
         const element = allText[i];
+        const $element = $(element);
         const { newFontColor } = allUpdatesObj.fontColor[fontType];
 
         if (newFontColor === null || newFontColor === "") continue;
 
         if (
-          dom.window.getComputedStyle(element, null).color ===
+          $element.css("color") ===
           allUpdatesObj.fontColor[fontType].oldFontColor
         ) {
-          element.style.color = newFontColor;
+          $element.css("color", newFontColor);
         }
       }
     }
@@ -206,21 +208,22 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   // Update Images
   function changeImgSrc(allUpdatesObj) {
-    const allElements = getImage(document, type);
-    
+    const allElements = getImage($, type).toArray();
+
     for (const imgType in allUpdatesObj.images) {
       for (let i = 0; i < allElements.length; i++) {
         const element = allElements[i];
-        
-        const normalURL = normalizeUrl(element.src);
+        const $element = $(element);
+
+        const normalURL = normalizeUrl($element.attr("src"));
         const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageLink);
-        
+
         const { newImageLink } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
           if (newImageLink === null || newImageLink === "") continue;
 
-          element.src = newImageLink;
+          $element.attr("src", newImageLink);
         }
       }
     }
@@ -230,14 +233,15 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   // Update All Buttons
   function changeButtonEmail(allUpdatesObj) {
-    const allButtonContainers = document.querySelectorAll("td.mceNonEditable");
+    const allButtonContainers = $("td.mceNonEditable").toArray();
 
     allButtonContainers.forEach((container) => {
-      const innerButton = container.querySelector("a");
+      const $container = $(container);
+      const innerButton = $container.find("a").get(0);
       if (!innerButton) return;
 
-      const outerButtonInfo = getButtonInfo(container);
-      const innerButtonInfo = getButtonInfo(innerButton);
+      const outerButtonInfo = getButtonInfo($, container);
+      const innerButtonInfo = getButtonInfo($, innerButton);
 
       for (const buttonType in allUpdatesObj.buttons) {
         const buttonData = allUpdatesObj.buttons[buttonType];
@@ -250,13 +254,13 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
               if (value !== null && value !== "") {
-                container.style[attribute] = value;
+                $container.css(attribute, value);
 
                 if (
                   attribute === "background-color" ||
                   attribute === "background"
                 ) {
-                  container.setAttribute("bgcolor", value);
+                  $container.attr("bgcolor", value);
                 }
               }
             }
@@ -264,18 +268,15 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
           if (
             buttonData.newOuterButton["background-color"] === null &&
-            container.style["background-color"]
+            $container.css("background-color")
           ) {
-            container.setAttribute(
-              "bgcolor",
-              container.style["background-color"]
-            );
+            $container.attr("bgcolor", $container.css("background-color"));
           }
 
           Object.entries(buttonData.newInnerButton).forEach(
             ([attribute, value]) => {
               if (value !== null && value !== "")
-                innerButton.style[attribute] = value;
+                $(innerButton).css(attribute, value);
             }
           );
         }
@@ -284,30 +285,27 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
           for (const attribute in allUpdatesObj.allButtons.innerButton) {
             const newVal = allUpdatesObj.allButtons.innerButton[attribute];
             if (newVal !== null && newVal !== "")
-              innerButton.style[attribute] = newVal;
+              $(innerButton).css(attribute, newVal);
           }
 
           for (const attribute in allUpdatesObj.allButtons.outerButton) {
             const newVal = allUpdatesObj.allButtons.outerButton[attribute];
             if (newVal !== null && newVal !== "") {
-              container.style[attribute] = newVal;
+              $container.css(attribute, newVal);
 
               if (
                 attribute === "background-color" ||
                 attribute === "background"
               ) {
-                container.setAttribute("bgcolor", newVal);
+                $container.attr("bgcolor", newVal);
               }
             }
           }
           if (
             allUpdatesObj.allButtons.outerButton["background-color"] === null &&
-            container.style["background-color"]
+            $container.css("background-color")
           ) {
-            container.setAttribute(
-              "bgcolor",
-              container.style["background-color"]
-            );
+            $container.attr("bgcolor", $container.css("background-color"));
           }
         }
       }
@@ -315,13 +313,14 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   }
 
   function changeButtonMicrosite(allUpdatesObj) {
-    const allButtons = document.getElementsByClassName("btn");
+    const allButtons = $(".btn").toArray();
 
     for (const buttonType in allUpdatesObj.buttons) {
       for (let i = 0; i < allButtons.length; i++) {
         const element = allButtons[i];
+        const $element = $(element);
 
-        const info = getButtonInfo(element);
+        const info = getButtonInfo($, element);
 
         if (
           info ===
@@ -333,7 +332,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
             if (newVal === null || newVal === "") continue;
 
-            element.style[attribute] = newVal;
+            $element.css(attribute, newVal);
           }
         }
       }
@@ -342,10 +341,10 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
     if (allUpdatesObj.allButtons) {
       for (let i = 0; i < allButtons.length; i++) {
         const element = allButtons[i];
+        const $element = $(element);
         for (const attribute in allUpdatesObj.allButtons) {
           const newVal = allUpdatesObj.allButtons[attribute];
-          if (newVal !== null && newVal !== "")
-            element.style[attribute] = newVal;
+          if (newVal !== null && newVal !== "") $element.css(attribute, newVal);
         }
       }
     }
@@ -354,5 +353,5 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   if (type === "microsite") changeButtonMicrosite(allUpdatesObj);
   else changeButtonEmail(allUpdatesObj);
 
-  return full ? dom.serialize() : document.body.innerHTML;
+  return full ? $.html() : $("body").html();
 }
