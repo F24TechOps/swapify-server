@@ -3,29 +3,36 @@ import { readFile, writeFile } from "./runAll.js";
 import { listFolders, readFromFile } from "./readFolders.js";
 import * as cheerio from "cheerio";
 
-export const generateMapping = async (type, company) => {
-  if (!['email', 'microsite', 'templates'].includes(type)) {
+const newHtml = async () => {
+  const allFolders = await listFolders("./src/html/templates");
+  return allFolders.reduce(async (modifier, folderName) => {
+    if (folderName === "json") {
+      return modifier;
+    }
+    const templateHtml = await readFromFile(
+      `./src/html/templates/${folderName}/template.html`
+    );
+    const $ = cheerio.load(templateHtml);
+    return modifier + $("body").html().trim();
+  }, "");
+};
+
+export const generateNewMapping = async (type, company) => {
+  if (!["email", "microsite", "templates"].includes(type)) {
     throw new Error("type must be either 'email' or 'microsite'");
   }
 
   let html;
-  
+
   if (type === "templates") {
-    const allFolders = await listFolders('./src/html/templates');
-    html = allFolders.reduce((modifier, folderName) => {
-      const newHtml = readFromFile(`./src/html/templates/${folderName}/template.html`);
-      const $ = cheerio.load(newHtml);
-      return modifier + $('body').html().trim();
-    }, "");
+    html = await newHtml();
     html = html.trim();
-  } else {
-    html = readFile(`./src/html/${type}/base1/template.html`);
-  }
-  
+  } else html = await readFile(`./src/html/${type}/base1/template.html`);
+
   if (html.length < 100) {
     throw new Error("HTML is too short");
   }
-  
+
   const mapping = await createMapping(html, type);
   if (type === "templates") {
     writeFile(
@@ -41,8 +48,14 @@ export const generateMapping = async (type, company) => {
   return mapping;
 };
 
-export const generateCompanyMapping = (type, company) => {
-  
-}
+export const generateMapping = async (type, company) => {
+  if (type === "templates") {
+    let file = await readFile(`./src/html/templates/json/mapping.json`);
+    writeFile(`./.env/${company}/templates/json/mapping.json`, file);
+  } else {
+    let file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
+    writeFile(`./.env/${company}/${type}/base1/json/mapping.json`, file);
+  }
+};
 
-generateMapping('templates')
+generateCompanyMapping("email", "esthertest");

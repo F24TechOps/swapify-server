@@ -1,8 +1,14 @@
-import fs from 'fs';
+import fs from "fs";
 import path from "path";
+import { readFile } from "./runAll.js";
 
 export async function listFolders(directoryPath) {
-    return fs.readdirSync(directoryPath).filter(file => 
+  if (!fs.existsSync(directoryPath)) {
+    return;
+  }
+  return fs
+    .readdirSync(directoryPath)
+    .filter((file) =>
       fs.statSync(path.join(directoryPath, file)).isDirectory()
     );
 }

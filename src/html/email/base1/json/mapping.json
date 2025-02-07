@@ -7,18 +7,21 @@
   },
   "backgroundColors": {
     "Background0": {
-      "oldBackground": "rgb(112, 199, 213)",
       "newBackground": null
     },
     "Background1": {
-      "oldBackground": "rgb(81, 142, 206)",
+      "oldBackground": "rgb(112, 199, 213)",
       "newBackground": null
     },
     "Background2": {
-      "oldBackground": "rgb(53, 71, 149)",
+      "oldBackground": "rgb(81, 142, 206)",
       "newBackground": null
     },
     "Background3": {
+      "oldBackground": "rgb(53, 71, 149)",
+      "newBackground": null
+    },
+    "Background4": {
       "oldBackground": "rgb(237, 237, 237)",
       "newBackground": null
     }
@@ -26,6 +29,9 @@
   "fontColor": {
     "FontColor0": {
       "oldFontColor": "rgb(237, 237, 237)",
+      "newFontColor": null
+    },
+    "FontColor1": {
       "newFontColor": null
     }
   },
@@ -101,60 +107,66 @@
       "newFontSize": null
     },
     "FontSize1": {
-      "oldFontSize": "30px",
       "newFontSize": null
     },
     "FontSize2": {
+      "oldFontSize": "30px",
+      "newFontSize": null
+    },
+    "FontSize3": {
       "oldFontSize": "28px",
       "newFontSize": null
     }
   },
   "fontFamily": {
     "FontFamily0": {
-      "oldFontFamily": "arial,\n                                                          helvetica, sans-serif",
       "newFontFamily": null
     },
     "FontFamily1": {
-      "oldFontFamily": "\"times new roman\",\n                                                                  times",
+      "oldFontFamily": "arial,\n                                                          helvetica, sans-serif",
       "newFontFamily": null
     },
     "FontFamily2": {
-      "oldFontFamily": "arial,\n                                                                  helvetica,\n                                                                  sans-serif",
+      "oldFontFamily": "\"times new roman\",\n                                                                  times",
       "newFontFamily": null
     },
     "FontFamily3": {
-      "oldFontFamily": "\"times new roman\",\n                                                                      times",
+      "oldFontFamily": "arial,\n                                                                  helvetica,\n                                                                  sans-serif",
       "newFontFamily": null
     },
     "FontFamily4": {
-      "oldFontFamily": "\"times new roman\",\n                                                                    times",
+      "oldFontFamily": "\"times new roman\",\n                                                                      times",
       "newFontFamily": null
     },
     "FontFamily5": {
-      "oldFontFamily": "arial,\n                                                                helvetica,\n                                                                sans-serif",
+      "oldFontFamily": "\"times new roman\",\n                                                                    times",
       "newFontFamily": null
     },
     "FontFamily6": {
-      "oldFontFamily": "arial,\n                                                            helvetica,\n                                                            sans-serif",
+      "oldFontFamily": "arial,\n                                                                helvetica,\n                                                                sans-serif",
       "newFontFamily": null
     },
     "FontFamily7": {
-      "oldFontFamily": "arial,\n                                                              helvetica,\n                                                              sans-serif",
+      "oldFontFamily": "arial,\n                                                            helvetica,\n                                                            sans-serif",
       "newFontFamily": null
     },
     "FontFamily8": {
-      "oldFontFamily": "\"times new roman\",\n                                                                        times",
+      "oldFontFamily": "arial,\n                                                              helvetica,\n                                                              sans-serif",
       "newFontFamily": null
     },
     "FontFamily9": {
-      "oldFontFamily": "\"times new roman\",\n                                                                times",
+      "oldFontFamily": "\"times new roman\",\n                                                                        times",
       "newFontFamily": null
     },
     "FontFamily10": {
-      "oldFontFamily": "\"times new roman\",\n                                                              times",
+      "oldFontFamily": "\"times new roman\",\n                                                                times",
       "newFontFamily": null
     },
     "FontFamily11": {
+      "oldFontFamily": "\"times new roman\",\n                                                              times",
+      "newFontFamily": null
+    },
+    "FontFamily12": {
       "oldFontFamily": "arial,\n                                                      helvetica, sans-serif",
       "newFontFamily": null
     }
@@ -162,9 +174,9 @@
   "buttons": {
     "Button0": {
       "innerButton": {
-        "background": "#354795",
+        "background": "rgb(53, 71, 149)",
         "border-radius": "0",
-        "color": "#ededed",
+        "color": "rgb(237, 237, 237)",
         "display": "block",
         "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
         "font-size": "16px",
@@ -175,7 +187,7 @@
         "text-decoration": "none"
       },
       "outerButton": {
-        "background": "#354795",
+        "background": "rgb(53, 71, 149)",
         "border-radius": "0",
         "border": "2pxsolid#354795",
         "padding": "10px30px"
@@ -206,9 +218,9 @@
     },
     "Button1": {
       "innerButton": {
-        "background": "#ededed",
+        "background": "rgb(237, 237, 237)",
         "border-radius": "0",
-        "color": "#354795",
+        "color": "rgb(53, 71, 149)",
         "display": "block",
         "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
         "font-size": "16px",
@@ -219,7 +231,7 @@
         "text-decoration": "none"
       },
       "outerButton": {
-        "background": "#ededed",
+        "background": "rgb(237, 237, 237)",
         "border-radius": "0",
         "border": "2pxsolid#ededed",
         "padding": "10px30px"
@@ -250,9 +262,9 @@
     },
     "Button2": {
       "innerButton": {
-        "background": "#518ece",
+        "background": "rgb(81, 142, 206)",
         "border-radius": "0",
-        "color": "#ededed",
+        "color": "rgb(237, 237, 237)",
         "display": "block",
         "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
         "font-size": "16px",
@@ -263,7 +275,7 @@
         "text-decoration": "none"
       },
       "outerButton": {
-        "background-color": "#518ece",
+        "background-color": "rgb(81, 142, 206)",
         "border-radius": "0",
         "border": "2pxsolid#518ece",
         "padding": "10px30px"
