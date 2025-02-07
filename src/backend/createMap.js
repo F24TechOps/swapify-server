@@ -25,7 +25,7 @@ export const generateMapping = async (type, company) => {
   if (type === "templates") {
     html = await newHtml();
     html = html.trim();
-  } else html = readFile(`./src/html/${type}/base1/template.html`);
+  } else html = await readFile(`./src/html/${type}/base1/template.html`);
 
   if (html.length < 100) {
     throw new Error("HTML is too short");
