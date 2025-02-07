@@ -27,6 +27,22 @@ export const generateMapping = async (type, company) => {
   }
   
   const mapping = await createMapping(html, type);
-  writeFile(`./.env/${company}/${type}/json/mapping.json`, JSON.stringify(mapping, null, 2));
+  if (type === "templates") {
+    writeFile(
+      `./src/html/${type}/json/mapping.json`,
+      JSON.stringify(mapping, null, 2)
+    );
+  } else {
+    writeFile(
+      `./src/html/${type}/base1/json/mapping.json`,
+      JSON.stringify(mapping, null, 2)
+    );
+  }
   return mapping;
 };
+
+export const generateCompanyMapping = (type, company) => {
+  
+}
+
+generateMapping('templates')

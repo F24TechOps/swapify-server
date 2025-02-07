@@ -1,0 +1,318 @@
+{
+  "links": {
+    "Link0": {
+      "oldLink": "https://www.force24.co.uk/",
+      "newLink": null
+    }
+  },
+  "backgroundColors": {
+    "Background0": {
+      "oldBackground": "rgb(25, 4, 199)",
+      "newBackground": null
+    },
+    "Background1": {
+      "oldBackground": "rgb(237, 237, 237)",
+      "newBackground": null
+    },
+    "Background2": {
+      "oldBackground": "rgb(150, 150, 150)",
+      "newBackground": null
+    },
+    "Background3": {
+      "oldBackground": "rgb(0, 167, 192)",
+      "newBackground": null
+    },
+    "Background4": {
+      "oldBackground": "rgb(50, 72, 152)",
+      "newBackground": null
+    }
+  },
+  "fontColor": {
+    "FontColor0": {
+      "oldFontColor": "rgb(34, 30, 30)",
+      "newFontColor": null
+    },
+    "FontColor1": {
+      "oldFontColor": "black",
+      "newFontColor": null
+    },
+    "FontColor2": {
+      "oldFontColor": "white",
+      "newFontColor": null
+    },
+    "FontColor3": {
+      "oldFontColor": "rgb(112, 199, 213)",
+      "newFontColor": null
+    }
+  },
+  "images": {
+    "ImageLink0": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/f24-l.png",
+      "newImageLink": null
+    },
+    "ImageLink1": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/f241.png",
+      "newImageLink": null
+    },
+    "ImageLink2": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/grey4.jpg",
+      "newImageLink": null
+    },
+    "ImageLink3": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/1707988214-dcdf0165.png",
+      "newImageLink": null
+    },
+    "ImageLink4": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/1707988309-12a3f33b.png",
+      "newImageLink": null
+    },
+    "ImageLink5": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/1707988355-8e66e842.png",
+      "newImageLink": null
+    },
+    "ImageLink6": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/1707988432-7e962170.png",
+      "newImageLink": null
+    },
+    "ImageLink7": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/1707988458-50ac0d1e.png",
+      "newImageLink": null
+    },
+    "ImageLink8": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/34430691-ca59-4922-bee7-a6f377fe5752/20203/images/84685ba9637a951591040426a46da70f.jpg",
+      "newImageLink": null
+    },
+    "ImageLink9": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/34430691-ca59-4922-bee7-a6f377fe5752/20203/images/free-instagram-logo-icon-3497-thumb.png",
+      "newImageLink": null
+    },
+    "ImageLink10": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/34430691-ca59-4922-bee7-a6f377fe5752/20203/images/1710433366-3b3311be.png",
+      "newImageLink": null
+    },
+    "ImageLink11": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/34430691-ca59-4922-bee7-a6f377fe5752/20203/images/6bab3017350ca04c6fa05569672bd31e.jpg",
+      "newImageLink": null
+    },
+    "ImageLink12": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/facebook-app-round-white-icon.png",
+      "newImageLink": null
+    },
+    "ImageLink13": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/instagram-white-icon.png",
+      "newImageLink": null
+    },
+    "ImageLink14": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/x-social-media-white-icon.png",
+      "newImageLink": null
+    },
+    "ImageLink15": {
+      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/linkedin-app-white-icon.png",
+      "newImageLink": null
+    }
+  },
+  "fontSize": {
+    "FontSize0": {
+      "oldFontSize": "16px",
+      "newFontSize": null
+    },
+    "FontSize1": {
+      "oldFontSize": "14px",
+      "newFontSize": null
+    },
+    "FontSize2": {
+      "oldFontSize": "46px",
+      "newFontSize": null
+    },
+    "FontSize3": {
+      "oldFontSize": "32px",
+      "newFontSize": null
+    },
+    "FontSize4": {
+      "oldFontSize": "30px",
+      "newFontSize": null
+    },
+    "FontSize5": {
+      "oldFontSize": "56px",
+      "newFontSize": null
+    },
+    "FontSize6": {
+      "oldFontSize": "large",
+      "newFontSize": null
+    },
+    "FontSize7": {
+      "oldFontSize": "34px",
+      "newFontSize": null
+    },
+    "FontSize8": {
+      "oldFontSize": "18px",
+      "newFontSize": null
+    },
+    "FontSize9": {
+      "oldFontSize": "clamp(14px, 2vw, 18px)",
+      "newFontSize": null
+    },
+    "FontSize10": {
+      "oldFontSize": "42px",
+      "newFontSize": null
+    },
+    "FontSize11": {
+      "oldFontSize": "12px",
+      "newFontSize": null
+    }
+  },
+  "fontFamily": {
+    "FontFamily0": {
+      "oldFontFamily": "Open Sans",
+      "newFontFamily": null
+    },
+    "FontFamily1": {
+      "oldFontFamily": "'Open Sans'",
+      "newFontFamily": null
+    },
+    "FontFamily2": {
+      "oldFontFamily": "Muli",
+      "newFontFamily": null
+    },
+    "FontFamily3": {
+      "oldFontFamily": "Times New Roman",
+      "newFontFamily": null
+    },
+    "FontFamily4": {
+      "oldFontFamily": "\"Times New Roman\"",
+      "newFontFamily": null
+    },
+    "FontFamily5": {
+      "oldFontFamily": "Arial, sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily6": {
+      "oldFontFamily": "sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily7": {
+      "oldFontFamily": "Arial, Helvetica, sans-serif",
+      "newFontFamily": null
+    }
+  },
+  "buttons": {
+    "Button0": {
+      "oldButton": {
+        "background": "rgb(0,167,192)",
+        "border-color": "rgb(0,167,192)",
+        "border-radius": "0px",
+        "border-style": "solid",
+        "border-width": "1px",
+        "color": "white",
+        "font-family": "Arial",
+        "font-size": "14px",
+        "font-weight": "bold",
+        "padding": "15px55px",
+        "width": "auto",
+        "white-space": "normal"
+      },
+      "newButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button1": {
+      "oldButton": {
+        "background": "rgb(25,4,199)",
+        "border-color": "rgb(25,4,199)",
+        "border-radius": "0px",
+        "border-style": "solid",
+        "border-width": "1px",
+        "color": "white",
+        "font-family": "Arial",
+        "font-size": "14px",
+        "font-weight": "bold",
+        "padding": "15px55px",
+        "width": "auto",
+        "white-space": "normal"
+      },
+      "newButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button2": {
+      "oldButton": {
+        "background": "rgb(25,4,199)",
+        "border-color": "rgb(25,4,199)",
+        "border-radius": "0px",
+        "border-style": "solid",
+        "border-width": "1px",
+        "color": "white",
+        "font-family": "Arial",
+        "font-size": "14px",
+        "font-weight": "bold",
+        "padding": "10px35px",
+        "width": "100%",
+        "white-space": "normal"
+      },
+      "newButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    }
+  },
+  "allButtons": {
+    "background": null,
+    "background-color": null,
+    "border-radius": null,
+    "border-color": null,
+    "color": null,
+    "display": null,
+    "font-family": null,
+    "font-size": null,
+    "font-style": null,
+    "font-weight": null,
+    "line-height": null,
+    "text-align": null,
+    "text-decoration": null,
+    "text-transform": null
+  },
+  "backgroundImg": {
+    "BackgroundImage0": {
+      "oldBackgroundImage": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/grey4.jpg",
+      "newBackgroundImage": null
+    }
+  }
+}

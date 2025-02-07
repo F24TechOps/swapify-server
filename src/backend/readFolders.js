@@ -7,6 +7,11 @@ export async function listFolders(directoryPath) {
     );
 }
 
-export function readFromFile (filePath) {
-    return fs.readFileSync(filePath, 'utf8');
-};
+export async function readFromFile(filePath) {
+   if (!fs.existsSync(filePath)) {
+      return;
+    }
+  return await readFile(filePath);
+}
+
+
