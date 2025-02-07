@@ -1,12 +1,17 @@
-import fs from 'fs';
+import fs from "fs";
 import path from "path";
+import { readFile } from "./runAll.js";
 
 export async function listFolders(directoryPath) {
-    return fs.readdirSync(directoryPath).filter(file => 
+  return fs
+    .readdirSync(directoryPath)
+    .filter((file) =>
       fs.statSync(path.join(directoryPath, file)).isDirectory()
     );
 }
 
-export function readFromFile (filePath) {
-    return fs.readFileSync(filePath, 'utf8');
-};
+export async function readFromFile(filePath) {
+  return await readFile(filePath);
+}
+
+
