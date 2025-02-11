@@ -138,36 +138,46 @@ app.get("/api/mapping/:type/:company", (req, res) => {
 
 //tested
 app.post("/api/create-download", async (req, res) => {
-  const { type, company, imageUrls } = req.body;
+  const { type, company } = req.body;
 
   if (!["email", "templates", "microsite"].includes(type)) {
     return res.status(404).send("Invalid type specified");
   }
 
+  const tempDir = getTmpDir();
+
   try {
     if (type === "microsite") {
-      const htmlPath = path.join(
-        __dirname,
-        `./.env/${company}/microsite/final/template.html`
-      );
+      const htmlPath = path.join(tempDir, company, 'microsite', 'final', 'template.html');
       const copyText = fs.readFileSync(htmlPath, "utf8");
       return res.status(200).send(copyText);
     }
 
     if (type === "email") {
-      const zipPath = await processTemplate(res, company, "email", imageUrls);
+      const basePath = path.join(tempDir, company, 'email', 'final');
+      
+      const htmlPath = path.join(basePath, 'template.html');
+      const imagePath = path.join(basePath, 'images');
+      const zipDest = path.join(basePath, `email.zip`);
+
+      const zipPath = await processTemplate("email", htmlPath, imagePath, zipDest);
       return res.download(zipPath, "email.zip");
     }
 
     if (type === "templates") {
       const templateFolders = await listFolders(
-        path.join(__dirname, `./.env/${company}/templates`)
+        path.join(tempDir, company, 'templates')
       );
-
       const zipPaths = await Promise.all(
-        templateFolders.map((templateName) =>
-          processTemplate(res, company, templateName, imageUrls, true)
-        )
+        templateFolders.map((templateName) => {
+          const basePath = path.join(tempDir, company, 'templates', templateName, 'final');
+
+          const htmlPath = path.join(basePath, 'template.html');
+          const imagePath = path.join(basePath, 'images');
+          const zipDest = path.join(basePath, `${templateName}.zip`);
+
+          return processTemplate(templateName, htmlPath, imagePath, zipDest)
+        })
       );
 
       const validZipPaths = zipPaths.filter((zip) => {
@@ -183,14 +193,12 @@ app.post("/api/create-download", async (req, res) => {
       }
 
       const masterZip = new JSZip();
-      const masterZipPath = path.join(
-        __dirname,
-        `./.env/${company}/${company}-templates.zip`
-      );
+
+      const masterZipPath = path.join(tempDir, company, `${company}-templates.zip`);
 
       for (const zipPath of validZipPaths) {
         const zipFilename = path.basename(zipPath);
-        const zipData = fs.readFileSync(zipPath);
+        const zipData = readFile(zipPath);
         masterZip.file(zipFilename, zipData);
       }
 
@@ -198,6 +206,8 @@ app.post("/api/create-download", async (req, res) => {
         type: "nodebuffer",
       });
       fs.writeFileSync(masterZipPath, masterZipBuffer);
+
+      console.log(masterZipPath);
       
       return res.download(masterZipPath, `${company}-templates.zip`
     );
@@ -328,6 +338,8 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
 
 app.post("/api/process-circle", async (req, res) => {
   const { company, imageKey, imageUrl } = req.body;
+
+  const tempDir = getTmpDir();
   const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
 
   try {
@@ -350,6 +362,8 @@ app.post("/api/process-circle", async (req, res) => {
 app.post("/api/process-star", async (req, res) => {
   const { company, replaceColor, imageUrls } = req.body;
   const starImages = [];
+  
+  const tempDir = getTmpDir();
   const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
 
   try {

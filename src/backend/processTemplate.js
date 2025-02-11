@@ -10,21 +10,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const processTemplate = async (
-  res,
-  company,
   templateName,
-  imageUrls,
-  isTemplate = false
+  htmlPath,
+  imagePath,
+  zipDest
 ) => {
-  const basePath = isTemplate
-    ? `./.env/${company}/templates/${templateName}/final`
-    : `./.env/${company}/email/final`;
-  const htmlPath = path.resolve(__dirname, `../../${basePath}/template.html`);
-  const imagePath = path.join(__dirname, `../../${basePath}/images`);
-  const zipDest = path.resolve(
-    __dirname,
-    `../../${basePath}/${templateName}.zip`
-  );
 
   if (!fs.existsSync(htmlPath)) {
     console.warn(`Skipping template '${templateName}' - no HTML file found.`);
