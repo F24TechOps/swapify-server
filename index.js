@@ -328,10 +328,7 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
 
 app.post("/api/process-circle", async (req, res) => {
   const { company, imageKey, imageUrl } = req.body;
-  const imagePath = path.join(
-    __dirname,
-    `./.env/${company}/email/final/images`
-  );
+  const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
@@ -353,10 +350,7 @@ app.post("/api/process-circle", async (req, res) => {
 app.post("/api/process-star", async (req, res) => {
   const { company, replaceColor, imageUrls } = req.body;
   const starImages = [];
-  const imagePath = path.join(
-    __dirname,
-    `./.env/${company}/email/final/images`
-  );
+  const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
