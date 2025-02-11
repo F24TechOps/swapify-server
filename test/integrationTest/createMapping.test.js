@@ -2,13 +2,10 @@ import request from 'supertest';
 import app from '../../index';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { getTmpDir } from '../../src/backend/tempFileHandler';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-describe.skip("Mapping API", () => {
-    const filePath = path.resolve(__dirname, '../../.env/force23');
+describe("Mapping API", () => {
+    const filePath = path.resolve(getTmpDir(), 'force23');
     let response;
 
     beforeAll( async () => {
@@ -38,6 +35,5 @@ describe.skip("Mapping API", () => {
         expect(colors).toContain("rgb(201, 255, 247)");
         expect(colors).toContain("rgb(7, 190, 0)");
         expect(colors).toContain("rgb(34, 30, 30)");
-    })
-
+    });
 })

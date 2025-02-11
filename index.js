@@ -12,6 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
 import JSZip from "jszip";
+import { createTmpFile, getTmpDir, getTmpFiles } from "./src/backend/tempFileHandler.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,35 +36,39 @@ app.get("/api/:type/template", async (req, res) => {
   let filePath;
 
   if (type === "templates") {
-    if (templateName && templateFileNames.includes(templateName)) {
-      filePath = path.join(
-        __dirname,
-        `./src/html/templates/${templateName}/template.html`
-      );
-    } else if (
-      !templateFileNames.includes(templateName) &&
-      templateName !== undefined
-    ) {
+
+    if (!templateFileNames.includes(templateName) &&
+    templateName !== undefined)
       res.status(400).send(`${templateName} isn't an accepted template type`);
-    } else {
-      filePath = path.join(
-        __dirname,
-        `./src/html/templates/abandoned/template.html`
-      );
-    }
+    else {
 
-    fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-        res.status(404).send(`${type} isn't an accepted template type`);
-        return;
+      if (templateName && templateFileNames.includes(templateName)) {
+        filePath = path.join(
+          __dirname,
+          `./src/html/templates/${templateName}/template.html`
+        );
+      }  else {
+        filePath = path.join(
+          __dirname,
+          `./src/html/templates/abandoned/template.html`
+        );
       }
+      
+      fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+          res.status(404).send(`${type} isn't an accepted template type`);
+          return;
+        }
+  
+        const updatedHtml = data.replace(
+          /src=['"]images\//g,
+          `src="/templates/${templateName}/images/`
+        );
+        res.status(200).send(updatedHtml);
+      });
 
-      const updatedHtml = data.replace(
-        /src=['"]images\//g,
-        `src="/templates/${templateName}/images/`
-      );
-      res.status(200).send(updatedHtml);
-    });
+    }
+    
   } else {
     filePath = path.join(__dirname, `./src/html/${type}/base1/template.html`);
 
@@ -216,7 +221,11 @@ app.post("/api/create-download", async (req, res) => {
 //tested
 app.post("/api/create-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
-  const mapping = await generateMapping(type, company);
+
+  const tempDir = getTmpDir();
+  const tempFilePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+  const mapping = await generateMapping(type, tempFilePath);
+  createTmpFile(tempFilePath);
 
   if (!mapping) {
     res.status(400).send("HTML content is required");
@@ -386,6 +395,39 @@ app.post("/api/process-star", async (req, res) => {
 
 app.get("/*", (req, res) => {
   res.send("Hello World");
+});
+
+function cleanupTempFiles() {
+  console.log('Cleaning up temp files...');
+
+  const tempFiles = getTmpFiles();
+  tempFiles.forEach(filePath => {
+      try {
+          if (fs.existsSync(filePath)) {
+              fs.unlinkSync(filePath); // Delete the temp file
+              console.log(`Deleted temp file: ${filePath}`);
+          }
+      } catch (err) {
+          console.error(`Error deleting temp file ${filePath}:`, err);
+      }
+  });
+}
+
+process.on('SIGINT', () => {
+  console.log('Received SIGINT, shutting down...');
+  cleanupTempFiles(); // Call cleanup function
+  process.exit(); // Exit the process
+});
+
+process.on('SIGTERM', () => {
+  console.log('Received SIGTERM, shutting down...');
+  cleanupTempFiles(); // Call cleanup function
+  process.exit(); // Exit the process
+});
+
+process.on('exit', () => {
+  console.log('Server is exiting...');
+  cleanupTempFiles(); // Call cleanup function
 });
 
 export default app;
