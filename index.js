@@ -259,10 +259,12 @@ app.post("/api/swap", async (req, res) => {
         "type must be either 'email', 'microsite', or 'templates'"
       );
 
-    const jsonData = await readFile(
-      `./.env/${company}/${type}/json/mapping.json`,
-      "utf8"
-    );
+    const tempDir = getTmpDir();
+    const tempFilePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+
+    
+
+    const jsonData = await readFile(tempFilePath);
     const update = JSON.parse(jsonData);
 
     const selections = { replaceId: false, flatten: false, update };
@@ -270,9 +272,10 @@ app.post("/api/swap", async (req, res) => {
     if (type === "templates") {
       const folders = await listFolders(`./src/html/templates`);   
       const promises = folders.map(async (folder) => {
+        const outputFilePath = path.join(tempDir, company, type, folder, 'final', 'template.html');
         return readAndRun(
           `./src/html/templates/${folder}/template.html`,
-          `./.env/${company}/${type}/${folder}/final/template.html`,
+          outputFilePath,
           selections,
           type
         );
@@ -280,9 +283,10 @@ app.post("/api/swap", async (req, res) => {
 
       await Promise.all(promises);
     } else {
+      const outputFilePath = path.join(tempDir, company, type, 'final', 'template.html');
       await readAndRun(
         `./src/html/${type}/base1/template.html`,
-        `./.env/${company}/${type}/final/template.html`,
+        outputFilePath,
         selections,
         type
       );
