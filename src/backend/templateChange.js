@@ -9,6 +9,7 @@ import {
   getBackgroundImg,
   getLink,
 } from "./extractor.js";
+import Color from "color";
 
 export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   const full = isFullHtml(html);
@@ -24,7 +25,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const { newLink } = allUpdatesObj.links[link];
 
         if (newLink === null) return;
-
+      
         if ($element.attr("href") === allUpdatesObj.links[link].oldLink) {
           $element.attr("href", newLink);
         }
@@ -56,7 +57,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (newBackground === null || newBackground === "") continue;
 
         if (
-          $element.css("background-color") ===
+          Color($element.css("background-color")).rgb().string() ===
           allUpdatesObj.backgroundColors[colorType].oldBackground
         ) {
           $element.css("background-color", newBackground);
@@ -70,7 +71,6 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   function changeAllColors(allUpdatesObj) {
     if (type !== "templates") return;
-
     const backgrounds = [...getBackgrounds($, type)];
     const text = [...getText($, type)];
     const allButtonContainers = $("td.mceNonEditable").toArray();
@@ -145,22 +145,19 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   // Update fonts
   function changeFont(allUpdatesObj) {
     const allElements = getText($, type).toArray();
-
+  
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
         const element = allElements[i];
         const $element = $(element);
         const { newFontFamily } = allUpdatesObj.fontFamily[fontType];
-
+        
         if (newFontFamily === null || newFontFamily === "") continue;
-
+        
         if (
-          $element
-            .css("font-family")
-            .toLowerCase()
-            .includes(
-              allUpdatesObj.fontFamily[fontType].oldFontFamily.toLowerCase()
-            )
+          $element.css("font-family")?.toLowerCase().includes(
+            allUpdatesObj.fontFamily[fontType].oldFontFamily.toLowerCase()
+          )
         ) {
           $element.css("font-family", newFontFamily);
         }
@@ -176,7 +173,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const { newFontSize } = allUpdatesObj.fontSize[fontType];
 
         if (newFontSize === null || newFontSize === "") continue;
-
+        
         if (
           $element.css("font-size") ===
           allUpdatesObj.fontSize[fontType].oldFontSize
@@ -195,7 +192,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (newFontColor === null || newFontColor === "") continue;
 
         if (
-          $element.css("color") ===
+          Color($element.css("color")).rgb().string() ===
           allUpdatesObj.fontColor[fontType].oldFontColor
         ) {
           $element.css("color", newFontColor);

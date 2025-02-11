@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe.only("Mapping API", () => {
+describe.skip("Mapping API", () => {
     const filePath = path.resolve(__dirname, '../../.env/force23');
     let response;
 

@@ -27,27 +27,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 //tested
-app.get("/api/:type/template", (req, res) => {
+app.get("/api/:type/template", async (req, res) => {
   const { type } = req.params;
   let templateName = req.query.name;
-  const templateFileNames = [
-    "abandoned",
-    "anniversary",
-    "blog",
-    "Confirmation Email 1",
-    "confirmation1",
-    "confirmation2",
-    "event",
-    "Meet The Team",
-    "nps1",
-    "nps2",
-    "nurture1",
-    "nurture2",
-    "prompt",
-    "testimonial",
-    "webinar1",
-    "webinar2",
-  ];
+  const templateFileNames = await listFolders(`./src/html/templates`);
 
   let filePath;
 
@@ -277,15 +260,17 @@ app.post("/api/swap", async (req, res) => {
     const selections = { replaceId: false, flatten: false, update };
 
     if (type === "templates") {
-      const folders = await listFolders(`./src/html/templates`);
-      folders.forEach(async (folder) => {
-        await readAndRun(
+      const folders = await listFolders(`./src/html/templates`);   
+      const promises = folders.map(async (folder) => {
+        return readAndRun(
           `./src/html/templates/${folder}/template.html`,
           `./.env/${company}/${type}/${folder}/final/template.html`,
           selections,
           type
         );
       });
+
+      await Promise.all(promises);
     } else {
       await readAndRun(
         `./src/html/${type}/base1/template.html`,
