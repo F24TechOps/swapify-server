@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { generateMapping } from "./src/backend/createMap.js";
-import { readAndRun, readFile } from "./src/backend/runAll.js";
+import { readAndRun, readFile, writeFile } from "./src/backend/runAll.js";
 import { downloadImage } from "./src/backend/downloadImage.js";
 import fs from "fs";
 import { fileURLToPath } from "url";
@@ -301,10 +301,8 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
   const mappingData = req.body;
 
-  const filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/json/mapping.json`
-  );
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, company, type, 'json', 'mapping.json');
 
   try {
     if (!fs.existsSync(filePath)) {
@@ -319,10 +317,9 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
       ...mappingData,
     };
 
-    fs.writeFileSync(
+    writeFile(
       filePath,
       JSON.stringify(updatedMappingData, null, 2),
-      "utf8"
     );
 
     res.status(200).send("Mapping updated successfully");
