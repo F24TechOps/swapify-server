@@ -236,9 +236,9 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
 //tested
 app.delete("/api/delete-company/:company", async (req, res) => {
   const { company } = req.params;
-  const filePath = path.join(__dirname, `./.env/${company}`);
 
-  fs.rmSync(filePath, { recursive: true, force: true });
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, company);
 
   try {
     fs.rmSync(filePath, { recursive: true, force: true });
