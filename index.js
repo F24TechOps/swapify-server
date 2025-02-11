@@ -105,17 +105,10 @@ app.get("/api/:type/template", async (req, res) => {
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
-  let filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/final/template.html`
-  );
 
-  if (type === "templates") {
-    filePath = path.join(
-      __dirname,
-      `./.env/${company}/${type}/abandoned/final/template.html`
-    );
-  }
+  const tempDir = getTmpDir();
+  const filePath = (type === "templates") ? path.join(tempDir, company, type, 'abandoned','final', 'template.html')
+    : path.join(tempDir, company, type, 'final', 'template.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
