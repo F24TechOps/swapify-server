@@ -18,9 +18,9 @@ export function runAll(html, selections, type) {
 
 export async function readAndRun(inputPath, outputPath, selections, type) {
   const html = await readFile(inputPath);
-  
+
   const newHtml = runAll(html, selections, type);
-  
+
   writeFile(outputPath, newHtml);
 }
 
@@ -30,29 +30,33 @@ export async function readFile(filePath) {
 
     const stream = fs.createReadStream(filePath, {
       highWaterMark: 1 * 1024,
-      encoding: 'utf8'
+      encoding: "utf8",
     });
 
     stream.on("data", (chunk) => {
       data += chunk;
     });
-    
+
     stream.on("end", () => {
       resolve(data);
     });
-    
+
     stream.on("error", (err) => {
-      reject(err);  
+      reject(err);
     });
   });
 }
 
 export function writeFile(filePath, data) {
-  const directory = path.dirname(filePath);
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory, { recursive: true });
-  }
+  return new Promise((resolve, reject) => {
+    const directory = path.dirname(filePath);
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+    }
 
-  const writeStream = fs.createWriteStream(filePath, { encoding: "utf8" });
-  writeStream.end(data);
+    const writeStream = fs.createWriteStream(filePath, { encoding: "utf8" });
+    writeStream.on("finish", resolve);
+    writeStream.on("error", reject);
+    writeStream.end(data);
+  });
 }

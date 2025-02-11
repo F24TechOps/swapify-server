@@ -36,7 +36,7 @@ export const processTemplate = async (
   }
 
   try {
-    const htmlContent = await readFile(htmlPath)
+    const htmlContent = await readFile(htmlPath);
 
     const $ = cheerio.load(htmlContent);
     const srcMapping = {};
@@ -66,8 +66,8 @@ export const processTemplate = async (
       .get();
 
     await Promise.all(imageDownloadPromises);
-  
-      writeFile(htmlPath, $.html());
+
+    await writeFile(htmlPath, $.html());
 
     await createZip(htmlPath, imagePath, zipDest);
 
