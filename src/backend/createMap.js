@@ -35,12 +35,12 @@ export const generateNewMapping = async (type) => {
 
   const mapping = await createMapping(html, type);
   if (type === "templates") {
-    writeFile(
+    await writeFile(
       `./src/html/${type}/json/mapping.json`,
       JSON.stringify(mapping, null, 2)
     );
   } else {
-    writeFile(
+    await writeFile(
       `./src/html/${type}/base1/json/mapping.json`,
       JSON.stringify(mapping, null, 2)
     );
@@ -52,10 +52,10 @@ export const generateMapping = async (type, company) => {
   let file;
   if (type === "templates") {
     file = await readFile(`./src/html/templates/json/mapping.json`);
-    writeFile(`./.env/${company}/templates/json/mapping.json`, file);
+    await writeFile(`./.env/${company}/templates/json/mapping.json`, file);
   } else {
     file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
-    writeFile(`./.env/${company}/${type}/json/mapping.json`, file);
+    await writeFile(`./.env/${company}/${type}/json/mapping.json`, file);
   }
   return file;
 };

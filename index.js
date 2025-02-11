@@ -168,11 +168,11 @@ app.post("/api/create-download", async (req, res) => {
       );
 
       const zipPaths = await Promise.all(
-        templateFolders.map((templateName) =>
-          processTemplate(res, company, templateName, imageUrls, true)
-        )
+        templateFolders.map((templateName) => {
+          return processTemplate(res, company, templateName, imageUrls, true);
+        })
       );
-
+      
       const validZipPaths = zipPaths.filter((zip) => {
         if (zip !== null && zip !== undefined) {
           return zip;
@@ -200,10 +200,10 @@ app.post("/api/create-download", async (req, res) => {
       const masterZipBuffer = await masterZip.generateAsync({
         type: "nodebuffer",
       });
-      fs.writeFileSync(masterZipPath, masterZipBuffer);
       
-      return res.download(masterZipPath, `${company}-templates.zip`
-    );
+      fs.writeFileSync(masterZipPath, masterZipBuffer);
+
+      return res.download(masterZipPath, `${company}-templates.zip`);
     }
   } catch (error) {
     console.error("Error processing request:", error);
@@ -260,7 +260,7 @@ app.post("/api/swap", async (req, res) => {
     const selections = { replaceId: false, flatten: false, update };
 
     if (type === "templates") {
-      const folders = await listFolders(`./src/html/templates`);   
+      const folders = await listFolders(`./src/html/templates`);
       const promises = folders.map(async (folder) => {
         return readAndRun(
           `./src/html/templates/${folder}/template.html`,

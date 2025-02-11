@@ -216,10 +216,11 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageLink);
 
         const { newImageLink } = allUpdatesObj.images[imgType];
-
+        
+        
         if (normalURL === oldURL) {
           if (newImageLink === null || newImageLink === "") continue;
-
+          
           $element.attr("src", newImageLink);
         }
       }

@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 describe("swap endpoint logic", () => {
-    const testCompany = "test";
+    const testCompany = "new";
     const testType = "templates";
     const envPath = path.resolve(__dirname, `../../.env/${testCompany}/${testType}`);
     
