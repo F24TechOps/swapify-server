@@ -53,7 +53,7 @@ app.get("/api/:type/template", async (req, res) => {
           `./src/html/templates/abandoned/template.html`
         );
       }
-      
+
       fs.readFile(filePath, "utf8", (err, data) => {
         if (err) {
           res.status(404).send(`${type} isn't an accepted template type`);
@@ -127,10 +127,9 @@ app.get("/api/:type/:company/final-template", (req, res) => {
 //tested
 app.get("/api/mapping/:type/:company", (req, res) => {
   const { type, company } = req.params;
-  const filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/json/mapping.json`
-  );
+
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, company, type, 'json', 'mapping.json');
 
   if (path.extname(filePath) !== ".json") {
     res.status(400).send("Not a JSON file");
