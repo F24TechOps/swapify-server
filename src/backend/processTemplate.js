@@ -3,11 +3,7 @@ import path from "path";
 import * as cheerio from "cheerio";
 import { createZip } from "./emailZip.js";
 import { downloadImage } from "./downloadImage.js";
-import { fileURLToPath } from "url";
 import { readFile, writeFile } from "./runAll.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const processTemplate = async (
   templateName,

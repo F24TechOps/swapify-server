@@ -198,7 +198,7 @@ app.post("/api/create-download", async (req, res) => {
 
       for (const zipPath of validZipPaths) {
         const zipFilename = path.basename(zipPath);
-        const zipData = readFile(zipPath);
+        const zipData = fs.readFileSync(zipPath);
         masterZip.file(zipFilename, zipData);
       }
 
@@ -206,8 +206,6 @@ app.post("/api/create-download", async (req, res) => {
         type: "nodebuffer",
       });
       fs.writeFileSync(masterZipPath, masterZipBuffer);
-
-      console.log(masterZipPath);
       
       return res.download(masterZipPath, `${company}-templates.zip`
     );
