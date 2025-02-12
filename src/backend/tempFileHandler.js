@@ -1,17 +1,16 @@
 import os from "os";
 
 const tempDir = os.tmpdir();
-const tempFiles = [];
+const companies = [];
 
-export function createTmpFile (fileName) {
-    tempFiles.push(fileName);
-    //console.log(tempFiles);
+export function addCompany (company) {
+    companies.push(company);
 }
 
 export function getTmpDir () {
     return tempDir;
 }
 
-export function getTmpFiles () {
-    return tempFiles;
+export function getCompanies () {
+    return companies;
 }

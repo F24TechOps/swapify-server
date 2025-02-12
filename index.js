@@ -12,7 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
 import JSZip from "jszip";
-import { createTmpFile, getTmpDir, getTmpFiles } from "./src/backend/tempFileHandler.js";
+import { addCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -225,7 +225,7 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
   const tempDir = getTmpDir();
   const tempFilePath = path.join(tempDir, company, type, 'json', 'mapping.json');
   const mapping = await generateMapping(type, tempFilePath);
-  createTmpFile(tempFilePath);
+  addCompany(company);
 
   if (!mapping) {
     res.status(400).send("HTML content is required");
@@ -399,12 +399,14 @@ app.get("/*", (req, res) => {
 function cleanupTempFiles() {
   console.log('Cleaning up temp files...');
 
-  const tempFiles = getTmpFiles();
-  tempFiles.forEach(filePath => {
+  const companies = getCompanies();
+  const tempDir = getTmpDir();
+  companies.forEach(company => {
       try {
+          const filePath = path.join(tempDir, company);
           if (fs.existsSync(filePath)) {
-              fs.unlinkSync(filePath); // Delete the temp file
-              console.log(`Deleted temp file: ${filePath}`);
+              fs.rmSync(filePath, { recursive: true, force: true });
+              console.log("Deleted Company: " + company);
           }
       } catch (err) {
           console.error(`Error deleting temp file ${filePath}:`, err);
