@@ -12,7 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
 import JSZip from "jszip";
-import { addCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
+import { addCompany, deleteCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -242,6 +242,7 @@ app.delete("/api/delete-company/:company", async (req, res) => {
   const filePath = path.join(tempDir, company);
 
   try {
+    deleteCompany(company);
     fs.rmSync(filePath, { recursive: true, force: true });
     res.status(200).send("Company deleted");
   } catch (error) {

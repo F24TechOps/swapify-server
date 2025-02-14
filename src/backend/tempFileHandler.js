@@ -7,6 +7,12 @@ export function addCompany (company) {
     companies.push(company);
 }
 
+export function deleteCompany (company) {
+    const index = companies.indexOf(company);
+    if (index !== -1)
+        companies.splice(index, 1);
+}
+
 export function getTmpDir () {
     return tempDir;
 }
