@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { generateMapping } from "./src/backend/createMap.js";
-import { readAndRun, readFile } from "./src/backend/runAll.js";
+import { readAndRun, readFile, writeFile } from "./src/backend/runAll.js";
 import { downloadImage } from "./src/backend/downloadImage.js";
 import fs from "fs";
 import { fileURLToPath } from "url";
@@ -12,6 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
 import JSZip from "jszip";
+import { deleteCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,35 +36,39 @@ app.get("/api/:type/template", async (req, res) => {
   let filePath;
 
   if (type === "templates") {
-    if (templateName && templateFileNames.includes(templateName)) {
-      filePath = path.join(
-        __dirname,
-        `./src/html/templates/${templateName}/template.html`
-      );
-    } else if (
-      !templateFileNames.includes(templateName) &&
-      templateName !== undefined
-    ) {
-      res.status(400).send(`${templateName} isn't an accepted template type`);
-    } else {
-      filePath = path.join(
-        __dirname,
-        `./src/html/templates/abandoned/template.html`
-      );
-    }
 
-    fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-        res.status(404).send(`${type} isn't an accepted template type`);
-        return;
+    if (!templateFileNames.includes(templateName) &&
+    templateName !== undefined)
+      res.status(400).send(`${templateName} isn't an accepted template type`);
+    else {
+
+      if (templateName && templateFileNames.includes(templateName)) {
+        filePath = path.join(
+          __dirname,
+          `./src/html/templates/${templateName}/template.html`
+        );
+      }  else {
+        filePath = path.join(
+          __dirname,
+          `./src/html/templates/abandoned/template.html`
+        );
       }
 
-      const updatedHtml = data.replace(
-        /src=['"]images\//g,
-        `src="/templates/${templateName}/images/`
-      );
-      res.status(200).send(updatedHtml);
-    });
+      fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+          res.status(404).send(`${type} isn't an accepted template type`);
+          return;
+        }
+  
+        const updatedHtml = data.replace(
+          /src=['"]images\//g,
+          `src="/templates/${templateName}/images/`
+        );
+        res.status(200).send(updatedHtml);
+      });
+
+    }
+    
   } else {
     filePath = path.join(__dirname, `./src/html/${type}/base1/template.html`);
 
@@ -100,17 +105,10 @@ app.get("/api/:type/template", async (req, res) => {
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
-  let filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/final/template.html`
-  );
 
-  if (type === "templates") {
-    filePath = path.join(
-      __dirname,
-      `./.env/${company}/${type}/abandoned/final/template.html`
-    );
-  }
+  const tempDir = getTmpDir();
+  const filePath = (type === "templates") ? path.join(tempDir, 'swapify_temp_dir', company, type, 'abandoned','final', 'template.html')
+    : path.join(tempDir, 'swapify_temp_dir', company, type, 'final', 'template.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -122,10 +120,9 @@ app.get("/api/:type/:company/final-template", (req, res) => {
 //tested
 app.get("/api/mapping/:type/:company", (req, res) => {
   const { type, company } = req.params;
-  const filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/json/mapping.json`
-  );
+
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
 
   if (path.extname(filePath) !== ".json") {
     res.status(400).send("Not a JSON file");
@@ -139,40 +136,55 @@ app.get("/api/mapping/:type/:company", (req, res) => {
   });
 });
 
+app.get("/api/companies", (req, res) => {
+  const companies = getCompanies();
+  res.status(200).send(companies);
+});
+
 //tested
 app.post("/api/create-download", async (req, res) => {
-  const { type, company, imageUrls } = req.body;
+  const { type, company } = req.body;
 
   if (!["email", "templates", "microsite"].includes(type)) {
     return res.status(404).send("Invalid type specified");
   }
 
+  const tempDir = getTmpDir();
+
   try {
     if (type === "microsite") {
-      const htmlPath = path.join(
-        __dirname,
-        `./.env/${company}/microsite/final/template.html`
-      );
+      const htmlPath = path.join(tempDir, 'swapify_temp_dir', company, 'microsite', 'final', 'template.html');
       const copyText = fs.readFileSync(htmlPath, "utf8");
       return res.status(200).send(copyText);
     }
 
     if (type === "email") {
-      const zipPath = await processTemplate(res, company, "email", imageUrls);
+      const basePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final');
+      
+      const htmlPath = path.join(basePath, 'template.html');
+      const imagePath = path.join(basePath, 'images');
+      const zipDest = path.join(basePath, `email.zip`);
+
+      const zipPath = await processTemplate("email", htmlPath, imagePath, zipDest);
       return res.download(zipPath, "email.zip");
     }
 
     if (type === "templates") {
       const templateFolders = await listFolders(
-        path.join(__dirname, `./.env/${company}/templates`)
+        path.join(tempDir, 'swapify_temp_dir', company, 'templates')
       );
-
       const zipPaths = await Promise.all(
         templateFolders.map((templateName) => {
-          return processTemplate(res, company, templateName, imageUrls, true);
+          const basePath = path.join(tempDir, 'swapify_temp_dir', company, 'templates', templateName, 'final');
+
+          const htmlPath = path.join(basePath, 'template.html');
+          const imagePath = path.join(basePath, 'images');
+          const zipDest = path.join(basePath, `${templateName}.zip`);
+
+          return processTemplate(templateName, htmlPath, imagePath, zipDest)
         })
       );
-      
+
       const validZipPaths = zipPaths.filter((zip) => {
         if (zip !== null && zip !== undefined) {
           return zip;
@@ -186,10 +198,8 @@ app.post("/api/create-download", async (req, res) => {
       }
 
       const masterZip = new JSZip();
-      const masterZipPath = path.join(
-        __dirname,
-        `./.env/${company}/${company}-templates.zip`
-      );
+
+      const masterZipPath = path.join(tempDir, 'swapify_temp_dir', company, `${company}-templates.zip`);
 
       for (const zipPath of validZipPaths) {
         const zipFilename = path.basename(zipPath);
@@ -200,10 +210,10 @@ app.post("/api/create-download", async (req, res) => {
       const masterZipBuffer = await masterZip.generateAsync({
         type: "nodebuffer",
       });
-      
       fs.writeFileSync(masterZipPath, masterZipBuffer);
-
-      return res.download(masterZipPath, `${company}-templates.zip`);
+      
+      return res.download(masterZipPath, `${company}-templates.zip`
+    );
     }
   } catch (error) {
     console.error("Error processing request:", error);
@@ -216,7 +226,10 @@ app.post("/api/create-download", async (req, res) => {
 //tested
 app.post("/api/create-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
-  const mapping = await generateMapping(type, company);
+
+  const tempDir = getTmpDir();
+  const tempFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
+  const mapping = await generateMapping(type, tempFilePath);
 
   if (!mapping) {
     res.status(400).send("HTML content is required");
@@ -228,11 +241,12 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
 //tested
 app.delete("/api/delete-company/:company", async (req, res) => {
   const { company } = req.params;
-  const filePath = path.join(__dirname, `./.env/${company}`);
 
-  fs.rmSync(filePath, { recursive: true, force: true });
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company);
 
   try {
+    deleteCompany(company);
     fs.rmSync(filePath, { recursive: true, force: true });
     res.status(200).send("Company deleted");
   } catch (error) {
@@ -251,20 +265,23 @@ app.post("/api/swap", async (req, res) => {
         "type must be either 'email', 'microsite', or 'templates'"
       );
 
-    const jsonData = await readFile(
-      `./.env/${company}/${type}/json/mapping.json`,
-      "utf8"
-    );
+    const tempDir = getTmpDir();
+    const tempFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
+
+    
+
+    const jsonData = await readFile(tempFilePath);
     const update = JSON.parse(jsonData);
 
     const selections = { replaceId: false, flatten: false, update };
 
     if (type === "templates") {
-      const folders = await listFolders(`./src/html/templates`);
+      const folders = await listFolders(`./src/html/templates`);   
       const promises = folders.map(async (folder) => {
+        const outputFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, folder, 'final', 'template.html');
         return readAndRun(
           `./src/html/templates/${folder}/template.html`,
-          `./.env/${company}/${type}/${folder}/final/template.html`,
+          outputFilePath,
           selections,
           type
         );
@@ -272,9 +289,10 @@ app.post("/api/swap", async (req, res) => {
 
       await Promise.all(promises);
     } else {
+      const outputFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'final', 'template.html');
       await readAndRun(
         `./src/html/${type}/base1/template.html`,
-        `./.env/${company}/${type}/final/template.html`,
+        outputFilePath,
         selections,
         type
       );
@@ -293,10 +311,8 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
   const mappingData = req.body;
 
-  const filePath = path.join(
-    __dirname,
-    `./.env/${company}/${type}/json/mapping.json`
-  );
+  const tempDir = getTmpDir();
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
 
   try {
     if (!fs.existsSync(filePath)) {
@@ -311,10 +327,9 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
       ...mappingData,
     };
 
-    fs.writeFileSync(
+    writeFile(
       filePath,
       JSON.stringify(updatedMappingData, null, 2),
-      "utf8"
     );
 
     res.status(200).send("Mapping updated successfully");
@@ -326,10 +341,9 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
 
 app.post("/api/process-circle", async (req, res) => {
   const { company, imageKey, imageUrl } = req.body;
-  const imagePath = path.join(
-    __dirname,
-    `./.env/${company}/email/final/images`
-  );
+
+  const tempDir = getTmpDir();
+  const imagePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
@@ -351,10 +365,9 @@ app.post("/api/process-circle", async (req, res) => {
 app.post("/api/process-star", async (req, res) => {
   const { company, replaceColor, imageUrls } = req.body;
   const starImages = [];
-  const imagePath = path.join(
-    __dirname,
-    `./.env/${company}/email/final/images`
-  );
+  
+  const tempDir = getTmpDir();
+  const imagePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
@@ -386,6 +399,34 @@ app.post("/api/process-star", async (req, res) => {
 
 app.get("/*", (req, res) => {
   res.send("Hello World");
+});
+
+function cleanupTempFiles() {
+  console.log('Cleaning up temp files...');
+
+  const tempDir = getTmpDir();
+  const tempDirPath = path.join(tempDir, 'swapify_temp_dir');
+  if (fs.existsSync(tempDirPath)) {
+    fs.rmSync(tempDirPath, { recursive: true, force: true });
+    console.log("Deleted all contents of swapify_temp_dir");
+  }
+}
+
+process.on('SIGINT', () => {
+  console.log('Received SIGINT, shutting down...');
+  cleanupTempFiles(); // Call cleanup function
+  process.exit(); // Exit the process
+});
+
+process.on('SIGTERM', () => {
+  console.log('Received SIGTERM, shutting down...');
+  cleanupTempFiles(); // Call cleanup function
+  process.exit(); // Exit the process
+});
+
+process.on('exit', () => {
+  console.log('Server is exiting...');
+  cleanupTempFiles(); // Call cleanup function
 });
 
 export default app;

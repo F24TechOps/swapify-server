@@ -26,19 +26,51 @@ const fakeHTML = `<!DOCTYPE html>
 `;
 
 jest.unstable_mockModule('../../src/backend/mapping.js', () => ({
-  createMapping: jest.fn(() => 'mocked result'),
-}));
-
+    createMapping: jest.fn(() => {
+      return {
+          "links": {
+            "Link0": {
+              "oldLink": "https://www.force24.co.uk",
+              "newLink": null
+            }
+          },
+          "images": {
+            "ImageLink0": {
+              "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/815660aa/images/1712575426-3693fdeb.png?v=133825523640680588",
+              "newImageLink": null
+            }
+          },
+          "color": {
+            "Color0": {
+              "oldColor": "rgb(201, 255, 247)",
+              "newColor": null
+            },
+            "Color1": {
+              "oldColor": "rgb(7, 190, 0)",
+              "newColor": null
+            },
+            "Color2": {
+              "oldColor": "rgb(34, 30, 30)",
+              "newColor": null
+            }
+          }
+        }
+    }),
+  }));
+  
 jest.unstable_mockModule('../../src/backend/readFolders.js', () => ({
-  listFolders: jest.fn(() => ["foo", "bar", "baz"]),
-  readFromFile: jest.fn(() => fakeHTML)
-}));
+    listFolders: jest.fn(() => ["foo", "bar", "baz"]),
+    readFromFile: jest.fn(() => fakeHTML)
+  }));
+  
+
 
 const { generateNewMapping } = await import('../../src/backend/createMap.js');
 const { createMapping } = await import('../../src/backend/mapping.js');
 const { listFolders } = await import('../../src/backend/readFolders.js');
 
-describe.skip("generate mapping", () => {
+
+describe("generate mapping", () => {
     test("should call createMapping and return mocked result", async () => {
         await generateNewMapping("templates");
 
@@ -48,3 +80,5 @@ describe.skip("generate mapping", () => {
         //expect(createMapping).toHaveBeenCalledWith((body + body + body).trim(), "templates");
     });
 });
+
+

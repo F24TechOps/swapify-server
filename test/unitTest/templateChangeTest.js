@@ -38,7 +38,7 @@ const html = fs.readFileSync(
   "./src/html/templates/abandoned/template.html",
   "utf-8"
 );
-const filePath = "./.env/interviewtest/templates/json/template.html";
+const filePath = "./.env/force23/templates/json/template.html";
 const dir = path.dirname(filePath);
 
 // Ensure the directory exists

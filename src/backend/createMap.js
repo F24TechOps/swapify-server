@@ -48,15 +48,9 @@ export const generateNewMapping = async (type) => {
   return mapping;
 };
 
-export const generateMapping = async (type, company) => {
-  let file;
-  if (type === "templates") {
-    file = await readFile(`./src/html/templates/json/mapping.json`);
-    await writeFile(`./.env/${company}/templates/json/mapping.json`, file);
-  } else {
-    file = await readFile(`./src/html/${type}/base1/json/mapping.json`);
-    await writeFile(`./.env/${company}/${type}/json/mapping.json`, file);
-  }
+export const generateMapping = async (type, tempFilePath) => {
+  const file = await readFile(`./src/html/${type + (type === "templates" ? "" : "/base1")}/json/mapping.json`);
+  writeFile(tempFilePath, file);
   return file;
 };
 

@@ -4,8 +4,8 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import request from "supertest";
-import app from "../../index";
-import server from "../../listen.js";
+//import { app } from "../../index";
+//import server from "../../listen.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,11 +23,11 @@ const dest = path.resolve(
   `../../.env/force23/templates/abandoned/final/abandoned.zip`
 );
 
-beforeAll(() => {
+//beforeAll(() => {
   // if (!fs.existsSync(imagePath)) {
   //   fs.mkdirSync(imagePath, { recursive: true });
   // }
-});
+//});
 
 // afterAll((done) => {
 //   server.close(done);
