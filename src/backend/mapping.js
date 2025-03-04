@@ -73,6 +73,27 @@ const mapButton = (buttonMapper, button, idx, type) => {
     return buttonMapper;
 }
 
+/*
+This function returns the mapping JSON to be stored for swapify to use
+Depending on the type, the function will find all features necessary.
+For example linkElements will return an array that looks like ["https://www.force24.com", "https://www.spacejam.com", "https://www.blockbuster.com"]
+The variable links will be an object that contains these links yet formatted for the output JSON
+{
+    Link0: {
+      oldLink: "https://www.force24.co.uk",
+      newLink: null,
+    },
+    Link1: {
+      oldLink: "https://www.spacejam.com",
+      newLink: null,
+    },
+    Link2: {
+      oldLink: "https://www.blockbuster.com",
+      newLink: null,
+    },
+}
+All the new links will be null at this point of the code. The function mapFeature will organise each link this way to be sent to the frontend.
+*/
 export async function createMapping(html, type) {
 
     const linkElements = extractLinks(html, type);
@@ -82,8 +103,8 @@ export async function createMapping(html, type) {
     
     
     if (type === "templates") {
-        const firstImage = [imageElements[0]];
-        const images = firstImage.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageLink'), {});
+        const firstImage = imageElements[0];
+        const images = firstImage ? mapFeature({}, firstImage, 0, 'ImageLink') : {};
 
         const colorElements = extractColor(html);
         const color = colorElements.reduce((mapper, colour, idx) => mapFeature(mapper, colour, idx, 'Color'), {});

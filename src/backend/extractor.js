@@ -37,6 +37,11 @@ const hexToRGB = (hexStr) => {
 	return rgbStr + ')';
 };
 
+/*
+The getSomething functions read the HTML string to extract the div containing the feature.
+For example getBackgrounds extract the <div> or <td> elements that contain a background we want to change
+*/
+
 export const getBackgrounds = ($, type) =>
   type === "microsite" ? $("div") : $('[align="center"]:not(.mceNonEditable)');
 
@@ -48,6 +53,15 @@ export const getBackgroundImg = ($) => $("bck-img");
 export const getImage = ($) => $("img");
 
 export const getLink = ($) => $("[href]");
+
+/*
+The extractSomething function all return the features. For example extractBackgrounds returns a list of background colours.
+They all call the extractFeature function as it works the same way.
+html is the html string
+getFeature is an input function for extractFeature that finds the feature in the element.
+The nonExistent is an array of features not to include. For example we don't want to extract the black text or white background.
+The type is email, microsite or templates
+*/
 
 export const extractBackgrounds = (html, type) =>
   extractFeature(

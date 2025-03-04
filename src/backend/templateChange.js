@@ -90,12 +90,12 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         ({ oldColor, newColor }) => {
           if (!newColor) return;
 
-          if ($element.css("background-color") === oldColor) {
+          if (Color($element.css("background-color")).rgb().string() === oldColor) {
             $element.css("background-color", newColor);
             $element.attr("data-background-updated", "true");
           }
 
-          if ($element.css("color") === oldColor) {
+          if (Color($element.css("color")).rgb().string() === oldColor) {
             $element.css("color", newColor);
           }
 
@@ -216,10 +216,11 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageLink);
 
         const { newImageLink } = allUpdatesObj.images[imgType];
-
+        
+        
         if (normalURL === oldURL) {
           if (newImageLink === null || newImageLink === "") continue;
-
+          
           $element.attr("src", newImageLink);
         }
       }

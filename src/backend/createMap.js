@@ -35,12 +35,12 @@ export const generateNewMapping = async (type) => {
 
   const mapping = await createMapping(html, type);
   if (type === "templates") {
-    writeFile(
+    await writeFile(
       `./src/html/${type}/json/mapping.json`,
       JSON.stringify(mapping, null, 2)
     );
   } else {
-    writeFile(
+    await writeFile(
       `./src/html/${type}/base1/json/mapping.json`,
       JSON.stringify(mapping, null, 2)
     );
