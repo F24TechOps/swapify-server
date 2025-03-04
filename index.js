@@ -12,7 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { listFolders } from "./src/backend/readFolders.js";
 import JSZip from "jszip";
-import { addCompany, deleteCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
+import { deleteCompany, getCompanies, getTmpDir } from "./src/backend/tempFileHandler.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -107,8 +107,8 @@ app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
 
   const tempDir = getTmpDir();
-  const filePath = (type === "templates") ? path.join(tempDir, company, type, 'abandoned','final', 'template.html')
-    : path.join(tempDir, company, type, 'final', 'template.html');
+  const filePath = (type === "templates") ? path.join(tempDir, 'swapify_temp_dir', company, type, 'abandoned','final', 'template.html')
+    : path.join(tempDir, 'swapify_temp_dir', company, type, 'final', 'template.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -122,7 +122,7 @@ app.get("/api/mapping/:type/:company", (req, res) => {
   const { type, company } = req.params;
 
   const tempDir = getTmpDir();
-  const filePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
 
   if (path.extname(filePath) !== ".json") {
     res.status(400).send("Not a JSON file");
@@ -134,6 +134,11 @@ app.get("/api/mapping/:type/:company", (req, res) => {
       res.status(404).send("File not found");
     }
   });
+});
+
+app.get("/api/companies", (req, res) => {
+  const companies = getCompanies();
+  res.status(200).send(companies);
 });
 
 //tested
@@ -148,13 +153,13 @@ app.post("/api/create-download", async (req, res) => {
 
   try {
     if (type === "microsite") {
-      const htmlPath = path.join(tempDir, company, 'microsite', 'final', 'template.html');
+      const htmlPath = path.join(tempDir, 'swapify_temp_dir', company, 'microsite', 'final', 'template.html');
       const copyText = fs.readFileSync(htmlPath, "utf8");
       return res.status(200).send(copyText);
     }
 
     if (type === "email") {
-      const basePath = path.join(tempDir, company, 'email', 'final');
+      const basePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final');
       
       const htmlPath = path.join(basePath, 'template.html');
       const imagePath = path.join(basePath, 'images');
@@ -166,11 +171,11 @@ app.post("/api/create-download", async (req, res) => {
 
     if (type === "templates") {
       const templateFolders = await listFolders(
-        path.join(tempDir, company, 'templates')
+        path.join(tempDir, 'swapify_temp_dir', company, 'templates')
       );
       const zipPaths = await Promise.all(
         templateFolders.map((templateName) => {
-          const basePath = path.join(tempDir, company, 'templates', templateName, 'final');
+          const basePath = path.join(tempDir, 'swapify_temp_dir', company, 'templates', templateName, 'final');
 
           const htmlPath = path.join(basePath, 'template.html');
           const imagePath = path.join(basePath, 'images');
@@ -194,7 +199,7 @@ app.post("/api/create-download", async (req, res) => {
 
       const masterZip = new JSZip();
 
-      const masterZipPath = path.join(tempDir, company, `${company}-templates.zip`);
+      const masterZipPath = path.join(tempDir, 'swapify_temp_dir', company, `${company}-templates.zip`);
 
       for (const zipPath of validZipPaths) {
         const zipFilename = path.basename(zipPath);
@@ -223,9 +228,8 @@ app.post("/api/create-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
 
   const tempDir = getTmpDir();
-  const tempFilePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+  const tempFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
   const mapping = await generateMapping(type, tempFilePath);
-  addCompany(company);
 
   if (!mapping) {
     res.status(400).send("HTML content is required");
@@ -239,7 +243,7 @@ app.delete("/api/delete-company/:company", async (req, res) => {
   const { company } = req.params;
 
   const tempDir = getTmpDir();
-  const filePath = path.join(tempDir, company);
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company);
 
   try {
     deleteCompany(company);
@@ -262,7 +266,7 @@ app.post("/api/swap", async (req, res) => {
       );
 
     const tempDir = getTmpDir();
-    const tempFilePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+    const tempFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
 
     
 
@@ -274,7 +278,7 @@ app.post("/api/swap", async (req, res) => {
     if (type === "templates") {
       const folders = await listFolders(`./src/html/templates`);   
       const promises = folders.map(async (folder) => {
-        const outputFilePath = path.join(tempDir, company, type, folder, 'final', 'template.html');
+        const outputFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, folder, 'final', 'template.html');
         return readAndRun(
           `./src/html/templates/${folder}/template.html`,
           outputFilePath,
@@ -285,7 +289,7 @@ app.post("/api/swap", async (req, res) => {
 
       await Promise.all(promises);
     } else {
-      const outputFilePath = path.join(tempDir, company, type, 'final', 'template.html');
+      const outputFilePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'final', 'template.html');
       await readAndRun(
         `./src/html/${type}/base1/template.html`,
         outputFilePath,
@@ -308,7 +312,7 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   const mappingData = req.body;
 
   const tempDir = getTmpDir();
-  const filePath = path.join(tempDir, company, type, 'json', 'mapping.json');
+  const filePath = path.join(tempDir, 'swapify_temp_dir', company, type, 'json', 'mapping.json');
 
   try {
     if (!fs.existsSync(filePath)) {
@@ -339,7 +343,7 @@ app.post("/api/process-circle", async (req, res) => {
   const { company, imageKey, imageUrl } = req.body;
 
   const tempDir = getTmpDir();
-  const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
+  const imagePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
@@ -363,7 +367,7 @@ app.post("/api/process-star", async (req, res) => {
   const starImages = [];
   
   const tempDir = getTmpDir();
-  const imagePath = path.join(tempDir, company, 'email', 'final', 'images');
+  const imagePath = path.join(tempDir, 'swapify_temp_dir', company, 'email', 'final', 'images');
 
   try {
     // Ensure the images directory exists
@@ -400,19 +404,12 @@ app.get("/*", (req, res) => {
 function cleanupTempFiles() {
   console.log('Cleaning up temp files...');
 
-  const companies = getCompanies();
   const tempDir = getTmpDir();
-  companies.forEach(company => {
-      try {
-          const filePath = path.join(tempDir, company);
-          if (fs.existsSync(filePath)) {
-              fs.rmSync(filePath, { recursive: true, force: true });
-              console.log("Deleted Company: " + company);
-          }
-      } catch (err) {
-          console.error(`Error deleting temp file ${filePath}:`, err);
-      }
-  });
+  const tempDirPath = path.join(tempDir, 'swapify_temp_dir');
+  if (fs.existsSync(tempDirPath)) {
+    fs.rmSync(tempDirPath, { recursive: true, force: true });
+    console.log("Deleted all contents of swapify_temp_dir");
+  }
 }
 
 process.on('SIGINT', () => {
