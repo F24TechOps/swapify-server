@@ -25,8 +25,8 @@ export function getCompanies () {
     console.log(swapifyTempDir, 'swapify_temp_dir');
 
     if (!fs.existsSync(swapifyTempDir)) {
-        console.log('Directory does not exist.');
-        return [];
+        console.log('Directory does not exist. Creating directory.');
+        fs.mkdirSync(swapifyTempDir, { recursive: true });
     }
 
     const folders = fs.readdirSync(swapifyTempDir).filter(file => {
