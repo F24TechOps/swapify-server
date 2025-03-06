@@ -1,35 +1,41 @@
 {
   "links": {
     "Link0": {
-      "oldLink": "https://www.force24.co.uk/",
+      "oldLink": "https://force24.co.uk/",
       "newLink": null
     }
   },
   "backgroundColors": {
     "Background0": {
-      "oldBackground": "rgb(25, 4, 199)",
       "newBackground": null
     },
     "Background1": {
-      "oldBackground": "rgb(237, 237, 237)",
+      "oldBackground": "rgb(25, 4, 199)",
       "newBackground": null
     },
     "Background2": {
-      "oldBackground": "rgb(150, 150, 150)",
+      "oldBackground": "rgb(237, 237, 237)",
       "newBackground": null
     },
     "Background3": {
-      "oldBackground": "rgb(0, 167, 192)",
+      "oldBackground": "rgb(150, 150, 150)",
       "newBackground": null
     },
     "Background4": {
+      "oldBackground": "rgb(0, 167, 192)",
+      "newBackground": null
+    },
+    "Background5": {
+      "oldBackground": "white",
+      "newBackground": null
+    },
+    "Background6": {
       "oldBackground": "rgb(50, 72, 152)",
       "newBackground": null
     }
   },
   "fontColor": {
     "FontColor0": {
-      "oldFontColor": "rgb(34, 30, 30)",
       "newFontColor": null
     },
     "FontColor1": {
@@ -93,51 +99,34 @@
     "ImageLink11": {
       "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/34430691-ca59-4922-bee7-a6f377fe5752/20203/images/6bab3017350ca04c6fa05569672bd31e.jpg",
       "newImageLink": null
-    },
-    "ImageLink12": {
-      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/facebook-app-round-white-icon.png",
-      "newImageLink": null
-    },
-    "ImageLink13": {
-      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/instagram-white-icon.png",
-      "newImageLink": null
-    },
-    "ImageLink14": {
-      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/x-social-media-white-icon.png",
-      "newImageLink": null
-    },
-    "ImageLink15": {
-      "oldImageLink": "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16741/images/linkedin-app-white-icon.png",
-      "newImageLink": null
     }
   },
   "fontSize": {
     "FontSize0": {
-      "oldFontSize": "16px",
       "newFontSize": null
     },
     "FontSize1": {
-      "oldFontSize": "14px",
+      "oldFontSize": "16px",
       "newFontSize": null
     },
     "FontSize2": {
-      "oldFontSize": "46px",
+      "oldFontSize": "14px",
       "newFontSize": null
     },
     "FontSize3": {
-      "oldFontSize": "32px",
+      "oldFontSize": "46px",
       "newFontSize": null
     },
     "FontSize4": {
-      "oldFontSize": "30px",
+      "oldFontSize": "32px",
       "newFontSize": null
     },
     "FontSize5": {
-      "oldFontSize": "56px",
+      "oldFontSize": "30px",
       "newFontSize": null
     },
     "FontSize6": {
-      "oldFontSize": "large",
+      "oldFontSize": "56px",
       "newFontSize": null
     },
     "FontSize7": {
@@ -163,34 +152,17 @@
   },
   "fontFamily": {
     "FontFamily0": {
-      "oldFontFamily": "Open Sans",
       "newFontFamily": null
     },
     "FontFamily1": {
-      "oldFontFamily": "'Open Sans'",
+      "oldFontFamily": "Open Sans",
       "newFontFamily": null
     },
     "FontFamily2": {
-      "oldFontFamily": "Muli",
-      "newFontFamily": null
-    },
-    "FontFamily3": {
       "oldFontFamily": "Times New Roman",
       "newFontFamily": null
     },
-    "FontFamily4": {
-      "oldFontFamily": "\"Times New Roman\"",
-      "newFontFamily": null
-    },
-    "FontFamily5": {
-      "oldFontFamily": "Arial, sans-serif",
-      "newFontFamily": null
-    },
-    "FontFamily6": {
-      "oldFontFamily": "sans-serif",
-      "newFontFamily": null
-    },
-    "FontFamily7": {
+    "FontFamily3": {
       "oldFontFamily": "Arial, Helvetica, sans-serif",
       "newFontFamily": null
     }

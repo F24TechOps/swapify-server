@@ -22,7 +22,6 @@ export function getTmpDir () {
 
 export function getCompanies () {
     const swapifyTempDir = path.join(tempDir, 'swapify_temp_dir');
-    console.log(swapifyTempDir, 'swapify_temp_dir');
 
     if (!fs.existsSync(swapifyTempDir)) {
         console.log('Directory does not exist. Creating directory.');

@@ -54,4 +54,4 @@ export const generateMapping = async (type, tempFilePath) => {
   return file;
 };
 
-generateNewMapping('templates');
+generateNewMapping('microsite');
