@@ -60,5 +60,6 @@ export const processTemplate = async (
     return zipDest;
   } catch (error) {
     console.error(`Error processing template '${templateName}':`, error);
+    throw error;
   }
 };
