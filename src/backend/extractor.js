@@ -8,7 +8,7 @@ const HEX_CHARS = [
 
 export function extractId(html) {
   const $ = cheerio.load(html);
-
+  
   const f24IdElements = $("[data-f24-id]");
 
   return f24IdElements
@@ -48,7 +48,7 @@ export const getBackgrounds = ($, type) =>
 export const getText = ($) =>
   $("div, span, strong, p, h1, h2, h3, h4, h5, h6, li");
 
-export const getBackgroundImg = ($) => $("bck-img");
+export const getBackgroundImg = ($) => $(".bck-img");
 
 export const getImage = ($) => $("img");
 
