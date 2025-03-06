@@ -181,7 +181,7 @@ app.post("/api/create-download", async (req, res) => {
           const imagePath = path.join(basePath, 'images');
           const zipDest = path.join(basePath, `${templateName}.zip`);
 
-          return processTemplate(templateName, htmlPath, imagePath, zipDest)
+          return processTemplate(templateName, htmlPath, imagePath, zipDest);
         })
       );
 
