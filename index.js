@@ -516,7 +516,7 @@ app.get("/api/dateTime/:interval", async (req, res) => {
           returnValue = now.add(1, "day").toISOString();
           break;
         case "2days":
-          returnValue = now.add(2, "hour").toISOString();
+          returnValue = now.add(2, "day").toISOString();
       }
       res.status(200).send({time: returnValue});
     } else {

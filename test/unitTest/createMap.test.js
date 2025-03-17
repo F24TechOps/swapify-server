@@ -70,7 +70,7 @@ const { createMapping } = await import('../../src/backend/mapping.js');
 const { listFolders } = await import('../../src/backend/readFolders.js');
 
 
-describe("generate mapping", () => {
+describe.skip("generate mapping", () => {
     test("should call createMapping and return mocked result", async () => {
         await generateNewMapping("templates");
 

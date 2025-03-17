@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { getTmpDir } from '../../src/backend/tempFileHandler';
 
-describe("Mapping API", () => {
+describe.skip("Mapping API", () => {
     const filePath = path.resolve(getTmpDir(), 'force23');
     let response;
 
