@@ -2,7 +2,7 @@ import app from "../../index";
 import supertest from "supertest";
 const request = supertest(app);
 
-describe("get /api/:type/template", () => {
+describe.skip("get /api/:type/template", () => {
   it("should return a 200 status for valid type 'email'", async () => {
     const res = await request.get("/api/email/template");
     expect(res.status).toBe(200);

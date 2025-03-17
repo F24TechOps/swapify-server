@@ -18,6 +18,7 @@
     "@babel/plugin-transform-private-property-in-object": "^7.25.9",
     "canvas": "^3.1.0",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
     "dompurify": "^3.2.4",
     "fs": "^0.0.1-security",
     "jszip": "^3.10.1",
