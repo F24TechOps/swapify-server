@@ -52,7 +52,7 @@ app.get("/api/:type/template", async (req, res) => {
       } else {
         filePath = path.join(
           __dirname,
-          `./src/html/templates/example/template.html`
+          `./src/html/templates/abandoned/template.html`
         );
       }
 
