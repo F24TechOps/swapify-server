@@ -13,214 +13,381 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Template</title>
   <style type="text/css">table {
-border-spacing: 0 !important;
-border-collapse: collapse !important;
+	border-spacing: 0 !important;
+	border-collapse: collapse !important;
 }
 
 img {
-display: block !important;
+	display: block !important;
 }
 
 table td {
-border-collapse: collapse !important;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+	border-collapse: collapse !important;
 }
 
 html, body {
-line-height: 1;
-margin: 0 !important;
-padding: 0 !important;
-text-size-adjust: none !important;
+	line-height: 1;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-size-adjust: none !important;
 }
 
 .invisible-preheader {
-width: 0 !important;
-height: 0 !important;
-font-size: 0 !important;
-line-height: 0 !important;
-display: none !important;
-color: #E8E8E8 !important;
+	width: 0 !important;
+	height: 0 !important;
+	font-size: 0 !important;
+	line-height: 0 !important;
+	display: none !important;
+	color: #E8E8E8 !important;
 }
 
 @media screen and (max-width: 600px) { 
-.mobile-center {
-  margin: 0 auto !important;
-}
+	.lh0 {
+		line-height: 0 !important;
+	}
 
-.pr5 {
-  padding-right: 5px !important;
-}
+	.lh10 {
+		line-height: 10px !important;
+	}
 
-.pl5 {
-  padding-left: 5px !important;
-}
+	.float-textright {
+		float: right !important;
+	}
 
-.hidethis {
-  width: 0 !important;
-  display: none !important;
-}
+	.float-textleft {
+		float: left !important;
+	}
 
-.max-width {
-  width: 100% !important;
-}
+	.float-textcenter {
+		float: none !important;
+	}
 
-.displayblock {
-  display: block !important;
-}
+	.button-alignment-parent {
+		display: inline-block;
+		width: 100%;
+	}
 
-.width90pc {
-  width: 90% !important;
-  margin: 0 auto !important;
-}
+	.pl0 {
+		display: block !important;
+		padding-left: 0 !important;
+	}
 
-.imgfull {
-  width: 100% !important;
-  height: auto !important;
-}
+	.pr0 {
+		display: block !important;
+		padding-right: 0 !important;
+	}
 
-.imgmax {
-  max-width: 100% !important;
-  height: auto !important;
-}
+	.pl10 {
+		display: block !important;
+		padding-left: 10px !important;
+	}
 
-.td10 {
-  height: 10px !important;
-}
+	.pr10 {
+		display: block !important;
+		padding-right: 10px !important;
+	}
 
-.td20 {
-  height: 20px !important;
-}
+	.pl15 {
+		display: block !important;
+		padding-left: 15px !important;
+	}
 
-.td30 {
-  height: 30px !important;
-}
+	.pr15 {
+		display: block !important;
+		padding-right: 15px !important;
+	}
 
-.mt10 {
-  display: block !important;
-  margin-top: 10px !important;
-}
+	.pl20 {
+		display: block !important;
+		padding-left: 20px !important;
+	}
 
-.mt15 {
-  display: block !important;
-  margin-top: 15px !important;
-}
+	.pr20 {
+		display: block !important;
+		padding-right: 20px !important;
+	}
 
-.mt20 {
-  display: block !important;
-  margin-top: 20px !important;
-}
+	.ml0 {
+		display: block !important;
+		margin-left: 0 !important;
+	}
 
-.mb10 {
-  display: block !important;
-  margin-bottom: 10px !important;
-}
+	.mr0 {
+		display: block !important;
+		margin-right: 0 !important;
+	}
 
-.mb15 {
-  display: block !important;
-  margin-bottom: 15px !important;
-}
+	.ml10 {
+		display: block !important;
+		margin-left: 10px !important;
+	}
 
-.mb20 {
-  display: block !important;
-  margin-bottom: 20px !important;
-}
+	.mr10 {
+		display: block !important;
+		margin-right: 10px !important;
+	}
 
-.pt0 {
-  display: block !important;
-  padding-top: 0 !important;
-}
+	.ml15 {
+		display: block !important;
+		margin-left: 15px !important;
+	}
 
-.pt10 {
-  display: block !important;
-  padding-top: 10px !important;
-}
+	.mr15 {
+		display: block !important;
+		margin-right: 15px !important;
+	}
 
-.pt15 {
-  display: block !important;
-  padding-top: 15px !important;
-}
+	.ml20 {
+		display: block !important;
+		margin-left: 20px !important;
+	}
 
-.pt20 {
-  display: block !important;
-  padding-top: 20px !important;
-}
+	.mr20 {
+		display: block !important;
+		margin-right: 20px !important;
+	}
 
-.pb0 {
-  display: block !important;
-  padding-bottom: 0 !important;
-}
+	.fs6 {
+		font-size: 6px !important;
+	}
 
-.pb10 {
-  display: block !important;
-  padding-bottom: 10px !important;
-}
+	.fs7 {
+		font-size: 7px !important;
+	}
 
-.pb15 {
-  display: block !important;
-  padding-bottom: 15px !important;
-}
+	.fs8 {
+		font-size: 8px !important;
+	}
 
-.pb20 {
-  display: block !important;
-  padding-bottom: 20px !important;
-}
+	.fs9 {
+		font-size: 9px !important;
+	}
 
-.padding-zero {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
+	.fs10 {
+		font-size: 10px !important;
+	}
 
-.textcenter {
-  text-align: center !important;
-}
+	.fs11 {
+		font-size: 11px !important;
+	}
 
-.textleft {
-  text-align: left !important;
-}
+	.fs12 {
+		font-size: 12px !important;
+	}
 
-.textright {
-  text-align: right !important;
-}
+	.fs13 {
+		font-size: 13px !important;
+	}
 
-.fsz20 {
-  font-size: 20px !important;
-}
+	.fs14 {
+		font-size: 14px !important;
+	}
 
-.fsz25 {
-  font-size: 25px !important;
-}
+	.fs15 {
+		font-size: 15px !important;
+	}
 
-.fsz30 {
-  font-size: 30px !important;
-}
+	.fs16 {
+		font-size: 16px !important;
+	}
 
-.lh20 {
-  line-height: 20px !important;
-}
+	.fs17 {
+		font-size: 17px !important;
+	}
 
-.lh30 {
-  line-height: 30px !important;
-}
+	.fs18 {
+		font-size: 18px !important;
+	}
 
-.lh40 {
-  line-height: 40px !important;
-}
+	.fs19 {
+		font-size: 19px !important;
+	}
 
-.bgffffff {
-  background-color: #FFFFFF !important;
-}
+	.fs20 {
+		font-size: 20px !important;
+	}
 
-.bg000000 {
-  background-color: #000000 !important;
-}
+	.mobile-center {
+		margin: 0 auto !important;
+	}
 
-.cover {
-  background-size: cover !important;
-}
+	.pr5 {
+		padding-right: 5px !important;
+	}
+
+	.pl5 {
+		padding-left: 5px !important;
+	}
+
+	.hidethis {
+		width: 0 !important;
+		display: none !important;
+	}
+
+	.max-width {
+		width: 100% !important;
+	}
+
+	.displayblock {
+		display: block !important;
+	}
+
+	.width90pc {
+		width: 90% !important;
+		margin: 0 auto !important;
+	}
+
+	.imgfull {
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	.imgmax {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.td10 {
+		height: 10px !important;
+	}
+
+	.td20 {
+		height: 20px !important;
+	}
+
+	.td30 {
+		height: 30px !important;
+	}
+
+	.mt10 {
+		display: block !important;
+		margin-top: 10px !important;
+	}
+
+	.mt15 {
+		display: block !important;
+		margin-top: 15px !important;
+	}
+
+	.mt20 {
+		display: block !important;
+		margin-top: 20px !important;
+	}
+
+	.mb10 {
+		display: block !important;
+		margin-bottom: 10px !important;
+	}
+
+	.mb15 {
+		display: block !important;
+		margin-bottom: 15px !important;
+	}
+
+	.mb20 {
+		display: block !important;
+		margin-bottom: 20px !important;
+	}
+
+	.pt0 {
+		display: block !important;
+		padding-top: 0 !important;
+	}
+
+	.pt10 {
+		display: block !important;
+		padding-top: 10px !important;
+	}
+
+	.pt15 {
+		display: block !important;
+		padding-top: 15px !important;
+	}
+
+	.pt20 {
+		display: block !important;
+		padding-top: 20px !important;
+	}
+
+	.pb0 {
+		display: block !important;
+		padding-bottom: 0 !important;
+	}
+
+	.pb10 {
+		display: block !important;
+		padding-bottom: 10px !important;
+	}
+
+	.pb15 {
+		display: block !important;
+		padding-bottom: 15px !important;
+	}
+
+	.pb20 {
+		display: block !important;
+		padding-bottom: 20px !important;
+	}
+
+	.padding-zero {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.textcenter {
+		text-align: center !important;
+	}
+
+	.textleft {
+		text-align: left !important;
+	}
+
+	.textright {
+		text-align: right !important;
+	}
+
+	.fsz20 {
+		font-size: 20px !important;
+	}
+
+	.fsz25 {
+		font-size: 25px !important;
+	}
+
+	.fsz30 {
+		font-size: 30px !important;
+	}
+
+	.lh20 {
+		line-height: 20px !important;
+	}
+
+	.lh30 {
+		line-height: 30px !important;
+	}
+
+	.lh40 {
+		line-height: 40px !important;
+	}
+
+	.bgffffff {
+		background-color: #FFFFFF !important;
+	}
+
+	.bg000000 {
+		background-color: #000000 !important;
+	}
+
+	.cover {
+		background-size: cover !important;
+	}
 }</style>
 </head>
 <body yahoo="fix" style="font-size: 13px;
-text-size-adjust: none;
-line-height: 1;" align="center">
+	text-size-adjust: none;
+	line-height: 1;" align="center">
   <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table 381f902e-32f2-44b0-b429-1d021faecb05" data-f24-id="1f5a90d3-e2f6-493f-abcc-e67e44aff750">
     <tr>
       <td align="center" style=";" data-f24-display-name="Editable TD 93f15744-1007-460b-a8ce-cd5836f37f76" data-f24-no-edit="text" data-f24-id="d7775f48-b425-4d50-81b3-e72ec6ecee09">
@@ -230,23 +397,23 @@ line-height: 1;" align="center">
               <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table e57243ed-3d69-4adc-92d7-465b626a2ba8" data-f24-id="b00db839-2eba-46e2-bdb0-bc8d5bcafad7">
                 <tr>
                   <td align="center" class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
                     <span class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Webinar Invite</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">.</spambotdetection>
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Webinar Invite</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">.</spambotdetection>
                   
                   </td>
                 </tr>
@@ -258,8 +425,8 @@ text-decoration: none;">.</spambotdetection>
               <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="f24-layout-mode-editable" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 3bb902ef-0d7f-4773-9732-4f3dd004570e" data-f24-id="9d2dc88e-a9d0-4ef0-a4bb-4ccfcb5461f8"><tr>
                   <td align="center" style=";" data-f24-editable="" data-f24-display-name="Editable TD 32d97604-4e3d-44c8-b930-fe2b730a6cb0" data-f24-id="4db2c09e-a66d-4124-af61-7e8d70f4833c"></td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" style=";" data-f24-id="dffd2594-6e9f-4080-ab0d-e2a43b4b406c">
                     <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="b78076d3-b23a-49c7-82d3-e04fcebe819a">
                       <tr>
@@ -267,14 +434,14 @@ transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                           <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                             <tr data-f24-layout-column-reorder="">
                               <td align="center" valign="top" class="padding-zero displayblock" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 50px;
-padding-bottom: 50px;
-background-color: rgb(201, 255, 247);" data-f24-id="4d1d729e-e1f4-4e09-8a80-dd6cd8549981">
+	padding-bottom: 50px;
+	background-color: #C9FFF7;" data-f24-id="4d1d729e-e1f4-4e09-8a80-dd6cd8549981">
                                 <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                                   <tr>
                                     <td align="center" style=";">
                                       <a href="#" style="display: block;
-width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1_2_1" data-f24-no-edit="text" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep" data-f24-id="4b204ceb-8612-4094-a93f-f309a1d12b24">
-                                        <img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/815660aa/images/1712575426-3693fdeb.png?v=133825523640680588" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="7a8fe71d-32b3-4ae0-abc7-25bbd5c1654c" data-original-src="images/1712575426-3693fdeb.png">
+	width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1_2_1" data-f24-no-edit="text" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep" data-f24-id="4b204ceb-8612-4094-a93f-f309a1d12b24">
+                                        <img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/c424f786/images/imagelink1.png?v=133880792990593377" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="7a8fe71d-32b3-4ae0-abc7-25bbd5c1654c" data-original-src="images/imagelink1.png">
                                       </a>
                                     </td>
                                   </tr>
@@ -287,11 +454,11 @@ width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
                     </table>
                   </td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="c8371d64-b586-41cd-a497-d053a176216a" style="padding-top: 0;
-padding-bottom: 0;">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="14f05dcd-3743-47c9-b303-4561edf9eb62">
+	padding-bottom: 0;">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="14f05dcd-3743-47c9-b303-4561edf9eb62">
                       <tr>
                         <td align="center" style=";">
                           <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
@@ -300,9 +467,19 @@ padding-bottom: 0;">
                                 <table width="600" style="width:600px;border-width:0px;table-layout:fixed" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                                   <!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' -->
                                   <tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope">
-                                    <td data-f24-editable="" data-f24-display-name="Text_1_1_1" align="center" class="ng-scope" data-f24-id="a8def059-0d9c-4f9a-b487-b5389f1ddc7e" style=";"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4; font-size: 16px; text-align: left; color: rgb(0, 0, 0); font-family: arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;"><div style="text-align: center; text-transform: uppercase;"><span style="font-size: 14px; color: #07be00;"><strong>24/05/24</strong></span></div>
-<div style="text-align: center; text-transform: uppercase;">&nbsp;</div>
-<div style="text-align: center;"><span style="font-size: 38px; color: rgb(34, 30, 30);">Join our webinar on Marketing Automation!</span></div></div></td>
+                                    <td data-f24-editable="" data-f24-display-name="Text_1_1_1" align="center" class="ng-scope" data-f24-id="a8def059-0d9c-4f9a-b487-b5389f1ddc7e" style=";"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
+	font-size: 16px;
+	text-align: left;
+	color: #000000;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;"><div style="text-align: center;
+	text-transform: uppercase;"><span style="font-size: 14px;
+	color: #07BE00;"><strong>24/05/24</strong></span></div>
+<div style="text-align: center;
+	text-transform: uppercase;">&nbsp;</div>
+<div style="text-align: center;"><span style="font-size: 38px;
+	color: #221E1E;">Join our webinar on Marketing Automation!</span></div></div></td>
                                   </tr>
                                 </table>
                               </td>
@@ -314,7 +491,7 @@ padding-bottom: 0;">
                   </td>
                 </tr><tr>
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="aeb9eef4-fb8c-4ed4-87f6-86688f5f36dc" style=";">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="14cf5eb7-0268-487e-9df6-7c7004866b62">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="14cf5eb7-0268-487e-9df6-7c7004866b62">
                       
                         <tr>
                           <td align="center" style=";">
@@ -351,9 +528,8 @@ padding-bottom: 0;">
                                 <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                                   <tr>
                                     <td align="center" style=";">
-                                      <a href="#" style="display: block;
-width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1" data-f24-no-edit="text" data-f24-id="92153ea9-55c7-45dc-a803-8452230bb30f" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
-                                        <img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/fe198f8f/images/1732291238-2c404b6a.png?v=133825506695050767" width="600" alt="Image" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="07d3764e-694c-44b8-87c7-e433313909ff" data-original-src="images/1712591234-8f2a7454.png">
+                                      <a href="#" style="display: block; width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1" data-f24-no-edit="text" data-f24-id="92153ea9-55c7-45dc-a803-8452230bb30f" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
+                                        <img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/c424f786/images/1743605697-1eb31d80.jpg?v=133880792990593377" width="600" alt="Image" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="07d3764e-694c-44b8-87c7-e433313909ff" data-original-src="images/1743605697-1eb31d80.jpg">
                                       </a>
                                     </td>
                                   </tr>
@@ -367,7 +543,7 @@ width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
                   </td>
                 </tr><tr class="hover">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="d15c0d9b-2820-4ac3-b2b7-e27a3d1dd640" style=";">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="ae3a0d67-15cf-4a04-a35d-95c3d9dc1f09">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="ae3a0d67-15cf-4a04-a35d-95c3d9dc1f09">
                       
                         <tr>
                           <td align="center" style=";">
@@ -394,11 +570,11 @@ width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
                     </table>
                   </td>
                 </tr><tr class="hover" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="3ca2b3a5-c556-4db9-9d6a-d552bb3157e6" style="padding-top: 0;
-padding-bottom: 0;">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247);padding-bottom:10px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="dbb7d6dd-09c4-4737-a1fc-99cd6646fc77">
+	padding-bottom: 0;">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7;padding-bottom:10px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="dbb7d6dd-09c4-4737-a1fc-99cd6646fc77">
                       <tr>
                         <td align="center" style=";">
                           <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
@@ -408,14 +584,14 @@ padding-bottom: 0;">
                                   <!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' -->
                                   <tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope">
                                     <td data-f24-editable="" data-f24-display-name="Text_2_1_1_1" align="center" class="ng-scope padding-zero" data-f24-id="a442c386-a5be-47b4-a9ea-1005030127f0" style="padding-left: 60px;
-padding-right: 60px;">
+	padding-right: 60px;">
                                       <div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #221E1E ;
-font-family: arial, helvetica, sans-serif;
-margin-left: auto;
-margin-right: auto;">
+	font-size: 16px;
+	text-align: left;
+	color: #221E1E;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;">
                                         <div>
                                           Hey
                                           <f24-token value="contact.field(firstname)" null-value-behaviour="ignore" contenteditable="false">[First Name]</f24-token>
@@ -444,7 +620,7 @@ margin-right: auto;">
                   </td>
                 </tr><tr class="hover">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="70df00db-a399-4a08-832c-999875567660" style=";">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="8cf2e594-9c3f-4c6c-b4c3-381f5121960f">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="8cf2e594-9c3f-4c6c-b4c3-381f5121960f">
                       
                         <tr>
                           <td align="center" style=";">
@@ -471,28 +647,28 @@ margin-right: auto;">
                     </table>
                   </td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                 <td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 0;
-padding-bottom: 0;" data-f24-id="b03b53d5-15d8-4c9e-9510-560b355754f4">
-                  <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247);padding:10px 0" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="8f0eff55-818f-45b7-b79f-d993f2a1aeb1">
+	padding-bottom: 0;" data-f24-id="b03b53d5-15d8-4c9e-9510-560b355754f4">
+                  <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7;padding:10px 0" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="8f0eff55-818f-45b7-b79f-d993f2a1aeb1">
                     <tr>
                       <td align="center" style=";">
                         <table width="450" style="width:450px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                           <tr data-f24-layout-column-reorder="">
                             <td align="center" valign="top" class="padding-zero pt10 pb10 displayblock" data-f24-editable="" data-f24-no-edit="text" style="width: auto;
-padding-left: 60px;
-padding-right: 60px;" data-f24-id="0a72a9c5-fbff-487b-a007-b7968aa08a0c">
-                              <table width="480" style="border-radius:16px;background-color:rgb(201, 255, 247);width:480px;table-layout:fixed;border-width:0px;margin-left:auto;margin-right:auto" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc">
+	padding-left: 60px;
+	padding-right: 60px;" data-f24-id="0a72a9c5-fbff-487b-a007-b7968aa08a0c">
+                              <table width="480" style="border-radius:16px;background-color:#C9FFF7;width:480px;table-layout:fixed;border-width:0px;margin-left:auto;margin-right:auto" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc">
                                 
                                 <tr><td style="height: 20px;"></td></tr><tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope">
                                   <td data-f24-editable="" data-f24-display-name="Text_1_1" align="center" class="ng-scope padding-zero" data-f24-id="18e622dd-8827-4d31-a979-2a1e76670fc0" style=";"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #221E1E ;
-font-family: arial, helvetica, sans-serif;
-margin-left: auto;
-margin-right: auto;">
+	font-size: 16px;
+	text-align: left;
+	color: #221E1E;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;">
                                       <div style="text-align: center;">
                                         <strong>Date</strong>: Friday 24th
                                         May 2024<br><strong>Time</strong>:
@@ -511,7 +687,7 @@ margin-right: auto;">
                 </td>
                 </tr><tr class="hover">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="3aa9c13d-413d-420b-9ad2-0c61ab8ad032" style=";">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="59a2cf90-c622-4d0e-a4d2-f82f88d23482">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="59a2cf90-c622-4d0e-a4d2-f82f88d23482">
                       
                         <tr>
                           <td align="center" style=";">
@@ -538,11 +714,11 @@ margin-right: auto;">
                     </table>
                   </td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="10745235-a5c3-4cc9-83c4-3703fd5ff073" style="padding-top: 0;
-padding-bottom: 0;">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247);padding:10px 0" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="a4d70af7-728c-47f7-b3a6-380f39b58b32">
+	padding-bottom: 0;">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7;padding:10px 0" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="a4d70af7-728c-47f7-b3a6-380f39b58b32">
                       <tr>
                         <td align="center" style=";">
                           <table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
@@ -552,14 +728,14 @@ padding-bottom: 0;">
                                   <!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' -->
                                   <tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope">
                                     <td data-f24-editable="" data-f24-display-name="Text_4_1_1_1" align="center" class="ng-scope padding-zero" data-f24-id="044361a2-1d0a-4fbe-ac00-bec88b84fb2c" style="padding-left: 60px;
-padding-right: 60px;">
+	padding-right: 60px;">
                                       <div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #221E1E ;
-font-family: arial, helvetica, sans-serif;
-margin-left: auto;
-margin-right: auto;">
+	font-size: 16px;
+	text-align: left;
+	color: #221E1E;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;">
                                         <div>
                                           <div>
                                             Did you know that landing pages
@@ -573,17 +749,17 @@ margin-right: auto;">
                                                 <td align="center" style=";">
                                                   <table style="border-collapse:separate !important;margin:0 auto;border-width:0px" border="0" cellspacing="0" cellpadding="0" align="Left">
                                                     <tr>
-                                                      <td class="mceNonEditable" style="padding:10px 24px;border-radius:20px;background-color:rgb(34, 30, 30);" align="center" bgcolor="rgb(34, 30, 30)" data-f24-editor-cta-button-td="">
+                                                      <td class="mceNonEditable" style="padding:10px 24px;border-radius:20px;background-color:rgb(34, 30, 30)" align="center" bgcolor="rgb(34, 30, 30)" data-f24-editor-cta-button-td="">
                                                         <a class="button ng-binding" style="display: block;
-text-decoration: none;
-text-align: center;
-font-weight: normal;
-font-size: 14px;
-font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
-color: rgb(201, 255, 247);
-border-radius: 20px;
-line-height: 1.2;
-font-style: normal;" href="https://www.force24.co.uk" data-f24-editable="" data-f24-id="ed9d01f1-bcd8-492b-aa63-ba21e2afcb5a" data-f24-display-name="CTA_1712591607674_1_1_1" data-f24-url-params-processing-stage="prep" name="CTA_1712591607674_1_1_1" bgcolor="rgb(34, 30, 30)">Register</a>
+	text-decoration: none;
+	text-align: center;
+	font-weight: normal;
+	font-size: 14px;
+	font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
+	color: #C9FFF7;
+	border-radius: 20px;
+	line-height: 1.2;
+	font-style: normal;" href="https://www.force24.co.uk" data-f24-editable="" data-f24-id="ed9d01f1-bcd8-492b-aa63-ba21e2afcb5a" data-f24-display-name="CTA_1712591607674_1_1_1" data-f24-url-params-processing-stage="prep" name="CTA_1712591607674_1_1_1" bgcolor="rgb(34, 30, 30)">Register</a>
                                                       </td>
                                                     </tr>
                                                   </table>
@@ -604,16 +780,16 @@ font-style: normal;" href="https://www.force24.co.uk" data-f24-editable="" data-
                     </table>
                   </td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding: 0;" data-f24-id="eed17bf6-47e4-4901-9d40-a7ed77d3c995">
-                    <table width="600" style="width:600px;border:0;background-color:rgb(201, 255, 247);border-collapse:initial;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="536b0290-006b-47ce-958a-5010078a3b11">
+                    <table width="600" style="width:600px;border:0;background-color:#C9FFF7;border-collapse:initial;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="536b0290-006b-47ce-958a-5010078a3b11">
                       <tr>
                         <td align="center" style=";">
                           <table width="460" style="width:460px;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                             <tr data-f24-layout-column-reorder="">
                               <td align="center" class="padding-zero displayblock" style="width: auto;
-padding: 40px 0;">
+	padding: 40px 0;">
                                 <table width="460" style="width:460px;border:0;background-color:#FFFFFF;table-layout:fixed;border-collapse:initial;padding-top:2px;margin-left:auto;margin-right:auto;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" data-f24-editable="" data-f24-no-edit="text" data-f24-id="7e0e57e2-1345-4d74-b72c-8930b8057d59">
                                   <tr>
                                     <td height="1" style="height:1px;line-height:1;font-size:1px;margin-left:auto;margin-right:auto" class="width90pc">
@@ -630,7 +806,7 @@ padding: 40px 0;">
                   </td>
                 </tr><tr>
                   <td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="f2c25d5e-9c4f-430b-824b-9d858fb1a34a" style=";">
-                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:rgb(201, 255, 247)" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="b2f63bc3-dd6f-4ab5-b014-d3fc81057a93">
+                    <table width="600" style="width:600px;border-width:0px;border-collapse:initial;background-color:#C9FFF7" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="b2f63bc3-dd6f-4ab5-b014-d3fc81057a93">
                       <tr>
                         <td align="center" style=";">
                           <table width="600" style="width:600px;border-width:0px;margin-left:auto;margin-right:auto" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc">
@@ -651,11 +827,11 @@ padding: 40px 0;">
                     </table>
                   </td>
                 </tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
+	backface-visibility: hidden;
+	transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
                                       <td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 0;
-padding-bottom: 0;
-background-color: #FFFFFF;" data-f24-id="e58706cf-f2e8-4a3b-b516-152bce290d6a">
+	padding-bottom: 0;
+	background-color: #FFFFFF;" data-f24-id="e58706cf-f2e8-4a3b-b516-152bce290d6a">
                                           <table width="600" style="width:600px;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="8ea666da-fc4f-4bd4-92fc-07f00f6e02f0">
                                               
                                                   <tr>
@@ -664,46 +840,46 @@ background-color: #FFFFFF;" data-f24-id="e58706cf-f2e8-4a3b-b516-152bce290d6a">
                                                               
                                                                   <tr data-f24-layout-column-reorder="">
                                                                       <td align="center" valign="top" class="padding-zero displayblock" style="width: auto;
-padding: 25px 0 5px;">
+	padding: 25px 0 5px;">
                                                                           <table width="560" style="width:560px;table-layout:fixed;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
                                                                               
                                                                                   <tr>
                                                                                       <td align="center" data-f24-editable="" data-f24-display-name="Text_1_1_1_1" style=";" data-f24-id="bba24c1e-19ca-4c73-825c-df91b4efb0e5"><div data-f24-editable-style-wrapper="" class="width90pc" style="text-align: left;
-line-height: 1.4;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 12px;
-color: #000000;
-margin-left: auto;
-margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
+	line-height: 1.4;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;<br></span></div>
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;<br></span></div>
 <div style="text-align: center;">
 <div class="width90pc" style="text-align: left;
-font-family: Arial, Helvetica, sans-serif;
-color: #000000;
-margin-left: auto;
-margin-right: auto;" data-f24-editable-style-wrapper="">
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;" data-f24-editable-style-wrapper="">
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="color: #7D7D7D;">All rights reserved.</span><br><br><span style="color: #7D7D7D;">This email is sent by <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
+	font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
 <div style="text-align: center;
-font-size: 12px;
-line-height: 1.5;">&nbsp;</div>
+	font-size: 12px;
+	line-height: 1.5;">&nbsp;</div>
 <div style="text-align: center;">
 <div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-line-height: 1.5;
-color: rgb(34, 30, 30);"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
+	font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
+	font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #221E1E;"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
 </div>
 </div>
 </div></div></td>
@@ -733,17 +909,17 @@ color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
                           <table width="540" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" style="border:0;width:540px;margin-left:auto;margin-right:auto;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 49d38dc1-6b08-4bde-9b87-87fd4dea9f8d" data-f24-id="c7329a3a-4b2d-413b-b741-dd955d76fd25">
                             <tr>
                               <td align="center" style="font-size: 12px;
-color: #9D9D9D;
-text-align: left;
-line-height: 1.3;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
+	color: #9D9D9D;
+	text-align: left;
+	line-height: 1.3;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
                                 <div style="text-align: center;">
                                   <span class="textcenter" style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;
-text-align: center;">
+	font-size: 12px;
+	color: #7D7D7D;
+	text-align: center;">
                                     <a style="text-decoration: none;
-color: #7D7D7D;" href="[nonTrackingLink]">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
-color: #7D7D7D;">Subscription
+	color: #7D7D7D;" href="[nonTrackingLink]">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
+	color: #7D7D7D;">Subscription
                                       Preferences&nbsp;&nbsp;|&nbsp;&nbsp;
                                       Unsubscribe
                                     </unsubscribe>
@@ -761,8 +937,8 @@ color: #7D7D7D;">Subscription
                             <tr>
                               <td style=";" data-f24-editable="" data-f24-display-name="Editable TD b2b7cd69-6572-4f4d-8b02-ba4ec36c1ba0" data-f24-id="2022ff93-a1b5-46ea-8a17-6d6c3530e232">
                                 <div style="letter-spacing: 600px;
-line-height: 0;
-mso-hide: all;" class="hidethis">
+	line-height: 0;
+	mso-hide: all;" class="hidethis">
                                   &nbsp;
                                 </div>
                               </td>
@@ -770,12 +946,12 @@ mso-hide: all;" class="hidethis">
                             <tr>
                               <td style=";" data-f24-editable="" data-f24-display-name="Editable TD 73f8e91f-4871-45c7-b4dc-c8291d8e75a6" data-f24-no-edit="text" data-f24-id="13324225-802f-4372-8821-46b53f108c25">
                                 <spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">&nbsp;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">&nbsp;
                                 </spambotdetection>
                               </td>
                             </tr>
