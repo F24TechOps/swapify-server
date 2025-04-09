@@ -13,214 +13,381 @@
 	</title>
 	
 <style type="text/css">table {
-border-spacing: 0 !important;
-border-collapse: collapse !important;
+	border-spacing: 0 !important;
+	border-collapse: collapse !important;
 }
 
 img {
-display: block !important;
+	display: block !important;
 }
 
 table td {
-border-collapse: collapse !important;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+	border-collapse: collapse !important;
 }
 
 html, body {
-line-height: 1;
-margin: 0 !important;
-padding: 0 !important;
-text-size-adjust: none !important;
+	line-height: 1;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-size-adjust: none !important;
 }
 
 .invisible-preheader {
-width: 0 !important;
-height: 0 !important;
-font-size: 0 !important;
-line-height: 0 !important;
-display: none !important;
-color: #E8E8E8 !important;
+	width: 0 !important;
+	height: 0 !important;
+	font-size: 0 !important;
+	line-height: 0 !important;
+	display: none !important;
+	color: #E8E8E8 !important;
 }
 
 @media screen and (max-width: 600px) { 
-.mobile-center {
-	margin: 0 auto !important;
-}
+	.lh0 {
+		line-height: 0 !important;
+	}
 
-.pr5 {
-	padding-right: 5px !important;
-}
+	.lh10 {
+		line-height: 10px !important;
+	}
 
-.pl5 {
-	padding-left: 5px !important;
-}
+	.float-textright {
+		float: right !important;
+	}
 
-.hidethis {
-	width: 0 !important;
-	display: none !important;
-}
+	.float-textleft {
+		float: left !important;
+	}
 
-.max-width {
-	width: 100% !important;
-}
+	.float-textcenter {
+		float: none !important;
+	}
 
-.displayblock {
-	display: block !important;
-}
+	.button-alignment-parent {
+		display: inline-block;
+		width: 100%;
+	}
 
-.width90pc {
-	width: 90% !important;
-	margin: 0 auto !important;
-}
+	.pl0 {
+		display: block !important;
+		padding-left: 0 !important;
+	}
 
-.imgfull {
-	width: 100% !important;
-	height: auto !important;
-}
+	.pr0 {
+		display: block !important;
+		padding-right: 0 !important;
+	}
 
-.imgmax {
-	max-width: 100% !important;
-	height: auto !important;
-}
+	.pl10 {
+		display: block !important;
+		padding-left: 10px !important;
+	}
 
-.td10 {
-	height: 10px !important;
-}
+	.pr10 {
+		display: block !important;
+		padding-right: 10px !important;
+	}
 
-.td20 {
-	height: 20px !important;
-}
+	.pl15 {
+		display: block !important;
+		padding-left: 15px !important;
+	}
 
-.td30 {
-	height: 30px !important;
-}
+	.pr15 {
+		display: block !important;
+		padding-right: 15px !important;
+	}
 
-.mt10 {
-	display: block !important;
-	margin-top: 10px !important;
-}
+	.pl20 {
+		display: block !important;
+		padding-left: 20px !important;
+	}
 
-.mt15 {
-	display: block !important;
-	margin-top: 15px !important;
-}
+	.pr20 {
+		display: block !important;
+		padding-right: 20px !important;
+	}
 
-.mt20 {
-	display: block !important;
-	margin-top: 20px !important;
-}
+	.ml0 {
+		display: block !important;
+		margin-left: 0 !important;
+	}
 
-.mb10 {
-	display: block !important;
-	margin-bottom: 10px !important;
-}
+	.mr0 {
+		display: block !important;
+		margin-right: 0 !important;
+	}
 
-.mb15 {
-	display: block !important;
-	margin-bottom: 15px !important;
-}
+	.ml10 {
+		display: block !important;
+		margin-left: 10px !important;
+	}
 
-.mb20 {
-	display: block !important;
-	margin-bottom: 20px !important;
-}
+	.mr10 {
+		display: block !important;
+		margin-right: 10px !important;
+	}
 
-.pt0 {
-	display: block !important;
-	padding-top: 0 !important;
-}
+	.ml15 {
+		display: block !important;
+		margin-left: 15px !important;
+	}
 
-.pt10 {
-	display: block !important;
-	padding-top: 10px !important;
-}
+	.mr15 {
+		display: block !important;
+		margin-right: 15px !important;
+	}
 
-.pt15 {
-	display: block !important;
-	padding-top: 15px !important;
-}
+	.ml20 {
+		display: block !important;
+		margin-left: 20px !important;
+	}
 
-.pt20 {
-	display: block !important;
-	padding-top: 20px !important;
-}
+	.mr20 {
+		display: block !important;
+		margin-right: 20px !important;
+	}
 
-.pb0 {
-	display: block !important;
-	padding-bottom: 0 !important;
-}
+	.fs6 {
+		font-size: 6px !important;
+	}
 
-.pb10 {
-	display: block !important;
-	padding-bottom: 10px !important;
-}
+	.fs7 {
+		font-size: 7px !important;
+	}
 
-.pb15 {
-	display: block !important;
-	padding-bottom: 15px !important;
-}
+	.fs8 {
+		font-size: 8px !important;
+	}
 
-.pb20 {
-	display: block !important;
-	padding-bottom: 20px !important;
-}
+	.fs9 {
+		font-size: 9px !important;
+	}
 
-.padding-zero {
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-}
+	.fs10 {
+		font-size: 10px !important;
+	}
 
-.textcenter {
-	text-align: center !important;
-}
+	.fs11 {
+		font-size: 11px !important;
+	}
 
-.textleft {
-	text-align: left !important;
-}
+	.fs12 {
+		font-size: 12px !important;
+	}
 
-.textright {
-	text-align: right !important;
-}
+	.fs13 {
+		font-size: 13px !important;
+	}
 
-.fsz20 {
-	font-size: 20px !important;
-}
+	.fs14 {
+		font-size: 14px !important;
+	}
 
-.fsz25 {
-	font-size: 25px !important;
-}
+	.fs15 {
+		font-size: 15px !important;
+	}
 
-.fsz30 {
-	font-size: 30px !important;
-}
+	.fs16 {
+		font-size: 16px !important;
+	}
 
-.lh20 {
-	line-height: 20px !important;
-}
+	.fs17 {
+		font-size: 17px !important;
+	}
 
-.lh30 {
-	line-height: 30px !important;
-}
+	.fs18 {
+		font-size: 18px !important;
+	}
 
-.lh40 {
-	line-height: 40px !important;
-}
+	.fs19 {
+		font-size: 19px !important;
+	}
 
-.bgffffff {
-	background-color: #FFFFFF !important;
-}
+	.fs20 {
+		font-size: 20px !important;
+	}
 
-.bg000000 {
-	background-color: #000000 !important;
-}
+	.mobile-center {
+		margin: 0 auto !important;
+	}
 
-.cover {
-	background-size: cover !important;
-}
+	.pr5 {
+		padding-right: 5px !important;
+	}
+
+	.pl5 {
+		padding-left: 5px !important;
+	}
+
+	.hidethis {
+		width: 0 !important;
+		display: none !important;
+	}
+
+	.max-width {
+		width: 100% !important;
+	}
+
+	.displayblock {
+		display: block !important;
+	}
+
+	.width90pc {
+		width: 90% !important;
+		margin: 0 auto !important;
+	}
+
+	.imgfull {
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	.imgmax {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.td10 {
+		height: 10px !important;
+	}
+
+	.td20 {
+		height: 20px !important;
+	}
+
+	.td30 {
+		height: 30px !important;
+	}
+
+	.mt10 {
+		display: block !important;
+		margin-top: 10px !important;
+	}
+
+	.mt15 {
+		display: block !important;
+		margin-top: 15px !important;
+	}
+
+	.mt20 {
+		display: block !important;
+		margin-top: 20px !important;
+	}
+
+	.mb10 {
+		display: block !important;
+		margin-bottom: 10px !important;
+	}
+
+	.mb15 {
+		display: block !important;
+		margin-bottom: 15px !important;
+	}
+
+	.mb20 {
+		display: block !important;
+		margin-bottom: 20px !important;
+	}
+
+	.pt0 {
+		display: block !important;
+		padding-top: 0 !important;
+	}
+
+	.pt10 {
+		display: block !important;
+		padding-top: 10px !important;
+	}
+
+	.pt15 {
+		display: block !important;
+		padding-top: 15px !important;
+	}
+
+	.pt20 {
+		display: block !important;
+		padding-top: 20px !important;
+	}
+
+	.pb0 {
+		display: block !important;
+		padding-bottom: 0 !important;
+	}
+
+	.pb10 {
+		display: block !important;
+		padding-bottom: 10px !important;
+	}
+
+	.pb15 {
+		display: block !important;
+		padding-bottom: 15px !important;
+	}
+
+	.pb20 {
+		display: block !important;
+		padding-bottom: 20px !important;
+	}
+
+	.padding-zero {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.textcenter {
+		text-align: center !important;
+	}
+
+	.textleft {
+		text-align: left !important;
+	}
+
+	.textright {
+		text-align: right !important;
+	}
+
+	.fsz20 {
+		font-size: 20px !important;
+	}
+
+	.fsz25 {
+		font-size: 25px !important;
+	}
+
+	.fsz30 {
+		font-size: 30px !important;
+	}
+
+	.lh20 {
+		line-height: 20px !important;
+	}
+
+	.lh30 {
+		line-height: 30px !important;
+	}
+
+	.lh40 {
+		line-height: 40px !important;
+	}
+
+	.bgffffff {
+		background-color: #FFFFFF !important;
+	}
+
+	.bg000000 {
+		background-color: #000000 !important;
+	}
+
+	.cover {
+		background-size: cover !important;
+	}
 }</style>
 </head>
 <body yahoo="fix" style="font-size: 13px;
-text-size-adjust: none;
-line-height: 1;" align="center">
+	text-size-adjust: none;
+	line-height: 1;" align="center">
 	<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table 381f902e-32f2-44b0-b429-1d021faecb05" data-f24-id="1f5a90d3-e2f6-493f-abcc-e67e44aff750">
 		<tr>
 			<td align="center" style=";" data-f24-display-name="Editable TD 93f15744-1007-460b-a8ce-cd5836f37f76" data-f24-no-edit="text" data-f24-id="d7775f48-b425-4d50-81b3-e72ec6ecee09">
@@ -230,23 +397,23 @@ line-height: 1;" align="center">
 							<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table e57243ed-3d69-4adc-92d7-465b626a2ba8" data-f24-id="b00db839-2eba-46e2-bdb0-bc8d5bcafad7">
 								<tr>
 									<td align="center" class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
 										<span class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Nurture Campaign</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">.</spambotdetection>
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Nurture Campaign</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">.</spambotdetection>
 									 
 									</td>
 								</tr>
@@ -256,8 +423,8 @@ text-decoration: none;">.</spambotdetection>
 					<tr>
 						<td align="center" style=";" data-f24-editable="" data-f24-display-name="Editable TD 83662742-02a0-4460-8f93-b366bfeb0aaf" data-f24-no-edit="text" data-f24-id="599bb839-d186-47eb-b698-3df78215cc1b">
 							<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="f24-layout-mode-editable" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 3bb902ef-0d7f-4773-9732-4f3dd004570e" data-f24-id="9d2dc88e-a9d0-4ef0-a4bb-4ccfcb5461f8"><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 			<td align="center" data-f24-editable="" data-f24-no-edit="text" data-f24-id="68e0a254-7ede-4aa7-b76a-205aba95ac0b" style=";">
 				<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="48a72046-a15f-4518-9685-60f80aaeadba">
 					<tr>
@@ -265,14 +432,14 @@ transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 							<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 								<tr data-f24-layout-column-reorder="">
 									<td align="center" valign="top" class="padding-zero displayblock pb20" data-f24-editable="" data-f24-no-edit="text" data-f24-id="4e7a4b12-b816-4804-9c4f-e6295c14462f" style="padding: 60px 72px;
-background-color: rgb(34, 30, 30);">
+	background-color: #221E1E;">
 										<table width="456" style="width:456px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width padding-zero">
 											<tr>
 												<td align="center" style=";">
 													<a href="#" style="display: block;
-width: 250px;
-height: 23px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_2_1" data-f24-no-edit="text" data-f24-id="b68e6c4d-6083-4e54-a64b-f6327ef6580a" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
-														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/815660aa/images/1712575426-3693fdeb.png?v=133825523640680588" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="32bcd044-5856-4678-8062-335e009f8f36" data-original-src="images/1712575426-3693fdeb.png">
+	width: 250px;
+	height: 23px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_2_1" data-f24-no-edit="text" data-f24-id="b68e6c4d-6083-4e54-a64b-f6327ef6580a" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
+														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/050512f1/images/imagelink1.png?v=133880788640546855" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="32bcd044-5856-4678-8062-335e009f8f36" data-original-src="images/imagelink1.png">
 													</a>
 												</td>
 											</tr>
@@ -291,20 +458,20 @@ height: 23px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
 						<td align="center" style=";">
 							<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 								<tr data-f24-layout-column-reorder="">
-									<td align="center" valign="top" class="padding-zero pt10 pb10 displayblock" data-f24-editable="" data-f24-no-edit="text" data-f24-id="bb997794-f494-4137-9e9c-870668bf1e88" style="background-color: rgb(34, 30, 30);">
+									<td align="center" valign="top" class="padding-zero pt10 pb10 displayblock" data-f24-editable="" data-f24-no-edit="text" data-f24-id="bb997794-f494-4137-9e9c-870668bf1e88" style="background-color: #221E1E;">
 										<table width="600" style="width:600px;border-width:0px;margin-left:auto;margin-right:auto" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc padding-zero">
 											<!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' --><tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="max-width padding-zero"><td data-f24-editable="" data-f24-display-name="Text_2" style="padding: 15px 60px 0;" align="center" class="ng-scope padding-zero" data-f24-id="675cb450-f95e-4d89-8da5-3cf9263ada40"><div data-f24-editable-style-wrapper="" class="max-width" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #000000;
-font-family: arial, helvetica, sans-serif;"><div>
+	font-size: 16px;
+	text-align: left;
+	color: #000000;
+	font-family: arial, helvetica, sans-serif;"><div>
 <div style="text-align: center;"><strong><span style="color: #07BE00;">ADD A CATCHY PHRASE HERE</span></strong></div>
 <div style="text-align: center;">&nbsp;</div>
-<div style="text-align: center;"><span style="font-size: 44px;"><span style="color: rgb(201, 255, 247);">Introduce your value add here!</span></span></div>
+<div style="text-align: center;"><span style="font-size: 44px;"><span style="color: #C9FFF7;">Introduce your value add here!</span></span></div>
 <div style="text-align: center;">&nbsp;</div>
-<div style="text-align: center;"><span style="color: rgb(201, 255, 247);">In a nurture campaign, it's important to lead with value first. In the main body text, show your contact what's in it for them. Make it a no-brainer to perform the CTA, whether that's downloading a paper, registering for an event or attending a webinar.</span></div>
+<div style="text-align: center;"><span style="color: #C9FFF7;">In a nurture campaign, it's important to lead with value first. In the main body text, show your contact what's in it for them. Make it a no-brainer to perform the CTA, whether that's downloading a paper, registering for an event or attending a webinar.</span></div>
 <div style="text-align: center;">&nbsp;</div>
-<div style="text-align: center;"><span style="color: rgb(201, 255, 247);">Click <span style="color: #07BE00;"><a style="color: #07BE00;" href="https://www.force24.co.uk" data-f24-url-params-processing-stage="prep">here</a></span> to take a look at our best practice nurture sequence guide.</span></div>
+<div style="text-align: center;"><span style="color: #C9FFF7;">Click <span style="color: #07BE00;"><a style="color: #07BE00;" href="https://www.force24.co.uk" data-f24-url-params-processing-stage="prep">here</a></span> to take a look at our best practice nurture sequence guide.</span></div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;">
 <table class="mceNonEditable" style="border-collapse:separate !important;margin:0 auto;border-width:0px" border="0" cellspacing="0" cellpadding="0" align="Center" data-f24-editor-cta-button="">
@@ -314,16 +481,16 @@ font-family: arial, helvetica, sans-serif;"><div>
 <table style="border-collapse:separate !important;margin:0 auto;border-width:0px" border="0" cellspacing="0" cellpadding="0" align="Center">
 
 <tr>
-<td class="mceNonEditable" style="padding:10px 24px;border-radius:20px;background-color:rgb(201, 255, 247);" align="center" bgcolor="rgb(201, 255, 247)" data-f24-editor-cta-button-td=""><a class="button ng-binding" style="display: block;
-text-decoration: none;
-text-align: center;
-font-weight: normal;
-font-size: 14px;
-font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
-color: rgb(34, 30, 30);
-border-radius: 20px;
-line-height: 1.2;
-font-style: normal;" href="#" name="CTA_1712576623443" data-f24-editable="" data-f24-id="d6688310-d1a8-4a69-b330-98ac33956ed0" data-f24-display-name="CTA_1712576623443" data-f24-url-params-processing-stage="prep">Give me value</a></td>
+<td class="mceNonEditable" style="padding:10px 24px;border-radius:20px;background-color:rgb(201, 255, 247)" align="center" bgcolor="rgb(201, 255, 247)" data-f24-editor-cta-button-td=""><a class="button ng-binding" style="display: block;
+	text-decoration: none;
+	text-align: center;
+	font-weight: normal;
+	font-size: 14px;
+	font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
+	color: #221E1E;
+	border-radius: 20px;
+	line-height: 1.2;
+	font-style: normal;" href="#" name="CTA_1712576623443" data-f24-editable="" data-f24-id="d6688310-d1a8-4a69-b330-98ac33956ed0" data-f24-display-name="CTA_1712576623443" data-f24-url-params-processing-stage="prep">Give me value</a></td>
 </tr>
 
 </table>
@@ -333,7 +500,7 @@ font-style: normal;" href="#" name="CTA_1712576623443" data-f24-editable="" data
 </table>
 </div>
 <div style="text-align: center;">&nbsp;</div>
-<div style="text-align: center;"><span style="color: rgb(201, 255, 247);"><strong>Top tip</strong>: Use this email within our 'Nurture sequence' journey template via the Journey manager.</span></div>
+<div style="text-align: center;"><span style="color: #C9FFF7;"><strong>Top tip</strong>: Use this email within our 'Nurture sequence' journey template via the Journey manager.</span></div>
 </div></div></td></tr>
 										</table>
 									</td>
@@ -354,9 +521,8 @@ font-style: normal;" href="#" name="CTA_1712576623443" data-f24-editable="" data
 										<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 											<tr>
 												<td align="center" style=";">
-													<a style="display: block;
-width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1" data-f24-no-edit="text" data-f24-id="33d75bd8-3895-4520-8de4-fbac94e36c99" alt="" data-f24-no-link="true" data-f24-url-params-processing-stage="prep">
-														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/fe198f8f/images/1732291238-2c404b6a.png?v=133825506695050767" width="600" alt="Email Marketing Playbook" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="33a7316e-2f2b-49bd-ac06-67a3a972d06d" data-original-src="images/1712574767-b4b659c0.png">
+													<a style="display: block; width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1" data-f24-no-edit="text" data-f24-id="33d75bd8-3895-4520-8de4-fbac94e36c99" alt="" data-f24-no-link="true" data-f24-url-params-processing-stage="prep">
+														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/050512f1/images/1743605252-59257f60.jpg?v=133880788640546855" width="600" alt="Email Marketing Playbook" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="33a7316e-2f2b-49bd-ac06-67a3a972d06d" data-original-src="images/1743605252-59257f60.jpg">
 													</a>
 												</td>
 											</tr>
@@ -369,11 +535,11 @@ width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
 				</table>
 			</td>
 		</tr><tr class="hover" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
+	backface-visibility: hidden;
+	transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
 									<td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 0;
-padding-bottom: 0;
-background-color: #FFFFFF;" data-f24-id="3b97393f-91e0-4157-875a-cc53a193e9c2">
+	padding-bottom: 0;
+	background-color: #FFFFFF;" data-f24-id="3b97393f-91e0-4157-875a-cc53a193e9c2">
 										<table width="600" style="width:600px;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="a4784782-7744-4b84-af87-447fce6c995f">
 											
 												<tr>
@@ -382,44 +548,44 @@ background-color: #FFFFFF;" data-f24-id="3b97393f-91e0-4157-875a-cc53a193e9c2">
 															
 																<tr data-f24-layout-column-reorder="">
 																	<td align="center" valign="top" class="padding-zero displayblock" style="width: auto;
-padding: 20px 0 5px;">
+	padding: 20px 0 5px;">
 																		<table width="560" style="width:560px;table-layout:fixed;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 																			
 																				<tr>
 																					<td align="center" data-f24-editable="" data-f24-display-name="Text_1_1_1_1" data-f24-id="54594b10-f579-4a28-b404-9b490014b6ee" style=";"><div data-f24-editable-style-wrapper="" class="width90pc" style="text-align: left;
-line-height: 1.4;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 12px;
-color: #000000;
-margin-left: auto;
-margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
+	line-height: 1.4;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;</span></div>
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;</span></div>
 <div style="text-align: center;">
 <div class="width90pc" style="text-align: left;
-font-family: Arial, Helvetica, sans-serif;
-color: #000000;
-margin-left: auto;
-margin-right: auto;" data-f24-editable-style-wrapper="">
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;" data-f24-editable-style-wrapper="">
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="color: #7D7D7D;">All rights reserved.</span><br><br><span style="color: #7D7D7D;">This email is sent by <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
+	font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
 <div style="text-align: center;
-font-size: 12px;
-line-height: 1.5;">&nbsp;</div>
+	font-size: 12px;
+	line-height: 1.5;">&nbsp;</div>
 <div style="text-align: center;">
 <div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-line-height: 1.5;
-color: rgb(34, 30, 30);"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
+	font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
+	font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #221E1E;"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
 </div>
 </div>
 </div></div></td>
@@ -470,17 +636,17 @@ color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
 													<table width="540" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" style="border:0;width:540px;margin-left:auto;margin-right:auto;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 49d38dc1-6b08-4bde-9b87-87fd4dea9f8d" data-f24-id="c7329a3a-4b2d-413b-b741-dd955d76fd25">
 														<tr>
 															<td align="center" style="font-size: 12px;
-color: #9D9D9D;
-line-height: 1.3;
-padding-top: 10px;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
+	color: #9D9D9D;
+	line-height: 1.3;
+	padding-top: 10px;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
 																<div>
 																	<span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-line-height: 1.3;
-color: rgb(34, 30, 30);
-text-align: center;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable Span a9485556-5b56-4eb1-908b-326f7b9aca18" data-f24-id="e928054f-c500-4f6d-916d-4f2d937c0f7a"><a href="[nonTrackingLink]" style="text-decoration: none;
-color: #000000;">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
-color: #000000;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp;Unsubscribe</unsubscribe>
+	font-size: 12px;
+	line-height: 1.3;
+	color: #221E1E;
+	text-align: center;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable Span a9485556-5b56-4eb1-908b-326f7b9aca18" data-f24-id="e928054f-c500-4f6d-916d-4f2d937c0f7a"><a href="[nonTrackingLink]" style="text-decoration: none;
+	color: #000000;">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
+	color: #000000;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp;Unsubscribe</unsubscribe>
 																</span>
 																</div>
 			 
@@ -496,20 +662,20 @@ color: #000000;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp;Unsubscribe</u
 											<tr>
 												<td style=";" data-f24-editable="" data-f24-display-name="Editable TD b2b7cd69-6572-4f4d-8b02-ba4ec36c1ba0" data-f24-id="2022ff93-a1b5-46ea-8a17-6d6c3530e232">
 													<div style="letter-spacing: 600px;
-line-height: 0;
-mso-hide: all;" class="hidethis">&nbsp;
+	line-height: 0;
+	mso-hide: all;" class="hidethis">&nbsp;
 													</div>
 												</td>
 											</tr>
 											<tr>
 												<td style=";" data-f24-editable="" data-f24-display-name="Editable TD 73f8e91f-4871-45c7-b4dc-c8291d8e75a6" data-f24-no-edit="text" data-f24-id="13324225-802f-4372-8821-46b53f108c25">
 													<spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">&nbsp;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">&nbsp;
 													</spambotdetection>
 												</td>
 											</tr>

@@ -13,214 +13,381 @@
 	</title>
  
 <style type="text/css">table {
-border-spacing: 0 !important;
-border-collapse: collapse !important;
+	border-spacing: 0 !important;
+	border-collapse: collapse !important;
 }
 
 img {
-display: block !important;
+	display: block !important;
 }
 
 table td {
-border-collapse: collapse !important;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+	border-collapse: collapse !important;
 }
 
 html, body {
-line-height: 1;
-margin: 0 !important;
-padding: 0 !important;
-text-size-adjust: none !important;
+	line-height: 1;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-size-adjust: none !important;
 }
 
 .invisible-preheader {
-width: 0 !important;
-height: 0 !important;
-font-size: 0 !important;
-line-height: 0 !important;
-display: none !important;
-color: #E8E8E8 !important;
+	width: 0 !important;
+	height: 0 !important;
+	font-size: 0 !important;
+	line-height: 0 !important;
+	display: none !important;
+	color: #E8E8E8 !important;
 }
 
 @media screen and (max-width: 600px) { 
-.mobile-center {
-	margin: 0 auto !important;
-}
+	.lh0 {
+		line-height: 0 !important;
+	}
 
-.pr5 {
-	padding-right: 5px !important;
-}
+	.lh10 {
+		line-height: 10px !important;
+	}
 
-.pl5 {
-	padding-left: 5px !important;
-}
+	.float-textright {
+		float: right !important;
+	}
 
-.hidethis {
-	width: 0 !important;
-	display: none !important;
-}
+	.float-textleft {
+		float: left !important;
+	}
 
-.max-width {
-	width: 100% !important;
-}
+	.float-textcenter {
+		float: none !important;
+	}
 
-.displayblock {
-	display: block !important;
-}
+	.button-alignment-parent {
+		display: inline-block;
+		width: 100%;
+	}
 
-.width90pc {
-	width: 90% !important;
-	margin: 0 auto !important;
-}
+	.pl0 {
+		display: block !important;
+		padding-left: 0 !important;
+	}
 
-.imgfull {
-	width: 100% !important;
-	height: auto !important;
-}
+	.pr0 {
+		display: block !important;
+		padding-right: 0 !important;
+	}
 
-.imgmax {
-	max-width: 100% !important;
-	height: auto !important;
-}
+	.pl10 {
+		display: block !important;
+		padding-left: 10px !important;
+	}
 
-.td10 {
-	height: 10px !important;
-}
+	.pr10 {
+		display: block !important;
+		padding-right: 10px !important;
+	}
 
-.td20 {
-	height: 20px !important;
-}
+	.pl15 {
+		display: block !important;
+		padding-left: 15px !important;
+	}
 
-.td30 {
-	height: 30px !important;
-}
+	.pr15 {
+		display: block !important;
+		padding-right: 15px !important;
+	}
 
-.mt10 {
-	display: block !important;
-	margin-top: 10px !important;
-}
+	.pl20 {
+		display: block !important;
+		padding-left: 20px !important;
+	}
 
-.mt15 {
-	display: block !important;
-	margin-top: 15px !important;
-}
+	.pr20 {
+		display: block !important;
+		padding-right: 20px !important;
+	}
 
-.mt20 {
-	display: block !important;
-	margin-top: 20px !important;
-}
+	.ml0 {
+		display: block !important;
+		margin-left: 0 !important;
+	}
 
-.mb10 {
-	display: block !important;
-	margin-bottom: 10px !important;
-}
+	.mr0 {
+		display: block !important;
+		margin-right: 0 !important;
+	}
 
-.mb15 {
-	display: block !important;
-	margin-bottom: 15px !important;
-}
+	.ml10 {
+		display: block !important;
+		margin-left: 10px !important;
+	}
 
-.mb20 {
-	display: block !important;
-	margin-bottom: 20px !important;
-}
+	.mr10 {
+		display: block !important;
+		margin-right: 10px !important;
+	}
 
-.pt0 {
-	display: block !important;
-	padding-top: 0 !important;
-}
+	.ml15 {
+		display: block !important;
+		margin-left: 15px !important;
+	}
 
-.pt10 {
-	display: block !important;
-	padding-top: 10px !important;
-}
+	.mr15 {
+		display: block !important;
+		margin-right: 15px !important;
+	}
 
-.pt15 {
-	display: block !important;
-	padding-top: 15px !important;
-}
+	.ml20 {
+		display: block !important;
+		margin-left: 20px !important;
+	}
 
-.pt20 {
-	display: block !important;
-	padding-top: 20px !important;
-}
+	.mr20 {
+		display: block !important;
+		margin-right: 20px !important;
+	}
 
-.pb0 {
-	display: block !important;
-	padding-bottom: 0 !important;
-}
+	.fs6 {
+		font-size: 6px !important;
+	}
 
-.pb10 {
-	display: block !important;
-	padding-bottom: 10px !important;
-}
+	.fs7 {
+		font-size: 7px !important;
+	}
 
-.pb15 {
-	display: block !important;
-	padding-bottom: 15px !important;
-}
+	.fs8 {
+		font-size: 8px !important;
+	}
 
-.pb20 {
-	display: block !important;
-	padding-bottom: 20px !important;
-}
+	.fs9 {
+		font-size: 9px !important;
+	}
 
-.padding-zero {
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-}
+	.fs10 {
+		font-size: 10px !important;
+	}
 
-.textcenter {
-	text-align: center !important;
-}
+	.fs11 {
+		font-size: 11px !important;
+	}
 
-.textleft {
-	text-align: left !important;
-}
+	.fs12 {
+		font-size: 12px !important;
+	}
 
-.textright {
-	text-align: right !important;
-}
+	.fs13 {
+		font-size: 13px !important;
+	}
 
-.fsz20 {
-	font-size: 20px !important;
-}
+	.fs14 {
+		font-size: 14px !important;
+	}
 
-.fsz25 {
-	font-size: 25px !important;
-}
+	.fs15 {
+		font-size: 15px !important;
+	}
 
-.fsz30 {
-	font-size: 30px !important;
-}
+	.fs16 {
+		font-size: 16px !important;
+	}
 
-.lh20 {
-	line-height: 20px !important;
-}
+	.fs17 {
+		font-size: 17px !important;
+	}
 
-.lh30 {
-	line-height: 30px !important;
-}
+	.fs18 {
+		font-size: 18px !important;
+	}
 
-.lh40 {
-	line-height: 40px !important;
-}
+	.fs19 {
+		font-size: 19px !important;
+	}
 
-.bgffffff {
-	background-color: #FFFFFF !important;
-}
+	.fs20 {
+		font-size: 20px !important;
+	}
 
-.bg000000 {
-	background-color: #000000 !important;
-}
+	.mobile-center {
+		margin: 0 auto !important;
+	}
 
-.cover {
-	background-size: cover !important;
-}
+	.pr5 {
+		padding-right: 5px !important;
+	}
+
+	.pl5 {
+		padding-left: 5px !important;
+	}
+
+	.hidethis {
+		width: 0 !important;
+		display: none !important;
+	}
+
+	.max-width {
+		width: 100% !important;
+	}
+
+	.displayblock {
+		display: block !important;
+	}
+
+	.width90pc {
+		width: 90% !important;
+		margin: 0 auto !important;
+	}
+
+	.imgfull {
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	.imgmax {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.td10 {
+		height: 10px !important;
+	}
+
+	.td20 {
+		height: 20px !important;
+	}
+
+	.td30 {
+		height: 30px !important;
+	}
+
+	.mt10 {
+		display: block !important;
+		margin-top: 10px !important;
+	}
+
+	.mt15 {
+		display: block !important;
+		margin-top: 15px !important;
+	}
+
+	.mt20 {
+		display: block !important;
+		margin-top: 20px !important;
+	}
+
+	.mb10 {
+		display: block !important;
+		margin-bottom: 10px !important;
+	}
+
+	.mb15 {
+		display: block !important;
+		margin-bottom: 15px !important;
+	}
+
+	.mb20 {
+		display: block !important;
+		margin-bottom: 20px !important;
+	}
+
+	.pt0 {
+		display: block !important;
+		padding-top: 0 !important;
+	}
+
+	.pt10 {
+		display: block !important;
+		padding-top: 10px !important;
+	}
+
+	.pt15 {
+		display: block !important;
+		padding-top: 15px !important;
+	}
+
+	.pt20 {
+		display: block !important;
+		padding-top: 20px !important;
+	}
+
+	.pb0 {
+		display: block !important;
+		padding-bottom: 0 !important;
+	}
+
+	.pb10 {
+		display: block !important;
+		padding-bottom: 10px !important;
+	}
+
+	.pb15 {
+		display: block !important;
+		padding-bottom: 15px !important;
+	}
+
+	.pb20 {
+		display: block !important;
+		padding-bottom: 20px !important;
+	}
+
+	.padding-zero {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.textcenter {
+		text-align: center !important;
+	}
+
+	.textleft {
+		text-align: left !important;
+	}
+
+	.textright {
+		text-align: right !important;
+	}
+
+	.fsz20 {
+		font-size: 20px !important;
+	}
+
+	.fsz25 {
+		font-size: 25px !important;
+	}
+
+	.fsz30 {
+		font-size: 30px !important;
+	}
+
+	.lh20 {
+		line-height: 20px !important;
+	}
+
+	.lh30 {
+		line-height: 30px !important;
+	}
+
+	.lh40 {
+		line-height: 40px !important;
+	}
+
+	.bgffffff {
+		background-color: #FFFFFF !important;
+	}
+
+	.bg000000 {
+		background-color: #000000 !important;
+	}
+
+	.cover {
+		background-size: cover !important;
+	}
 }</style>
 </head>
 <body yahoo="fix" style="font-size: 13px;
-text-size-adjust: none;
-line-height: 1;" align="center">
+	text-size-adjust: none;
+	line-height: 1;" align="center">
 	<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table 381f902e-32f2-44b0-b429-1d021faecb05" data-f24-id="1f5a90d3-e2f6-493f-abcc-e67e44aff750">
 		<tr>
 			<td align="center" style=";" data-f24-display-name="Editable TD 93f15744-1007-460b-a8ce-cd5836f37f76" data-f24-no-edit="text" data-f24-id="d7775f48-b425-4d50-81b3-e72ec6ecee09">
@@ -230,23 +397,23 @@ line-height: 1;" align="center">
 							<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-display-name="Editable Table e57243ed-3d69-4adc-92d7-465b626a2ba8" data-f24-id="b00db839-2eba-46e2-bdb0-bc8d5bcafad7">
 								<tr>
 									<td align="center" class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Editable TD 5df2f78d-21d8-4aae-810d-973b1bc998a3" data-f24-no-edit="text" data-f24-id="66532e25-6ce3-47c1-b35d-a27e3c9260da">
 										<span class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Confirmation email</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">.</spambotdetection>
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;" data-f24-editable="" data-f24-display-name="Preheader" data-f24-id="5acd9c8e-d915-497f-b030-ca934e36600e"><div>Confirmation email</div></span><spambotdetection class="invisible-preheader" style="font-size: 0;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">.</spambotdetection>
 									   
 									</td>
 								</tr>
@@ -256,8 +423,8 @@ text-decoration: none;">.</spambotdetection>
 					<tr>
 						<td align="center" style=";" data-f24-editable="" data-f24-display-name="Editable TD 83662742-02a0-4460-8f93-b366bfeb0aaf" data-f24-no-edit="text" data-f24-id="599bb839-d186-47eb-b698-3df78215cc1b">
 							<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="f24-layout-mode-editable" style="border:0;width:100%;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 3bb902ef-0d7f-4773-9732-4f3dd004570e" data-f24-id="9d2dc88e-a9d0-4ef0-a4bb-4ccfcb5461f8"><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 			<td align="center" data-f24-editable="" data-f24-no-edit="text" style=";" data-f24-id="a2045961-27e0-42af-84a4-d559538f346a">
 				<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="2831385d-3625-4998-a4c4-90c8b23a48a2">
 					<tr>
@@ -265,14 +432,14 @@ transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 							<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 								<tr data-f24-layout-column-reorder="">
 									<td align="center" valign="top" class="padding-zero displayblock" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 50px;
-padding-bottom: 50px;
-background-color: rgb(201, 255, 247);" data-f24-id="25e2dee5-512b-4929-bc1a-cd6908bc23d7">
+	padding-bottom: 50px;
+	background-color: #C9FFF7;" data-f24-id="25e2dee5-512b-4929-bc1a-cd6908bc23d7">
 										<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 											<tr>
 												<td align="center" style=";">
 													<a href="#" style="display: block;
-width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1_2_1" data-f24-no-edit="text" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep" data-f24-id="01b23277-10f8-4b0d-a59f-d4cb5c08d9d6">
-														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/815660aa/images/1712575426-3693fdeb.png?v=133825523640680588" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="3b9b7b42-b64f-4b3d-862d-d69748f3b7bd" data-original-src="images/1712575426-3693fdeb.png">
+	width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_1_2_1" data-f24-no-edit="text" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep" data-f24-id="01b23277-10f8-4b0d-a59f-d4cb5c08d9d6">
+														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/8e371271/images/imagelink1.png?v=133880758098696868" width="140" alt="Image" style="display:block;width:140px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_1_2_1" data-f24-src-source-type="file" class="imgmax" data-f24-id="3b9b7b42-b64f-4b3d-862d-d69748f3b7bd" data-original-src="images/imagelink1.png">
 													</a>
 												</td>
 											</tr>
@@ -294,16 +461,16 @@ width: 140px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
 									<td align="center" valign="top" class="padding-zero displayblock" data-f24-editable="" data-f24-no-edit="text" data-f24-id="6d9dff19-00c8-46ac-949b-f8e8785d3f48" style=";">
 										<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 											<!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' --><tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope"><td data-f24-editable="" data-f24-display-name="Text_1" style="padding-left: 70px;
-padding-right: 70px;
-background-color: rgb(201, 255, 247);
-padding-bottom: 40px;" align="center" class="ng-scope  padding-zero" data-f24-id="eaff673a-a89c-48da-8986-cda81846a308"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #000000;
-font-family: arial, helvetica, sans-serif;
-margin-left: auto;
-margin-right: auto;"><div style="text-align: center;"><span style="font-size: 14px;"><strong><span style="color: #07BE00;"><span style="text-transform: uppercase;">Confirmation email</span> - WE WILL SEE YOU THERE</span><br><br></strong><span style="font-size: 42px;
-color: rgb(34, 30, 30);">Thank you for signing up!</span><strong><br></strong></span></div></div></td></tr>
+	padding-right: 70px;
+	background-color: #C9FFF7;
+	padding-bottom: 40px;" align="center" class="ng-scope  padding-zero" data-f24-id="eaff673a-a89c-48da-8986-cda81846a308"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
+	font-size: 16px;
+	text-align: left;
+	color: #000000;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;"><div style="text-align: center;"><span style="font-size: 14px;"><strong><span style="color: #07BE00;"><span style="text-transform: uppercase;">Confirmation email</span> - WE WILL SEE YOU THERE</span><br><br></strong><span style="font-size: 42px;
+	color: #221E1E;">Thank you for signing up!</span><strong><br></strong></span></div></div></td></tr>
 										</table>
 									</td>
 								</tr>
@@ -323,9 +490,8 @@ color: rgb(34, 30, 30);">Thank you for signing up!</span><strong><br></strong></
 										<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 											<tr>
 												<td align="center" style=";">
-													<a href="#" style="display: block;
-width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_2" data-f24-no-edit="text" data-f24-id="884ad091-b8e8-4f0c-b3d4-55c800deea53" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
-														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/de796d11/fe198f8f/images/1732291238-2c404b6a.png?v=133825506695050767" width="600" alt="Image" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_2" data-f24-src-source-type="file" class="imgmax" data-f24-id="19eb771a-03d9-47b2-b80e-a0ac782690c1" data-original-src="images/1712583801-a05feb4f.png">
+													<a href="#" style="display: block; width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-name="Image Link_2" data-f24-no-edit="text" data-f24-id="884ad091-b8e8-4f0c-b3d4-55c800deea53" alt="" data-f24-no-link="false" data-f24-url-params-processing-stage="prep">
+														<img src="https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/8e371271/images/1743602195-4943862e.jpg?v=133880758098696868" width="600" alt="Image" style="display:block;width:600px;border-width:0px" border="0" data-f24-editable="" data-f24-display-name="Image_2" data-f24-src-source-type="file" class="imgmax" data-f24-id="19eb771a-03d9-47b2-b80e-a0ac782690c1" data-original-src="images/1743602195-4943862e.jpg">
 													</a>
 												</td>
 											</tr>
@@ -347,14 +513,14 @@ width: 600px;" class="max-width imgfull" data-f24-editable="" data-f24-display-n
 									<td align="center" valign="top" class="padding-zero displayblock" data-f24-editable="" data-f24-no-edit="text" data-f24-id="b87b765d-5632-40e0-bfc1-232bed2205da" style=";">
 										<table width="600" style="width:600px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 											<!-- ngInclude: 'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html' --><tr data-ng-include="'htmlviews/partials/emailTemplates/layoutEditor/defaultTextSnippetContent.html'" class="ng-scope"><td data-f24-editable="" data-f24-display-name="Text_2" style="padding: 40px 70px 10px;
-background-color: rgb(201, 255, 247);" align="center" class="ng-scope padding-zero" data-f24-id="a8494514-ae03-4050-9961-ac005d791759"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
-font-size: 16px;
-text-align: left;
-color: #221E1E ;
-font-family: arial, helvetica, sans-serif;
-margin-left: auto;
-margin-right: auto;"><div>
-<div style="text-align: left;"><span style="color: #221E1E ;">Hello </span><f24-token value="contact.field(firstname)" null-value-behaviour="ignore" contenteditable="false">[First Name]</f24-token><span style="color: #221E1E ;"> </span><f24-token value="contact.field(lastname)" null-value-behaviour="ignore" contenteditable="false">[Last Name]</f24-token><span style="color: #221E1E ;">!</span><br><br><span style="color: #221E1E ;">Thank your new contact for signing-up. This is the perfect opportunity to capitalise on the engagement momentum! Direct them to your favourite piece of content, pop-up (literally) to say "hello", or follow-up with an SMS to welcome them on a different channel. Explore these options alongside your Account Manager.</span><br><br><br>
+	background-color: #C9FFF7;" align="center" class="ng-scope padding-zero" data-f24-id="a8494514-ae03-4050-9961-ac005d791759"><div data-f24-editable-style-wrapper="" class="width90pc" style="line-height: 1.4;
+	font-size: 16px;
+	text-align: left;
+	color: #221E1E;
+	font-family: arial, helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;"><div>
+<div style="text-align: left;"><span style="color: #221E1E;">Hello </span><f24-token value="contact.field(firstname)" null-value-behaviour="ignore" contenteditable="false">[First Name]</f24-token><span style="color: #221E1E;"> </span><f24-token value="contact.field(lastname)" null-value-behaviour="ignore" contenteditable="false">[Last Name]</f24-token><span style="color: #221E1E;">!</span><br><br><span style="color: #221E1E;">Thank your new contact for signing-up. This is the perfect opportunity to capitalise on the engagement momentum! Direct them to your favourite piece of content, pop-up (literally) to say "hello", or follow-up with an SMS to welcome them on a different channel. Explore these options alongside your Account Manager.</span><br><br><br>
 <table class="mceNonEditable" style="border-collapse:separate !important;margin:0 auto;border-width:0px" border="0" cellspacing="0" cellpadding="0" align="Left" data-f24-editor-cta-button="">
 
 <tr>
@@ -362,16 +528,16 @@ margin-right: auto;"><div>
 <table style="border-collapse:separate !important;margin:0 auto;border-width:0px" border="0" cellspacing="0" cellpadding="0" align="Left">
 
 <tr>
-<td class="mceNonEditable" style="padding:10px 35px;border-radius:20px;background-color:rgb(34, 30, 30);" align="center" bgcolor="rgb(34, 30, 30)" data-f24-editor-cta-button-td=""><a class="button ng-binding" style="display: block;
-text-decoration: none;
-text-align: center;
-font-weight: normal;
-font-size: 14px;
-font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
-color: rgb(201, 255, 247);
-border-radius: 20px;
-line-height: 1.2;
-font-style: normal;" href="#" name="CTA_1712575732959" data-f24-editable="" data-f24-id="e3a42008-fdee-4a65-be89-c8651c143ed6" data-f24-display-name="CTA_1712575732959" data-f24-url-params-processing-stage="prep">EVENT HOME PAGE</a></td>
+<td class="mceNonEditable" style="padding:10px 35px;border-radius:20px;background-color:rgb(34, 30, 30)" align="center" bgcolor="rgb(34, 30, 30)" data-f24-editor-cta-button-td=""><a class="button ng-binding" style="display: block;
+	text-decoration: none;
+	text-align: center;
+	font-weight: normal;
+	font-size: 14px;
+	font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
+	color: #C9FFF7;
+	border-radius: 20px;
+	line-height: 1.2;
+	font-style: normal;" href="#" name="CTA_1712575732959" data-f24-editable="" data-f24-id="e3a42008-fdee-4a65-be89-c8651c143ed6" data-f24-display-name="CTA_1712575732959" data-f24-url-params-processing-stage="prep">EVENT HOME PAGE</a></td>
 </tr>
 
 </table>
@@ -379,8 +545,8 @@ font-style: normal;" href="#" name="CTA_1712575732959" data-f24-editable="" data
 </tr>
 
 </table>
-<div><br><br><br><br><span style="color: #221E1E ;">Yours sincerely,</span></div>
-<div><span style="color: #221E1E ;"><strong>The Force24 Team.</strong></span></div>
+<div><br><br><br><br><span style="color: #221E1E;">Yours sincerely,</span></div>
+<div><span style="color: #221E1E;"><strong>The Force24 Team.</strong></span></div>
 </div>
 </div></div></td></tr>
 										</table>
@@ -392,10 +558,10 @@ font-style: normal;" href="#" name="CTA_1712575732959" data-f24-editable="" data
 				</table>
 			</td>
 		</tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
+	backface-visibility: hidden;
+	transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 								<td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding: 0;" data-f24-id="3eef76e8-0114-4c73-8b60-6f9612436349">
-									<table width="600" style="width:600px;border:0;background-color:rgb(201, 255, 247);border-collapse:initial;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="518b6a02-38bb-4e7f-874a-b4b5ac66e183">
+									<table width="600" style="width:600px;border:0;background-color:#C9FFF7;border-collapse:initial;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="518b6a02-38bb-4e7f-874a-b4b5ac66e183">
 										
 											<tr>
 												<td align="center" style=";">
@@ -403,7 +569,7 @@ transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;">
 														
 															<tr data-f24-layout-column-reorder="">
 																<td align="center" class="padding-zero displayblock" style="width: auto;
-padding: 40px 0;">
+	padding: 40px 0;">
 																	<table width="460" style="width:460px;border:0;background-color:#FFFFFF;table-layout:fixed;border-collapse:initial;padding-top:2px;margin-left:auto;margin-right:auto;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" data-f24-editable="" data-f24-no-edit="text" data-f24-id="aeb48265-4dab-4938-aab2-f06697a18c3f">
 																		
 																			<tr>
@@ -428,17 +594,17 @@ padding: 40px 0;">
 			<td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding: 0;" data-f24-display-name="Editable TD 67e1ac7a-4310-43b5-a050-b7ebc8b718cd" data-f24-id="5fbde44c-04b5-43ef-a53f-e1a3d7efc8e2">
 				<table width="600" style="width:600px;border-width:0px;background-color:#FFFFFF" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-display-name="Editable Table b2eff6f0-7ed9-47fb-bab7-2397385e9b8e" data-f24-id="eb7bee1a-39e7-4c9e-9a2c-a62b50856eac">
 					<tr>
-						<td align="center" style="background-color: rgb(201, 255, 247);" data-f24-editable="" data-f24-display-name="Editable TD dc740024-3be3-4feb-b49f-17bb09d0ce5d" data-f24-no-edit="text" data-f24-id="053be6fe-745d-49b6-bf83-e440c97e5b37">
+						<td align="center" style="background-color: #C9FFF7;" data-f24-editable="" data-f24-display-name="Editable TD dc740024-3be3-4feb-b49f-17bb09d0ce5d" data-f24-no-edit="text" data-f24-id="053be6fe-745d-49b6-bf83-e440c97e5b37">
 							<table width="540" style="width:540px;border-width:0px;margin-left:auto;margin-right:auto" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table cfec7efa-4d99-4418-8ce4-290b7c9256cd" data-f24-id="517ca921-38e2-4e39-a155-94486c1f265a">
 								<tr data-f24-layout-column-reorder="">
 									<td align="center" class="padding-zero displayblock" data-f24-editable="" data-f24-display-name="Editable TD 85aa5d1d-e5bd-466b-a726-17eb7d39e907" data-f24-no-edit="text" data-f24-id="c845cce5-8c6a-441d-b0de-e4f3e237029f" style=";">
 										<table width="540" style="width:540px;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 0a0840ad-f285-4dba-b077-b103b5817c75" data-f24-id="d85a77fd-dbdd-452b-a55c-647b923d4244">
 											<tr>
 												<td height="1" style="padding:0;background-color:#FFFFFF;height:1px" data-f24-editable="" data-f24-display-name="Editable TD 1f4d6c98-a004-45cf-94d4-fe186f413b7e" data-f24-id="26b8b685-1c5f-42cb-acd3-7ab72d0994b6" align="center"><div data-f24-editable-style-wrapper="" class="width90pc" style="height: 1px;
-font-size: 1px;
-line-height: 1;
-margin-left: auto;
-margin-right: auto;"><div>f&nbsp;</div></div></td>
+	font-size: 1px;
+	line-height: 1;
+	margin-left: auto;
+	margin-right: auto;"><div>f&nbsp;</div></div></td>
 											</tr>
 										</table>
 									</td>
@@ -449,11 +615,11 @@ margin-right: auto;"><div>f&nbsp;</div></div></td>
 				</table>
 			</td>
 		</tr><tr class="" style="perspective: 1000px;
-backface-visibility: hidden;
-transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
+	backface-visibility: hidden;
+	transition: 1000ms cubic-bezier(0.19, 1, 0.22, 1);">
 									<td align="center" data-f24-editable="" data-f24-no-edit="text" style="padding-top: 0;
-padding-bottom: 0;
-background-color: #FFFFFF;" data-f24-id="88d9774c-ffc1-49bd-a1f0-67571ccb7b9e">
+	padding-bottom: 0;
+	background-color: #FFFFFF;" data-f24-id="88d9774c-ffc1-49bd-a1f0-67571ccb7b9e">
 										<table width="600" style="width:600px;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" data-f24-editable="" data-f24-no-edit="text" data-f24-id="2c9d5ea0-988b-43a7-859f-09c70b887bc0">
 											
 												<tr>
@@ -462,46 +628,46 @@ background-color: #FFFFFF;" data-f24-id="88d9774c-ffc1-49bd-a1f0-67571ccb7b9e">
 															
 																<tr data-f24-layout-column-reorder="">
 																	<td align="center" valign="top" class="padding-zero displayblock" style="width: auto;
-padding: 25px 0 5px;">
+	padding: 25px 0 5px;">
 																		<table width="560" style="width:560px;table-layout:fixed;border:0;border-width:0px" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width">
 																			
 																				<tr>
 																					<td align="center" data-f24-editable="" data-f24-display-name="Text_1_1_1_1" style=";" data-f24-id="337e6c76-36a8-472a-a542-ce2b30e3a38c"><div data-f24-editable-style-wrapper="" class="width90pc" style="text-align: left;
-line-height: 1.4;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 12px;
-color: #000000;
-margin-left: auto;
-margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
+	line-height: 1.4;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;"><div style="text-align: center;"><span style="color: #07BE00;"><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">0800 123 456 | Brand.Website&nbsp;</span></strong></span></div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;<br></span></div>
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name 1, Road St, City, UK EN8 1AB&nbsp;<br></span></div>
 <div style="text-align: center;">
 <div class="width90pc" style="text-align: left;
-font-family: Arial, Helvetica, sans-serif;
-color: #000000;
-margin-left: auto;
-margin-right: auto;" data-f24-editable-style-wrapper="">
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;" data-f24-editable-style-wrapper="">
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;">&nbsp;</div>
 <div style="text-align: center;"><span style="color: #7D7D7D;">All rights reserved.</span><br><br><span style="color: #7D7D7D;">This email is sent by <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
+	font-size: 12px;">Company Legal Name</span>, a company registered in England and Wales (number XXXXXX), and whose registered address is at <span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;">1, Road St, City, UK EN8 1AB</span>.</span></div>
 <div style="text-align: center;
-font-size: 12px;
-line-height: 1.5;">&nbsp;</div>
+	font-size: 12px;
+	line-height: 1.5;">&nbsp;</div>
 <div style="text-align: center;">
 <div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
-font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-line-height: 1.5;
-color: rgb(34, 30, 30);"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
+	font-size: 12px;"><div class="f24-mce-lh-parent-fix" style="line-height: 1.5;
+	font-size: 12px;"><span class="f24-mce-lh-fix" style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #221E1E;"><span style="color: #7D7D7D;">Important: If you have received this email in error or are a consumer unconnected to the aforementioned business, please immediately unsubscribe from this email and you will receive no further communications from&nbsp;</span><strong><span style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
 </div>
 </div>
 </div></div></td>
@@ -528,26 +694,26 @@ color: #7D7D7D;">Company Legal Name</span></strong></span></div></div>
 										<table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="max-width" style="border:0;width:600px;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 3cb11e6e-79aa-4d95-92ad-6a3c91b3dce1" data-f24-id="0990ff16-14f0-4b3d-bf35-4522bb5dac93">
 											<tr>
 												<td align="center" style="padding: 0 0 30px;
-background-color: #FFFFFF;" data-f24-editable="" data-f24-display-name="Editable TD ca6492e5-0c3b-43f2-a6ff-05c1d1ff86ae" data-f24-no-edit="text" data-f24-id="9906f941-3041-4dbb-9f42-fb78eb816190">
+	background-color: #FFFFFF;" data-f24-editable="" data-f24-display-name="Editable TD ca6492e5-0c3b-43f2-a6ff-05c1d1ff86ae" data-f24-no-edit="text" data-f24-id="9906f941-3041-4dbb-9f42-fb78eb816190">
 													<table width="540" cellpadding="0" cellspacing="0" border="0" align="center" class="width90pc" style="border:0;width:540px;margin-left:auto;margin-right:auto;border-width:0px" data-f24-no-edit="text" data-f24-editable="" data-f24-display-name="Editable Table 49d38dc1-6b08-4bde-9b87-87fd4dea9f8d" data-f24-id="c7329a3a-4b2d-413b-b741-dd955d76fd25">
 														<tr>
 															<td align="center" style="font-size: 12px;
-color: #7D7D7D;
-text-align: left;
-line-height: 1.3;
-padding-top: 10px;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
+	color: #7D7D7D;
+	text-align: left;
+	line-height: 1.3;
+	padding-top: 10px;" class="textcenter" data-f24-editable="" data-f24-display-name="Editable TD 8674ec5d-56c9-4e6b-839a-390d70fe8582" data-f24-no-edit="text" data-f24-id="39b3b6f9-d896-452d-ba9c-821e85245016">
 																<div data-f24-editable-style-wrapper="" class="width90pc" style="font-family: &quot;lucida sans unicode&quot;, &quot;lucida grande&quot;, sans-serif;
-font-size: 12px;
-color: #7D7D7D;
-text-align: left;
-line-height: 1.3;
-margin-left: auto;
-margin-right: auto;"><div align="center" style="text-align: center;"><span class="textcenter" style="font-family: arial, helvetica, sans-serif;
-font-size: 12px;
-color: #7D7D7D;
-text-align: center;"> <a style="text-decoration: none;
-color: #7D7D7D;" href="[nonTrackingLink]">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
-color: #7D7D7D;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp; Unsubscribe </unsubscribe> </span></div></div>
+	font-size: 12px;
+	color: #7D7D7D;
+	text-align: left;
+	line-height: 1.3;
+	margin-left: auto;
+	margin-right: auto;"><div align="center" style="text-align: center;"><span class="textcenter" style="font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #7D7D7D;
+	text-align: center;"> <a style="text-decoration: none;
+	color: #7D7D7D;" href="[nonTrackingLink]">View in your browser</a>&nbsp;&nbsp;|&nbsp;&nbsp;<unsubscribe style="text-decoration: none;
+	color: #7D7D7D;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp; Unsubscribe </unsubscribe> </span></div></div>
 			 
 															</td>
 															</tr>
@@ -561,20 +727,20 @@ color: #7D7D7D;">Subscription Preferences&nbsp;&nbsp;|&nbsp;&nbsp; Unsubscribe <
 											<tr>
 												<td style=";" data-f24-editable="" data-f24-display-name="Editable TD b2b7cd69-6572-4f4d-8b02-ba4ec36c1ba0" data-f24-id="2022ff93-a1b5-46ea-8a17-6d6c3530e232">
 													<div style="letter-spacing: 600px;
-line-height: 0;
-mso-hide: all;" class="hidethis">&nbsp;
+	line-height: 0;
+	mso-hide: all;" class="hidethis">&nbsp;
 													</div>
 												</td>
 											</tr>
 											<tr>
 												<td style=";" data-f24-editable="" data-f24-display-name="Editable TD 73f8e91f-4871-45c7-b4dc-c8291d8e75a6" data-f24-no-edit="text" data-f24-id="13324225-802f-4372-8821-46b53f108c25">
 													<spambotdetection class="invisible-preheader" style="font-size: 0;
-width: 0;
-height: 0;
-display: none;
-color: #E8E8E8;
-line-height: 0;
-text-decoration: none;">&nbsp;
+	width: 0;
+	height: 0;
+	display: none;
+	color: #E8E8E8;
+	line-height: 0;
+	text-decoration: none;">&nbsp;
 													</spambotdetection>
 												</td>
 											</tr>
