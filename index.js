@@ -495,8 +495,8 @@ app.post("/api/process-star", async (req, res) => {
   }
 });
 
-//extra time stuff done by GJ, sorry
-
+//extra time stuff done by GJ, sorry (REMOVED THIS FOR NOW, THIS IS NOT CURRENTLY NEEDED)
+/*
 app.get("/api/dateTime/:interval", async (req, res) => {
   try {
     const allowedValues = ["hour", "day", "2days"];
@@ -526,8 +526,85 @@ app.get("/api/dateTime/:interval", async (req, res) => {
     res.status(500).send("Time endpoint error");
   }
 });
-
+*/
 //end of extra time stuff
+
+//gj adding functionality for something else, sorry again
+
+app.post("/api/pmTOOL/token", async (req, res) => {
+  const { id, secret } = req.body;
+
+  try {
+    const response = await fetch(
+      "https://identity.data-crypt.com/connect/token",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          grant_type: "client_credentials",
+          scope: "api.Master",
+          client_id: id,
+          client_secret: secret,
+        }),
+      }
+    );
+
+    const token = await response.json();
+
+
+    const returnToken = token.access_token;
+
+    res.status(200).send({returnToken});
+  } catch (err) {
+    res.status(500).send({err});
+  }
+});
+
+app.get("/api/pmTOOL/contact/:ID", async (req, res) => {
+  const {token} = req.body;
+  const {ID} = req.params;
+
+
+  try {
+    const response = await fetch(`https://api.data-crypt.com/api/v1.3/contacts/${ID}?fields=%2A`, {
+        method: "GET",
+        headers: {
+          "accept": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+    })
+
+    const contact = await response.json();
+
+    res.status(200).send({contact});
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+
+app.get("/api/pmTOOL/fields", async (req, res) => {
+  const {token} = req.body;
+
+  try {
+    const response = await fetch(`https://api.data-crypt.com/api/v1.3/schemas/contact/fields`, {
+        method: "GET",
+        headers: {
+          "accept": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+    })
+
+    const fields = await response.json();
+
+    res.status(200).send({fields});
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+
+//end of changes
 
 app.get("/*", (req, res) => {
   res.send("Hello World");
