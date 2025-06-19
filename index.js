@@ -563,9 +563,8 @@ app.post("/api/pmTOOL/token", async (req, res) => {
 });
 
 app.get("/api/pmTOOL/contact/:ID", async (req, res) => {
-  const {token} = req.body;
+  const {token} = req.headers;
   const {ID} = req.params;
-
 
   try {
     const response = await fetch(`https://api.data-crypt.com/api/v1.3/contacts/${ID}?fields=%2A`, {
@@ -585,7 +584,7 @@ app.get("/api/pmTOOL/contact/:ID", async (req, res) => {
 })
 
 app.get("/api/pmTOOL/fields", async (req, res) => {
-  const {token} = req.body;
+  const {token} = req.headers;
 
   try {
     const response = await fetch(`https://api.data-crypt.com/api/v1.3/schemas/contact/fields`, {
